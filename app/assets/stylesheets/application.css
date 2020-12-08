@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+
+.site-title {
+    display: inline;
+    color: #ff5c39;
+    font-family: 'Crimson Text', serif;
+    font-size: 30px;
+    padding-left: 10px;
+ }
+
+ .header-name {
+    display: flex;
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
+    padding-left: 10px;
+
+ }
