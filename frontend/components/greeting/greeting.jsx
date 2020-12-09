@@ -5,7 +5,7 @@ import React from 'react';
 const Greeting = ({ currentUser, logout, openModal }) => {
 
     const sessionLinks = () => (
-        <div>
+        <div className="login-sign-up-box">
             <span className="login-signup-button" onClick={() => openModal('login')}>Sign In</span>
                 &nbsp;
             <span className="login-signup-button" onClick={() => openModal('signup')}>Sign Up</span>
