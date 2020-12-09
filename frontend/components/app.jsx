@@ -8,9 +8,10 @@ import ProductIndexContainer from './product_show/product_show_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Modal from './modal'
 
+
 const App = () => (
     <div>
-        <header>
+        <header className="main-header">
             <h1 className = 'site-title'>Marché aux Puces</h1>
             <GreetingContainer/>
         </header>

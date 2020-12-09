@@ -14,6 +14,7 @@ const ProductDetail = ({ product, reviews }) => {
     <div>
       <ul className="product-list">
         <img className="index-image" src={product.picture_url}/>
+        <li>Name: {product.name }</li>
         <li>Rating: {product.average_rating || 'No reviews yet'}</li>
         <li>Description: {product.description}</li>
       </ul>

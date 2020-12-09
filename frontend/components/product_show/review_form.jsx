@@ -37,9 +37,12 @@ class ReviewForm extends React.Component {
     return (
       <div className="review-form">
         <form onSubmit={this.handleSubmit}>
+            <div className="review-form-top-box">
             <div className='formType' >Write a Review</div>
             <div className="close-x" onClick={this.props.closeModal}>X</div>
+            </div>
             <br/>
+            <div className = "review-form-box">
           <label>Rating</label>
           <br/>
           <input
@@ -60,6 +63,7 @@ class ReviewForm extends React.Component {
           />
           <br/>
           <input type="submit" />
+                </div>
         </form>
       </div>
     );

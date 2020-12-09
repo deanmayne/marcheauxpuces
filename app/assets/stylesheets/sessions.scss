@@ -16,7 +16,8 @@
     transition: color 0.3s ease-in-out;
 }
 
-.login-button, .logout-button, .signup-button {
+.login-button, .logout-button, .signup-button, .product-form-button {
+    cursor: pointer;
     padding-right: 3px;
     display: inline-block;
     border: none;
@@ -45,6 +46,18 @@
     display: inline-block;
 }
 
+.session-submit:hover {
+    color: black;
+    border: black 1px solid;
+    outline: none;
+    background-color: grey;
+    border-radius: 20px;
+    font-family: 'Crimson Text', serif;
+    font-size: 15px;
+    transition: color 0.3s ease-in-out;
+    display: inline-block;
+}
+
 
 a {
     text-decoration: none;
@@ -53,7 +66,7 @@ a {
 
 .login-sign-up-box{
     float: right;
-    padding: 10px;
+    padding: 8px;
 }
 
 

@@ -15,7 +15,12 @@
  */
 
 
+ .main-header{
+     border-bottom: .5px solid lightgray;
+ }
+
 .site-title {
+    cursor:pointer;
     display: inline;
     color: #ff5c39;
     font-family: 'Crimson Text', serif;

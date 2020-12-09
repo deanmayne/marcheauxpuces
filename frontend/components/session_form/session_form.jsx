@@ -9,6 +9,7 @@ class SessionForm extends React.Component {
             password: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleX = this.handleX.bind(this)
     }
 
     update(field) {
@@ -21,6 +22,14 @@ class SessionForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user).then(this.props.closeModal);
+    }
+
+    handleX(){
+
+        this.setState({ ['errors']: [] })
+        this.props.closeModal
+        
+        
     }
 
     renderErrors() {
@@ -47,22 +56,18 @@ class SessionForm extends React.Component {
                         <div onClick={this.props.closeModal} className="close-x">X</div>
                     </div>
                     <div className="login-form">
-                        <br />
                         <label className="login-input">Username:
-                            
               <input type="text"
                                 value={this.state.username}
                                 onChange={this.update('username')}
                             />
                         </label>
-                        <br />
                         <label className="login-input">Password:
               <input type="password"
                                 value={this.state.password}
                                 onChange={this.update('password')}
                             />
                         </label>
-                        <br />
                         <div className ="session-submit-box">
                         <input className="session-submit" type="submit" value={formtype} />
                         </div>

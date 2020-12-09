@@ -13,7 +13,9 @@ const Greeting = ({ currentUser, logout, openModal }) => {
     );
     const signout = () => (
         <div className="login-sign-up-box">
-            <span className="logout-button" onClick={() => logout()}>Sign Out</span>
+        <span className="product-form-button" onClick={() => openModal('add_product')}>Add a Product</span>
+        &nbsp;
+        <span className="logout-button" onClick={() => logout()}>Sign Out</span>
         </div>
     );
 
