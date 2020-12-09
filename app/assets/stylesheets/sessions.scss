@@ -28,14 +28,16 @@
     transition: color 0.3s ease-in-out;
 }
 
-.session-submit, .session-form-field {
-    color: gray;
-    border: none;
+.session-submit {
+    color: black;
+    border: black 1px solid;
     outline: none;
     background-color: white;
+    border-radius: 20px;
     font-family: 'Crimson Text', serif;
     font-size: 15px;
     transition: color 0.3s ease-in-out;
+    padding-top: 3px;
 }
 
 

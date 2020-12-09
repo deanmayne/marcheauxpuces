@@ -13,6 +13,33 @@ border: black 1px solid;
 }
 
 .close-x{
-    justify-self: right;
+    color: gray;
+    border: none;
+    outline: none;
+    background-color: white;
+    font-family: 'Crimson Text', serif;
+    font-size: 15px;
+    transition: color 0.3s ease-in-out;
+    float: right;
     display: inline-block;
+}
+
+.formType {    
+    float: left;
+    color: gray;
+    border: none;
+    outline: none;
+    background-color: white;
+    font-family: 'Crimson Text', serif;
+    font-size: 15px;
+    transition: color 0.3s ease-in-out;
+}
+
+.login-form-top{
+    padding-bottom: 3px;
+}
+
+.login-input{
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
