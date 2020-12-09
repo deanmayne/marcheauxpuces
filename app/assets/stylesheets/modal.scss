@@ -38,6 +38,11 @@ border: black 1px solid;
 }
 
 .login-input{
-display: inline-block;
+    display: inline-block;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 
+.field{
+    width: auto;
+}
