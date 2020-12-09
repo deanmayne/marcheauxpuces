@@ -4,21 +4,20 @@ import React from 'react';
 
 const Greeting = ({ currentUser, logout, openModal }) => {
 
-    const sessionLinks = () => (
+    const signin = () => (
         <div className="login-sign-up-box">
-            <span className="login-signup-button" onClick={() => openModal('login')}>Sign In</span>
+            <span className="login-button" onClick={() => openModal('login')}>Sign In</span>
                 &nbsp;
-            <span className="login-signup-button" onClick={() => openModal('signup')}>Sign Up</span>
+            <span className="signup-button" onClick={() => openModal('signup')}>Sign Up</span>
         </div>
     );
-    const personalGreeting = () => (
-        <hgroup className="header-group">
-            <h2 className="header-name">Hi, {currentUser.username}!</h2>
-            <button className="header-button" onClick={logout}>Log Out</button>
-        </hgroup>
+    const signout = () => (
+        <div className="login-sign-up-box">
+            <span className="logout-button" onClick={() => logout()}>Sign Out</span>
+        </div>
     );
 
-    return (currentUser ? personalGreeting() : sessionLinks());
+    return (currentUser ? signout() : signin());
 };
 
 export default Greeting;

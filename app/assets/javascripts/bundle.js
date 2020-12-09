@@ -368,34 +368,34 @@ var Greeting = function Greeting(_ref) {
       logout = _ref.logout,
       openModal = _ref.openModal;
 
-  var sessionLinks = function sessionLinks() {
+  var signin = function signin() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "login-sign-up-box"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-      className: "login-signup-button",
+      className: "login-button",
       onClick: function onClick() {
         return openModal('login');
       }
     }, "Sign In"), "\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-      className: "login-signup-button",
+      className: "signup-button",
       onClick: function onClick() {
         return openModal('signup');
       }
     }, "Sign Up"));
   };
 
-  var personalGreeting = function personalGreeting() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hgroup", {
-      className: "header-group"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-      className: "header-name"
-    }, "Hi, ", currentUser.username, "!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-      className: "header-button",
-      onClick: logout
-    }, "Log Out"));
+  var signout = function signout() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "login-sign-up-box"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+      className: "logout-button",
+      onClick: function onClick() {
+        return logout();
+      }
+    }, "Sign Out"));
   };
 
-  return currentUser ? personalGreeting() : sessionLinks();
+  return currentUser ? signout() : signin();
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Greeting);
@@ -427,9 +427,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(_ref) {
-  var session = _ref.session;
+  var session = _ref.session,
+      users = _ref.entities.users;
   return {
-    currentUser: session.currentUser
+    currentUser: users[session.id]
   };
 };
 
@@ -712,7 +713,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         onSubmit: this.handleSubmit,
         className: "login-form-box"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "formType"
       }, formtype), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         onClick: this.props.closeModal,

@@ -1,7 +1,6 @@
 
 .modal-child {
 display: inline-block;
-width: 35%;
 background-color: white;
 border-radius: 5px;
 position: absolute;
@@ -20,6 +19,7 @@ border: black 1px solid;
     font-family: 'Crimson Text', serif;
     font-size: 15px;
     float: right;
+    padding: 3px;
 }
 
 .formType {    
@@ -38,6 +38,6 @@ border: black 1px solid;
 }
 
 .login-input{
-    padding-top: 15px;
-    padding-bottom: 15px;
+display: inline-block;
 }
+
