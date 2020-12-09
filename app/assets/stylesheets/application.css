@@ -35,3 +35,166 @@
     padding-left: 10px;
 
  }
+
+
+
+.header-button {
+    padding: 3px;
+    display: flex;
+    border: none;
+    outline: none;
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
+    color: gray;
+    background-color: white;
+    transition: color 0.3s ease-in-out;
+}
+
+.login-button, .logout-button, .signup-button, .product-form-button {
+    cursor: pointer;
+    padding-right: 3px;
+    display: inline-block;
+    border: none;
+    outline: none;
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
+    color: gray;
+    background-color: white;
+    transition: color 0.3s ease-in-out;
+}
+
+.session-submit-box{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.session-submit {
+    color: black;
+    border: black 1px solid;
+    outline: none;
+    background-color: white;
+    border-radius: 20px;
+    font-family: 'Crimson Text', serif;
+    font-size: 15px;
+    transition: color 0.3s ease-in-out;
+    display: inline-block;
+    padding: 3px;
+}
+
+.session-submit:hover {
+    color: black;
+    border: black 1px solid;
+    outline: none;
+    background-color: grey;
+    border-radius: 20px;
+    font-family: 'Crimson Text', serif;
+    font-size: 15px;
+    transition: color 0.3s ease-in-out;
+    display: inline-block;
+}
+
+
+a {
+    text-decoration: none;
+    color: grey
+}
+
+.login-sign-up-box{
+    float: right;
+    padding: 8px;
+}
+
+
+.modal-background {
+   position: fixed;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   left: 0;
+   background: grey;
+   opacity: .4;
+
+ }
+
+
+.modal-child {
+    background-color: white;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    border: black 1px solid;
+}
+
+.close-x{
+    position: absolute;
+    top:  10px;
+    right: 10px;
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
+
+}
+
+.close-x:hover{
+    cursor: pointer;
+    position: absolute;
+    top:  10px;
+    right: 10px;
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
+
+}
+
+.formType {    
+    position: absolute;
+    top:  10px;
+    left: 10px;
+    border: none;
+    outline: none;
+    background-color: white;
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
+}
+
+
+
+.login-form-top, .review-form-top-box, .add-product-form-top-box{
+    display: block;
+    padding: 10px;
+}
+
+.login-input{
+    display: block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: black;
+    border: none;
+    outline: none;
+    font-family: 'Crimson Text', serif;
+    font-size: 15px;
+
+}
+
+
+.login-form-container{
+    padding: 10px;
+}
+
+.login-form-box > ul{
+    font-size: 12px;
+    width: auto;
+}
+
+.review-form-box, .new-product-form-box, .new-product-container {
+    display: block;
+    margin: 3px;
+}
+
+.guest-user {
+ float: right;
+ padding: 3px;
+ 
+}
+

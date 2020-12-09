@@ -10,6 +10,7 @@ class SessionForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleX = this.handleX.bind(this)
+        this.handleGuest = this.handleGuest.bind(this)
     }
 
     update(field) {
@@ -25,12 +26,20 @@ class SessionForm extends React.Component {
     }
 
     handleX(){
-
         this.setState({ ['errors']: [] })
         this.props.closeModal
-        
-        
     }
+
+    handleGuest(){
+        this.setState({
+            ['username']: 'guest_user',
+            ['password']: 'demouser'
+        });
+        
+
+
+    }
+
 
     renderErrors() {
         return (
@@ -53,7 +62,7 @@ class SessionForm extends React.Component {
                 <form onSubmit={this.handleSubmit} className="login-form-box">
                     <div className="login-form-top">
                         <div className="formType">{formtype}</div>
-                        <div onClick={this.props.closeModal} className="close-x">X</div>
+                        <div onClick={this.handleX} className="close-x">X</div>
                     </div>
                     <div className="login-form">
                         <label className="login-input">Username:
@@ -70,6 +79,7 @@ class SessionForm extends React.Component {
                         </label>
                         <div className ="session-submit-box">
                         <input className="session-submit" type="submit" value={formtype} />
+                        <span onClick = {this.handleGuest} className="session-submit guest-user">Guest User</span>
                         </div>
 
                     </div>

@@ -642,6 +642,7 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var product = Object.assign({}, this.state);
+      this.props.closeModal();
       this.props.createProduct(product);
       this.navigateToSearch();
     }
@@ -664,7 +665,7 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
         onSubmit: this.handleSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
         className: "product-field"
-      }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, "Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
         value: name,
         onChange: this.update('name'),
@@ -673,14 +674,12 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
         className: "button-holder"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.handleCloudinary,
-        className: "new-product-button"
-      }, "Add image")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "button-holder"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "session-submit"
+      }, "Add image")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "submit",
         value: "Create Product",
-        className: "new-product-button"
-      }))))));
+        className: "session-submit"
+      })))));
     }
   }]);
 
@@ -715,15 +714,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(_ref) {
-  var name = _ref.entities.products.name;
+var mapStateToProps = function mapStateToProps(_ref, _ref2) {
+  var products = _ref.entities.products;
+  var session = _ref2.session;
   return {
-    name: name //  description,
-    //  price,
-    //  rating,
-    //  location,
-    //  free_shipping
-
+    name: products.name,
+    description: products.description
   };
 };
 
@@ -1168,11 +1164,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(_ref) {
+var mapStateToProps = function mapStateToProps(_ref, _ref2) {
   var errors = _ref.errors;
+  var session = _ref2.session;
   return {
     errors: errors.session,
-    formType: 'login'
+    formType: 'login',
+    session: session
   };
 };
 
@@ -1252,6 +1250,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleX = _this.handleX.bind(_assertThisInitialized(_this));
+    _this.handleGuest = _this.handleGuest.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1278,6 +1277,13 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       this.props.closeModal;
     }
   }, {
+    key: "handleGuest",
+    value: function handleGuest() {
+      var _this$setState2;
+
+      this.setState((_this$setState2 = {}, _defineProperty(_this$setState2, 'username', 'guest_user'), _defineProperty(_this$setState2, 'password', 'demouser'), _this$setState2));
+    }
+  }, {
     key: "renderErrors",
     value: function renderErrors() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.errors.map(function (error, i) {
@@ -1300,7 +1306,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "formType"
       }, formtype), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        onClick: this.props.closeModal,
+        onClick: this.handleX,
         className: "close-x"
       }, "X")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "login-form"
@@ -1322,7 +1328,10 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         className: "session-submit",
         type: "submit",
         value: formtype
-      }))), this.renderErrors()));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+        onClick: this.handleGuest,
+        className: "session-submit guest-user"
+      }, "Guest User"))), this.renderErrors()));
     }
   }]);
 

@@ -33,8 +33,10 @@ class ProductForm extends React.Component{
   handleSubmit(e) {
     e.preventDefault();
     const product = Object.assign({}, this.state);
+    this.props.closeModal();
     this.props.createProduct(product);
     this.navigateToSearch();
+    
   }
 
   render() {
@@ -44,18 +46,18 @@ class ProductForm extends React.Component{
       <div className="new-product-container">
         <div >
             <div className = "add-product-form-top-box">
-            <div className="formType">Create A Product!</div>
-            <div onClick={this.props.closeModal} className="close-x">X</div>
+                <div className="formType">Create A Product!</div>
+                <div onClick={this.props.closeModal} className="close-x">X</div>
             </div>
             <div className="new-product-form-box">
             <form className="new-product-form" onSubmit={this.handleSubmit}>
-            <label className="product-field">Name</label>
-            <input
-              type="text"
-              value={name}
-              onChange={this.update('name')}
-              className="product-field"
-            />
+                <label className="product-field">Name:</label>
+                <input
+                type="text"
+                value={name}
+                onChange={this.update('name')}
+                className="product-field"
+                />
 
             {/* <label className="product-field">Description</label>
             <input
@@ -63,7 +65,7 @@ class ProductForm extends React.Component{
               value={description}
               onChange={this.update('description')}
               className="product-field"
-            />
+            /> */}
 
              {/* <label className="product-field">Price</label>
             <input
@@ -75,19 +77,13 @@ class ProductForm extends React.Component{
             <div className="button-holder">
               <button
                 onClick={this.handleCloudinary}
-                className="new-product-button"
+                className="session-submit"
               >
                 Add image
               </button>
             </div>
 
-            <div className="button-holder">
-              <input
-                type="submit"
-                value="Create Product"
-                className="new-product-button"
-              />
-            </div>
+        <input type="submit" value="Create Product" className="session-submit"/>
           </form>
           </div>
 

@@ -4,15 +4,11 @@ import { createProduct } from '../../actions/product_actions';
 import ProductForm from './product_form';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
-const mapStateToProps = ({ entities: { products: { name } } },) => {
+const mapStateToProps = ({ entities: { products }}, {session} ,) => {
    
     return{
-     name,
-    //  description,
-    //  price,
-    //  rating,
-    //  location,
-    //  free_shipping
+     name: products.name,
+     description: products.description
     }   
 
 };
@@ -21,7 +17,7 @@ const mapStateToProps = ({ entities: { products: { name } } },) => {
 
 const mapDispatchToProps = dispatch => ({
   createProduct: product => dispatch(createProduct(product)),
-    closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal())
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(ProductForm);
