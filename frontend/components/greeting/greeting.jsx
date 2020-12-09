@@ -5,11 +5,11 @@ import React from 'react';
 const Greeting = ({ currentUser, logout, openModal }) => {
 
     const sessionLinks = () => (
-        <nav className="login-signup">
-            <button onClick={() => openModal('login')}>Login</button>
-      &nbsp;or&nbsp;
-            <button onClick={() => openModal('signup')}>Signup</button>
-        </nav>
+        <div>
+            <span className="login-signup-button" onClick={() => openModal('login')}>Sign In</span>
+                &nbsp;
+            <span className="login-signup-button" onClick={() => openModal('signup')}>Sign Up</span>
+        </div>
     );
     const personalGreeting = () => (
         <hgroup className="header-group">
@@ -18,11 +18,7 @@ const Greeting = ({ currentUser, logout, openModal }) => {
         </hgroup>
     );
 
-    return (
-        currentUser ?
-            personalGreeting(currentUser, logout) :
-            sessionLinks()
-    );
+    return (currentUser ? personalGreeting() : sessionLinks());
 };
 
 export default Greeting;

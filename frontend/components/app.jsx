@@ -9,14 +9,12 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Modal from './modal'
 
 const App = () => (
-
     <div>
-    <Modal/>
         <header>
             <h1 className = 'site-title'>Marché aux Puces</h1>
             <GreetingContainer/>
         </header>
-
+        <Modal />
     <Switch>
         {/* <Route exact path="/" component={ProductIndexContainer} /> */}
     </Switch>

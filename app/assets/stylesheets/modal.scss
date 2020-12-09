@@ -1,13 +1,18 @@
 
-Modal {
-    text-decoration: none;
-    padding: 3px;
+.modal-child {
+display: inline-block;
+width: 35%;
+background-color: white;
+border-radius: 5px;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+padding: 15px;
+border: black 1px solid;
+}
+
+.close-x{
+    justify-self: right;
     display: inline-block;
-    border: 3px;
-    outline: none;
-    font-family: 'Crimson Text', serif;
-    font-size: 20px;
-    color: gray;
-    background-color: white;
-    transition: color 0.3s ease-in-out;
 }

@@ -1,6 +1,3 @@
-
-
-
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
@@ -39,14 +36,14 @@ class SessionForm extends React.Component {
     }
 
     render() {
+
+        const formtype = this.props.formType === "login" ? "Sign In" : "Sign Up" 
         return (
             <div className="login-form-container">
                 <form onSubmit={this.handleSubmit} className="login-form-box">
-                    Sign In
-          <br />
-          Please {this.props.formType} or {this.props.otherForm}
+                    {formtype} &nbsp;
                     <div onClick={this.props.closeModal} className="close-x">X</div>
-                    {this.renderErrors()}
+
                     <div className="login-form">
                         <br />
                         <label>Username:
@@ -65,8 +62,10 @@ class SessionForm extends React.Component {
                             />
                         </label>
                         <br />
-                        <input className="session-submit" type="submit" value={this.props.formType} />
+                        <input className="session-submit" type="submit" value={formtype} />
+
                     </div>
+                    {this.renderErrors()}
                 </form>
             </div>
         );
