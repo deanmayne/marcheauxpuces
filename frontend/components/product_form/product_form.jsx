@@ -4,6 +4,10 @@ import { withRouter } from 'react-router';
 class ProductForm extends React.Component{
   constructor(props) {
     super(props);
+    this.state = {
+        name: '',
+        description: '',
+    }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.navigateToSearch = this.navigateToSearch.bind(this);
@@ -39,7 +43,11 @@ class ProductForm extends React.Component{
     
   }
 
+
+
   render() {
+    const {description, name} = this.state;
+    
 
 
     return (
@@ -59,13 +67,13 @@ class ProductForm extends React.Component{
                 className="product-field"
                 />
 
-            {/* <label className="product-field">Description</label>
+            <label className="product-field">Description</label>
             <input
               type="text"
               value={description}
               onChange={this.update('description')}
               className="product-field"
-            /> */}
+            />
 
              {/* <label className="product-field">Price</label>
             <input

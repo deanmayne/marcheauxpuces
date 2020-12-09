@@ -35,9 +35,9 @@ class SessionForm extends React.Component {
             ['username']: 'guest_user',
             ['password']: 'demouser'
         });
-        
-
-
+        setTimeout(() => { return }, 100000)
+        const user = Object.assign({}, this.state);
+        this.props.processForm(user).then(this.props.closeModal);
     }
 
 
@@ -53,6 +53,9 @@ class SessionForm extends React.Component {
         );
     }
 
+
+    componentDidMount(){this.props.removeErrors()};
+
     render() {
 
         const formtype = this.props.formType === "login" ? "Sign In" : "Sign Up" 
@@ -62,7 +65,7 @@ class SessionForm extends React.Component {
                 <form onSubmit={this.handleSubmit} className="login-form-box">
                     <div className="login-form-top">
                         <div className="formType">{formtype}</div>
-                        <div onClick={this.handleX} className="close-x">X</div>
+                        <div onClick={this.props.closeModal} className="close-x">X</div>
                     </div>
                     <div className="login-form">
                         <label className="login-input">Username:
