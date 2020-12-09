@@ -38,13 +38,14 @@ class SessionForm extends React.Component {
     render() {
 
         const formtype = this.props.formType === "login" ? "Sign In" : "Sign Up" 
+
         return (
             <div className="login-form-container">
                 <form onSubmit={this.handleSubmit} className="login-form-box">
-                    <div className="login-form-top">
-                    <div className="formType">{formtype}</div>
-                    <div onClick={this.props.closeModal} className="close-x">X</div>
-                    </div>
+                <div></div>
+                        <div className="formType">{formtype}</div>
+                        <div onClick={this.props.closeModal} className="close-x">X</div>
+
                     <div className="login-form">
                         <br />
                         <label className="login-input">Username:
