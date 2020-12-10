@@ -15,17 +15,15 @@
  */
 
 
- .main-header{
-     border-bottom: .5px solid lightgray;
- }
+
 
 .site-title {
     cursor: pointer;
     display: inline;
-    color: #ff5c39;
+    color: #F1641E;
     font-family: 'Crimson Text', serif;
     font-size: 30px;
-    padding-left: 10px;
+    padding-left: 5px;
  }
 
  .header-name {
@@ -96,7 +94,7 @@
 
 a {
     text-decoration: none;
-    color: grey
+    color: grey;
 }
 
 .login-sign-up-box{
@@ -211,8 +209,53 @@ a {
 
 .fourohfour-text{
     display: inline;
-    color: #ff5c39;
+    color: #F1641E;
     font-family: 'Crimson Text', serif;
     font-size: 200px;
     padding-left: 10px;
+}
+
+.top-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.bottom-header{
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.bottom-header > a {
+    display: flex 1 0 12.5%;
+    font-family: 'Crimson Text', serif;
+    flex-grow: 1;
+    align-self: center;
+    padding-left: 18px;
+    padding-right: 11px;
+    
+}
+
+.bottom-header > a:after {
+  display: block;
+  padding-right: 5px;
+  content: '';
+  border-bottom: solid 2px black;  
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out; 
+  align-items: center;
+    
+}
+
+.bottom-header > hr {
+    display: flex;
+    flex-basis: 100%;
+}
+
+
+.bottom-header > a:hover:after {
+    transform: scaleX(.80)
 }
