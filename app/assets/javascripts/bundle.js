@@ -173,25 +173,17 @@ var receiveProducts = function receiveProducts(products) {
   };
 };
 var receiveProduct = function receiveProduct(_ref) {
-  var product = _ref.product,
-      reviews = _ref.reviews,
-      authors = _ref.authors;
+  var product = _ref.product;
   return {
     type: RECEIVE_PRODUCT,
-    product: product,
-    reviews: reviews,
-    authors: authors
+    product: product
   };
 };
 var receiveReview = function receiveReview(_ref2) {
-  var review = _ref2.review,
-      rating = _ref2.rating,
-      author = _ref2.author;
+  var review = _ref2.review;
   return {
     type: RECEIVE_REVIEW,
-    review: review,
-    rating: rating,
-    author: author
+    review: review
   };
 };
 var createReview = function createReview(review) {
@@ -218,7 +210,8 @@ var fetchProduct = function fetchProduct(id) {
 var createProduct = function createProduct(product) {
   return function (dispatch) {
     return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__.createProduct(product).then(function (product) {
-      return dispatch(receiveProduct(product));
+      debugger;
+      dispatch(receiveProduct(product));
     });
   };
 };
@@ -333,11 +326,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./greeting/greeting_container */ "./frontend/components/greeting/greeting_container.js");
 /* harmony import */ var _product_show_product_show_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./product_show/product_show_container */ "./frontend/components/product_show/product_show_container.js");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modal */ "./frontend/components/modal.jsx");
+/* harmony import */ var _fourohfour__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./fourohfour */ "./frontend/components/fourohfour.jsx");
+
 
 
 
@@ -349,16 +345,57 @@ __webpack_require__.r(__webpack_exports__);
 var App = function App() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", {
     className: "main-header"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+    to: "/"
+  }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
     className: "site-title"
-  }, "March\xE9 aux Puces"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_modal__WEBPACK_IMPORTED_MODULE_5__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+  }, " March\xE9 aux Puces")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_modal__WEBPACK_IMPORTED_MODULE_5__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
     exact: true,
-    path: "/products/",
+    path: "/"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+    exact: true,
+    path: "/products",
     component: _product_show_product_show_container__WEBPACK_IMPORTED_MODULE_3__.default
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+    exact: true,
+    path: "/404",
+    component: _fourohfour__WEBPACK_IMPORTED_MODULE_6__.default
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Redirect, {
+    to: "/404"
   })));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
+
+/***/ }),
+
+/***/ "./frontend/components/fourohfour.jsx":
+/*!********************************************!*\
+  !*** ./frontend/components/fourohfour.jsx ***!
+  \********************************************/
+/*! namespace exports */
+/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_exports__, __webpack_require__.r, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var fourohfour = function fourohfour() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "fourohfour-box"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    className: "fourohfour-text"
+  }, "Oups !"));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (fourohfour);
 
 /***/ }),
 
@@ -619,7 +656,12 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       name: '',
       description: '',
-      price: ''
+      price: '',
+      category: '',
+      rating: 5,
+      location: '',
+      free_shipping: false,
+      owner_id: _this.props.session
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.navigateToSearch = _this.navigateToSearch.bind(_assertThisInitialized(_this));
@@ -748,7 +790,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state) {};
+var mapStateToProps = function mapStateToProps(state) {
+  session: state.session.id;
+};
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
@@ -1312,15 +1356,17 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleGuest",
-    value: function handleGuest() {
-      var _this$setState2;
+    value: function handleGuest(e) {
+      var _this$setState2,
+          _this3 = this;
 
+      e.preventDefault();
       this.setState((_this$setState2 = {}, _defineProperty(_this$setState2, 'username', 'guest_user'), _defineProperty(_this$setState2, 'password', 'demouser'), _this$setState2));
       setTimeout(function () {
-        return;
-      }, 100000);
-      var user = Object.assign({}, this.state);
-      this.props.processForm(user).then(this.props.closeModal);
+        var user = Object.assign({}, _this3.state);
+
+        _this3.props.processForm(user).then(_this3.props.closeModal);
+      }, 1000);
     }
   }, {
     key: "renderErrors",

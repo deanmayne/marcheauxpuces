@@ -7,7 +7,12 @@ class ProductForm extends React.Component{
     this.state = {
         name: '',
         description: '',
-        price: ''
+        price: '',
+        category: '',
+        rating: 5,
+        location: '',
+        free_shipping: false,
+        owner_id: this.props.session,
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);

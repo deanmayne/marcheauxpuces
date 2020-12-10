@@ -30,14 +30,18 @@ class SessionForm extends React.Component {
         this.props.closeModal
     }
 
-    handleGuest(){
+    handleGuest(e){
+        e.preventDefault();
         this.setState({
             ['username']: 'guest_user',
             ['password']: 'demouser'
         });
-        setTimeout(() => { return }, 100000)
-        const user = Object.assign({}, this.state);
-        this.props.processForm(user).then(this.props.closeModal);
+        setTimeout(() => {
+            const user = Object.assign({}, this.state);
+            this.props.processForm(user).then(this.props.closeModal)
+        }, 1000);
+
+
     }
 
 

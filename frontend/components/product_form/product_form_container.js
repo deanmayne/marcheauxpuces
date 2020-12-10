@@ -6,8 +6,7 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 import { removeErrors } from '../../actions/session_actions'
 
 const mapStateToProps = (state) => {
-   
- 
+   session: state.session.id
 
 };
 

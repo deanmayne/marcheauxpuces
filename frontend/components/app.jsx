@@ -7,17 +7,21 @@ import GreetingContainer from './greeting/greeting_container';
 import ProductIndexContainer from './product_show/product_show_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Modal from './modal'
+import fourohfour from './fourohfour'
 
 
 const App = () => (
     <div>
         <header className="main-header">
-            <h1 className = 'site-title'>Marché aux Puces</h1>
+            <Link to='/'> <h1 className='site-title'> Marché aux Puces</h1></Link>
             <GreetingContainer/>
         </header>
         <Modal/>
     <Switch>
-        <Route exact path="/products/" component={ProductIndexContainer} />
+        <Route exact path="/" />
+        <Route exact path="/products" component={ProductIndexContainer} />
+        <Route exact path="/404" component={fourohfour} />
+        <Redirect to="/404" />
     </Switch>
     </div>
 );
