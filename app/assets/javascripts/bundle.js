@@ -488,7 +488,7 @@ var Header = function Header(_ref) {
     }, "Craft Supplies"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
       className: "gifts-gift-cards",
       to: "/"
-    }, "Gifts & Gift Cards"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
+    }, "Gifts & Gift Cards"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
       className: "category-animation"
     })));
   };
@@ -1399,7 +1399,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       var _this$setState2,
           _this3 = this;
 
-      e.preventDefault();
+      // e.preventDefault();
       this.setState((_this$setState2 = {}, _defineProperty(_this$setState2, 'username', 'guest_user'), _defineProperty(_this$setState2, 'password', 'demouser'), _this$setState2));
       setTimeout(function () {
         var user = Object.assign({}, _this3.state);
@@ -1460,7 +1460,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }), formtype === 'Sign Up' ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
         onClick: this.handleGuest,
         className: "session-submit guest-user"
-      }, "Guest User"))), this.renderErrors()));
+      }, "Guest User"))), this.props.errors ? this.renderErrors() : null));
     }
   }]);
 

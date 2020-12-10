@@ -31,7 +31,7 @@ class SessionForm extends React.Component {
     }
 
     handleGuest(e){
-        e.preventDefault();
+        // e.preventDefault();
         this.setState({
             ['username']: 'guest_user',
             ['password']: 'demouser'
@@ -43,7 +43,6 @@ class SessionForm extends React.Component {
 
 
     }
-
 
     renderErrors() {
         return (
@@ -90,7 +89,7 @@ class SessionForm extends React.Component {
                         </div>
 
                     </div>
-                    {this.renderErrors()}
+                    {this.props.errors ? this.renderErrors() : null}
                 </form>
             </div>
         );

@@ -39,6 +39,7 @@ const Header = ({ currentUser, logout, openModal }) => {
                     <Link className="arts-collectibles" to="/">Arts & Collectibles</Link>
                     <Link className="craft-supplies" to="/">Craft Supplies</Link>
                     <Link className="gifts-gift-cards" to="/">Gifts & Gift Cards</Link>
+                    <br/>
                     <hr className="category-animation"/>
                 </div>     
         </header>        

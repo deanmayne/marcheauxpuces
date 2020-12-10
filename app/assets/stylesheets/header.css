@@ -18,6 +18,7 @@
      border-radius: 30px;
      height: 35px;
      outline: none;
+     padding-left: 10px;
 
  }
 
@@ -46,22 +47,21 @@
 
 .bottom-header > a {
     display: flex 12.5%;
+    flex-direction: row;
     font-family: 'Crimson Text', serif;
     flex-grow: 1;
-    align-self: center;
-    padding-left: 18px;
-    padding-right: 11px;
+    text-align: center;
     
 }
 
 .bottom-header > a:after {
-  display: block;
-  padding-right: 5px;
+  display: flex;
+  flex-direction: row;
   content: '';
   border-bottom: solid 2px black;  
   transform: scaleX(0);  
   transition: transform 250ms ease-in-out; 
-  align-items: center;
+  text-align: center;
     
 }
 
@@ -72,6 +72,13 @@
 
 
 .bottom-header > a:hover:after {
-    transform: scaleX(.80)
+    transform: scaleX(.40)
 }
+
+ .login-sign-up-box{
+    float: right;
+    padding: 8px;
+}
+
+
 
