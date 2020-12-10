@@ -1615,7 +1615,7 @@ var productesReducer = function productesReducer() {
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_PRODUCTS:
       return action.productes;
 
-    case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_BENCH:
+    case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_PRODUCT:
       var newProduct = _defineProperty({}, action.product.id, action.product);
 
       return Object.assign({}, state, newProduct);

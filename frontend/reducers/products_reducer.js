@@ -1,7 +1,7 @@
 import {
     RECEIVE_REVIEW,
     RECEIVE_PRODUCTS,
-    RECEIVE_BENCH
+    RECEIVE_PRODUCT
 } from '../actions/product_actions';
 
 const productesReducer = (state = {}, action) => {
@@ -9,7 +9,7 @@ const productesReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_PRODUCTS:
             return action.productes;
-        case RECEIVE_BENCH:
+        case RECEIVE_PRODUCT:
             const newProduct = { [action.product.id]: action.product };
             return Object.assign({}, state, newProduct);
         case RECEIVE_REVIEW:
