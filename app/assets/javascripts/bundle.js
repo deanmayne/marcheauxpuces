@@ -1663,9 +1663,6 @@ var reviewsReducer = function reviewsReducer() {
   Object.freeze(state);
 
   switch (action.type) {
-    case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_REVIEWS:
-      return Object.assign({}, state, action.reviews);
-
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_REVIEW:
       var review = action.review;
       return Object.assign({}, state, _defineProperty({}, review.id, review));

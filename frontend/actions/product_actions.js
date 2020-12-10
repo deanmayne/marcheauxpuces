@@ -4,6 +4,7 @@ export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS';
 export const RECEIVE_PRODUCT = 'RECEIVE_PRODUCT';
 export const RECEIVE_REVIEW = 'RECEIVE_REVIEW';
 
+
 export const receiveProducts = products => ({
     type: RECEIVE_PRODUCTS,
     products,
@@ -22,6 +23,8 @@ export const receiveReview = ({ review, rating, author }) => ({
     rating,
     author,
 });
+
+
 
 export const createReview = review => dispatch => (
     APIUtil.createReview(review).then(review => (
