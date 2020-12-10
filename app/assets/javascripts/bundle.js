@@ -417,20 +417,8 @@ var Header = function Header(_ref) {
       logout = _ref.logout,
       openModal = _ref.openModal;
 
-  var signin = function signin() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", {
-      className: "main-header"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "top-header"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-      to: "/"
-    }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
-      className: "site-title"
-    }, " March\xE9 aux Puces")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-      className: "search-box",
-      type: "text",
-      placeholder: "Search for Products"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  var signedout = function signedout() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "login-sign-up-box"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
       className: "login-button",
@@ -442,38 +430,26 @@ var Header = function Header(_ref) {
       onClick: function onClick() {
         return openModal('signup');
       }
-    }, "Sign Up"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "bottom-header"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-      className: "jewelry-accessories",
-      to: "/"
-    }, "Jewelry & Accessories"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-      className: "clothing-shoes",
-      to: "/"
-    }, "Clothing & Shoes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-      className: "home-living",
-      to: "/"
-    }, "Home & Living"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-      className: "wedding-party",
-      to: "/"
-    }, "Wedding & Party"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-      className: "toys-enterainment",
-      to: "/"
-    }, "Toys & Entertainment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-      className: "arts-collectibles",
-      to: "/"
-    }, "Arts & Collectibles"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-      className: "craft-supplies",
-      to: "/"
-    }, "Craft Supplies"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-      className: "gifts-gift-cards",
-      to: "/"
-    }, "Gifts & Gift Cards"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
-      className: "category-animation"
-    })));
+    }, "Sign Up"));
   };
 
-  var signout = function signout() {
+  var signedin = function signedin() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "login-sign-up-box"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+      className: "product-form-button",
+      onClick: function onClick() {
+        return openModal('add_product');
+      }
+    }, "Add a Product"), "\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+      className: "logout-button",
+      onClick: function onClick() {
+        return logout();
+      }
+    }, "Sign Out"));
+  };
+
+  var header = function header() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", {
       className: "main-header"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -486,19 +462,7 @@ var Header = function Header(_ref) {
       className: "search-box",
       type: "text",
       placeholder: "Search for Products"
-    }), "              ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "login-sign-up-box"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-      className: "product-form-button",
-      onClick: function onClick() {
-        return openModal('add_product');
-      }
-    }, "Add a Product"), "\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-      className: "logout-button",
-      onClick: function onClick() {
-        return logout();
-      }
-    }, "Sign Out"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    }), currentUser ? signedin() : signedout()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "bottom-header"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
       className: "jewelry-accessories",
@@ -529,7 +493,7 @@ var Header = function Header(_ref) {
     })));
   };
 
-  return currentUser ? signout() : signin();
+  return header();
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Header);
@@ -627,9 +591,10 @@ function Modal(_ref) {
     case 'login':
       component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__.default, null);
       break;
-    // case 'signup':
-    //     component = <SignupFormContainer />;
-    //     break;
+
+    case 'signup':
+      component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__.default, null);
+      break;
 
     case 'review':
       component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_product_show_review_form_container__WEBPACK_IMPORTED_MODULE_5__.default, null);
