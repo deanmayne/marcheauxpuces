@@ -7,6 +7,7 @@ class ProductForm extends React.Component{
     this.state = {
         name: '',
         description: '',
+        price: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -46,7 +47,7 @@ class ProductForm extends React.Component{
 
 
   render() {
-    const {description, name} = this.state;
+    const {description, name, price} = this.state;
     
 
 
@@ -59,28 +60,30 @@ class ProductForm extends React.Component{
             </div>
             <div className="new-product-form-box">
             <form className="new-product-form" onSubmit={this.handleSubmit}>
-                <label className="product-field">Name:</label>
-                <input
-                type="text"
-                value={name}
-                onChange={this.update('name')}
-                className="product-field"
-                />
+            <label className="add-product-input">Name:
+              <input type="text"
+                        value={name}
+                        onChange={this.update('name')}
+                    />
+                </label>
 
-            <label className="product-field">Description</label>
-            <input
-              type="text"
-              value={description}
-              onChange={this.update('description')}
-              className="product-field"
+            <label className="add-product-input">Price:
+              <input type="text"
+                        value={price}
+                        onChange={this.update('price')}
+                    />
+                </label>
+
+        <label className="add-product-input">Description:
+        <br/>
+          <textarea
+                cols="30"
+                rows="10"
+                value={description}
+                onChange={this.update("description")}
             />
-
-             {/* <label className="product-field">Price</label>
-            <input
-              type="float"
-              value={price}
-              className="product-field"
-            /> */}
+            
+            </label>
 
             <div className="button-holder">
               <button

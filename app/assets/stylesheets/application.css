@@ -69,6 +69,7 @@
 }
 
 .session-submit {
+    cursor: pointer;
     color: black;
     border: black 1px solid;
     outline: none;
@@ -165,7 +166,7 @@ a {
     padding: 10px;
 }
 
-.login-input{
+.login-input, .add-product-input{
     display: block;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -198,3 +199,6 @@ a {
  
 }
 
+{
+    display: inline-block;
+}
