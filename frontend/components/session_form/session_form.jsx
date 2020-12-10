@@ -86,7 +86,7 @@ class SessionForm extends React.Component {
                         </label>
                         <div className ="session-submit-box">
                             <input className="session-submit" type="submit" value={formtype} />
-                            <span onClick = {this.handleGuest} className="session-submit guest-user">Guest User</span>
+                        { formtype === 'Sign Up' ? null :  <span onClick = {this.handleGuest} className="session-submit guest-user">Guest User</span>}
                         </div>
 
                     </div>

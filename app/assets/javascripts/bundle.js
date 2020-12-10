@@ -1457,7 +1457,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         className: "session-submit",
         type: "submit",
         value: formtype
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+      }), formtype === 'Sign Up' ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
         onClick: this.handleGuest,
         className: "session-submit guest-user"
       }, "Guest User"))), this.renderErrors()));
