@@ -7,6 +7,7 @@
     transform: translate(-50%, -50%);
     padding: 15px;
     border: black 1px solid;
+    z-index: 1;
 }
 
 .modal-background {
@@ -15,8 +16,8 @@
    bottom: 0;
    right: 0;
    left: 0;
-   background: grey;
-   opacity: .4;
+   background-color: #0000001A ;;
+
 
  }
 
