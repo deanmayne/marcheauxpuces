@@ -5,10 +5,12 @@ import {Link} from 'react-router-dom'
 
 const Header = ({ currentUser, logout, openModal }) => {
 
+
     const signin = () => (
         <header className="main-header">
             <div className="top-header">
                 <Link to='/'> <h1 className='site-title'> Marché aux Puces</h1></Link>
+                <input className="search-box" type="text" value="Search"/>
                 <div className="login-sign-up-box">
                     <span className="login-button" onClick={() => openModal('login')}>Sign In</span>
                         &nbsp;
@@ -33,6 +35,7 @@ const Header = ({ currentUser, logout, openModal }) => {
         <header className="main-header">
             <div className="top-header">
                 <Link to='/'> <h1 className='site-title'> Marché aux Puces</h1></Link>
+                <input className="search-box" type="text" value="Search" />
                 <div className="login-sign-up-box">
                     <span className="product-form-button" onClick={() => openModal('add_product')}>Add a Product</span>
                         &nbsp;
