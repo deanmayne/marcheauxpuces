@@ -10,7 +10,7 @@ const Header = ({ currentUser, logout, openModal }) => {
         <header className="main-header">
             <div className="top-header">
                 <Link to='/'> <h1 className='site-title'> Marché aux Puces</h1></Link>
-                <input className="search-box" type="text" value="Search"/>
+                <input className="search-box" type="text" placeholder = "Search for Products"/>
                 <div className="login-sign-up-box">
                     <span className="login-button" onClick={() => openModal('login')}>Sign In</span>
                         &nbsp;
@@ -35,8 +35,7 @@ const Header = ({ currentUser, logout, openModal }) => {
         <header className="main-header">
             <div className="top-header">
                 <Link to='/'> <h1 className='site-title'> Marché aux Puces</h1></Link>
-                <input className="search-box" type="text" value="Search" />
-                <div className="login-sign-up-box">
+                    <input className="search-box" type="text" placeholder="Search for Products" />              <div className="login-sign-up-box">
                     <span className="product-form-button" onClick={() => openModal('add_product')}>Add a Product</span>
                         &nbsp;
                     <span className="logout-button" onClick={() => logout()}>Sign Out</span>

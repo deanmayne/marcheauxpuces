@@ -429,7 +429,7 @@ var Header = function Header(_ref) {
     }, " March\xE9 aux Puces")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
       className: "search-box",
       type: "text",
-      value: "Search"
+      placeholder: "Search for Products"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "login-sign-up-box"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
@@ -485,8 +485,8 @@ var Header = function Header(_ref) {
     }, " March\xE9 aux Puces")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
       className: "search-box",
       type: "text",
-      value: "Search"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      placeholder: "Search for Products"
+    }), "              ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "login-sign-up-box"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
       className: "product-form-button",
