@@ -7,7 +7,7 @@ const Header = ({ currentUser, logout, openModal }) => {
     const signedout = () => (
 
         <div className="login-sign-up-box">
-            <button className="button button--outline" onClick={() => openModal('login')}>Sign In</button>
+            <button className="button button--link" onClick={() => openModal('login')}>Sign In</button>
         </div>
 
     )

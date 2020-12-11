@@ -6,7 +6,7 @@
 
 label,
 .label {
-  font-family: "Spartan", sans-serif;
+  font-family: $primary-font;
   font-weight: 500;
   font-size: 0.8em;
   margin-bottom: 0.25em;
@@ -18,7 +18,7 @@ input[type="text"],
 input[type="password"] {
   border-width: 1px;
   border-style: solid;
-  border-color: $primary-color;
+  border-color: $secondary-color;
   border-radius: 4px;
   font-size: 16px;
   padding: 5px 10px;

@@ -6,11 +6,13 @@ button,
   padding: 5px 12px;
   border-radius: 30px;
   font-size: 14px;
-  background-color: inherit;
+  background-color: white;
   box-shadow: none;
   border: none;
   margin: 4px 0;
-  font-family: "Spartan", sans-serif;
+  font-family: $primary-font;
+  cursor: pointer;
+  font-weight: 400;
 
   &:hover,
   &:active,
@@ -29,7 +31,14 @@ button,
 
   &--outline {
     border: 2px solid $primary-color;
-    color: $primary-color;
+    color: $secondary-color;
+  
+  }
+
+  &--link{
+      border: none;
+      color: $secondary-color;
+      background-color: transparent;
   }
 }
 

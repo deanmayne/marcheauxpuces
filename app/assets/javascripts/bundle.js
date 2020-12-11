@@ -415,7 +415,7 @@ var Header = function Header(_ref) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "login-sign-up-box"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-      className: "button button--outline",
+      className: "button button--link",
       onClick: function onClick() {
         return openModal('login');
       }
@@ -1377,8 +1377,8 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      username: '',
-      password: ''
+      username: "",
+      password: ""
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleGuest = _this.handleGuest.bind(_assertThisInitialized(_this));
@@ -1406,7 +1406,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     value: function handleGuest(e) {
       var _this$props$processFo;
 
-      this.props.processForm((_this$props$processFo = {}, _defineProperty(_this$props$processFo, 'username', 'guest_user'), _defineProperty(_this$props$processFo, 'password', 'demouser'), _this$props$processFo)).then(this.props.closeModal);
+      this.props.processForm((_this$props$processFo = {}, _defineProperty(_this$props$processFo, "username", "guest_user"), _defineProperty(_this$props$processFo, "password", "demouser"), _this$props$processFo)).then(this.props.closeModal);
     }
   }, {
     key: "renderErrors",
@@ -1433,16 +1433,18 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       var formSwitch = function formSwitch() {
         if (formType === "Sign In") {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-            className: "button--outline",
+            type: "button",
+            className: "button button--link",
             onClick: function onClick() {
-              return openModal('signup');
+              return openModal("signup");
             }
           }, "Sign Up");
         } else {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-            className: "button--outline",
+            type: "button",
+            className: "button button--link",
             onClick: function onClick() {
-              return openModal('login');
+              return openModal("login");
             }
           }, "Sign In");
         }
@@ -1476,6 +1478,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         className: "button button--primary button--block button--lg",
         type: "submit"
       }, formType), formType === "Sign Up" ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        type: "button",
         className: "button--outline button--block button--lg",
         onClick: this.handleGuest
       }, "Guest User"), errors.length != 0 && this.renderErrors());
