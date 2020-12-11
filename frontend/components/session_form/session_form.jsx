@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { openModal } from '../../actions/modal_actions';
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -9,8 +10,8 @@ class SessionForm extends React.Component {
             password: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleX = this.handleX.bind(this)
-        this.handleGuest = this.handleGuest.bind(this)
+        this.handleGuest = this.handleGuest.bind(this);
+        
     }
 
     update(field) {
@@ -25,24 +26,15 @@ class SessionForm extends React.Component {
         this.props.processForm(user).then(this.props.closeModal);
     }
 
-    handleX(){
-        this.setState({ ['errors']: [] })
-        this.props.closeModal
-    }
 
     handleGuest(e){
-        e.preventDefault();
-        this.setState({
-            ['username']: 'guest_user',
-            ['password']: 'demouser'
-        });
-        setTimeout(() => {
-            const user = Object.assign({}, this.state);
-            this.props.processForm(user).then(this.props.closeModal)
-        }, 1000);
-
+            this.props.processForm({
+                ['username']: 'guest_user',
+                ['password']: 'demouser'
+            }).then(this.props.closeModal)
 
     }
+
 
     renderErrors() {
         return (
@@ -61,37 +53,64 @@ class SessionForm extends React.Component {
 
     render() {
 
-        const formtype = this.props.formType === "login" ? "Sign In" : "Sign Up" 
+        const {openModal, formType, errors} = this.props
+
+        const formSwitch = () => {
+          if (formType === "Sign In"){
+              return(  <button className="button--outline" onClick={() => openModal('signup')}>Sign Up</button> )
+            }else{
+              return (<button className="button--outline" onClick={() => openModal('login')}>Sign In</button> )
+            }
+        }
+
+
+        // B__E--M
+            
 
         return (
-            <div className="login-form-container">
-                <form onSubmit={this.handleSubmit} className="login-form-box">
-                    <div className="login-form-top">
-                        <div className="formType">{formtype}</div>
-                        <div onClick={this.props.closeModal} className="close-x">X</div>
-                    </div>
-                    <div className="login-form">
-                        <label className="login-input">Username:
-              <input type="text"
-                                value={this.state.username}
-                                onChange={this.update('username')}
-                            />
-                        </label>
-                        <label className="login-input">Password:
-              <input type="password"
-                                value={this.state.password}
-                                onChange={this.update('password')}
-                            />
-                        </label>
-                        <div className ="session-submit-box">
-                            <input className="session-submit" type="submit" value={formtype} />
-                        { formtype === 'Sign Up' ? null :  <span onClick = {this.handleGuest} className="session-submit guest-user">Guest User</span>}
-                        </div>
-
-                    </div>
-                    {this.props.errors ? this.renderErrors() : null}
-                </form>
+          <form onSubmit={this.handleSubmit} className="session-form">
+            <div className="session-form__header">
+              <h2>{formType}</h2>
+              {formSwitch()}
             </div>
+
+            <div className="form-field">
+              <label htmlFor="username">Username:</label>
+
+              <input
+                id="userName"
+                type="text"
+                value={this.state.username}
+                onChange={this.update("username")}
+              />
+            </div>
+
+            <div className="form-field">
+              <label htmlFor="password">Password:</label>
+
+              <input
+                id="password"
+                type="password"
+                value={this.state.password}
+                onChange={this.update("password")}
+              />
+            </div>
+            <input
+              className="button button--primary button--block button--lg"
+              type="submit"
+              value={formType}
+            />
+            {formType === "Sign Up" ? null : (
+              <button
+                className="button--outline button--block button--lg"
+                onClick={this.handleGuest}
+              >
+                Guest User
+              </button>
+            )}
+
+            {errors.length != 0 && this.renderErrors()}
+          </form>
         );
     }
 }

@@ -341,7 +341,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_header_header_container__WEBPACK_IMPORTED_MODULE_2__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_modal__WEBPACK_IMPORTED_MODULE_5__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_header_header_container__WEBPACK_IMPORTED_MODULE_2__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
     exact: true,
     path: "/",
     component: _product_show_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
@@ -351,7 +351,7 @@ var App = function App() {
     component: _fourohfour__WEBPACK_IMPORTED_MODULE_6__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Redirect, {
     to: "/404"
-  })));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_modal__WEBPACK_IMPORTED_MODULE_5__.default, null));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
@@ -378,10 +378,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var fourohfour = function fourohfour() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "fourohfour-box"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-    className: "fourohfour-text"
-  }, "Oups !"));
+    className: "fourohfour-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Oups !"));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (fourohfour);
@@ -416,29 +414,24 @@ var Header = function Header(_ref) {
   var signedout = function signedout() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "login-sign-up-box"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-      className: "login-button",
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      className: "button button--outline",
       onClick: function onClick() {
         return openModal('login');
       }
-    }, "Sign In"), "\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-      className: "signup-button",
-      onClick: function onClick() {
-        return openModal('signup');
-      }
-    }, "Sign Up"));
+    }, "Sign In"));
   };
 
   var signedin = function signedin() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "login-sign-up-box"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-      className: "product-form-button",
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      className: "button button--primary",
       onClick: function onClick() {
         return openModal('add_product');
       }
-    }, "Add a Product"), "\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-      className: "logout-button",
+    }, "Add a Product"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      className: "button button--link",
       onClick: function onClick() {
         return logout();
       }
@@ -586,18 +579,19 @@ function Modal(_ref) {
   var component;
 
   switch (modal) {
-    case 'login':
+    case "login":
       component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__.default, null);
       break;
-    // case 'signup':
-    //     component = <SignupFormContainer />;
-    //     break;
 
-    case 'review':
+    case "signup":
+      component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__.default, null);
+      break;
+
+    case "review":
       component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_product_show_review_form_container__WEBPACK_IMPORTED_MODULE_5__.default, null);
       break;
 
-    case 'add_product':
+    case "add_product":
       component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_product_form_product_form_container__WEBPACK_IMPORTED_MODULE_6__.default, null);
       break;
 
@@ -609,7 +603,7 @@ function Modal(_ref) {
     className: "modal-background",
     onClick: closeModal
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "modal-child",
+    className: "modal",
     onClick: function onClick(e) {
       return e.stopPropagation();
     }
@@ -1281,7 +1275,7 @@ var mapStateToProps = function mapStateToProps(_ref, _ref2) {
   var session = _ref2.session;
   return {
     errors: errors.session,
-    formType: 'login',
+    formType: 'Sign In',
     session: session
   };
 };
@@ -1296,6 +1290,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     removeErrors: function removeErrors() {
       return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.removeErrors)());
+    },
+    openModal: function openModal(modal) {
+      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__.openModal)(modal));
     }
   };
 };
@@ -1320,7 +1317,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -1348,6 +1346,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var SessionForm = /*#__PURE__*/function (_React$Component) {
   _inherits(SessionForm, _React$Component);
 
@@ -1364,7 +1363,6 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       password: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.handleX = _this.handleX.bind(_assertThisInitialized(_this));
     _this.handleGuest = _this.handleGuest.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -1386,24 +1384,11 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       this.props.processForm(user).then(this.props.closeModal);
     }
   }, {
-    key: "handleX",
-    value: function handleX() {
-      this.setState(_defineProperty({}, 'errors', []));
-      this.props.closeModal;
-    }
-  }, {
     key: "handleGuest",
     value: function handleGuest(e) {
-      var _this$setState2,
-          _this3 = this;
+      var _this$props$processFo;
 
-      e.preventDefault();
-      this.setState((_this$setState2 = {}, _defineProperty(_this$setState2, 'username', 'guest_user'), _defineProperty(_this$setState2, 'password', 'demouser'), _this$setState2));
-      setTimeout(function () {
-        var user = Object.assign({}, _this3.state);
-
-        _this3.props.processForm(user).then(_this3.props.closeModal);
-      }, 1000);
+      this.props.processForm((_this$props$processFo = {}, _defineProperty(_this$props$processFo, 'username', 'guest_user'), _defineProperty(_this$props$processFo, 'password', 'demouser'), _this$props$processFo)).then(this.props.closeModal);
     }
   }, {
     key: "renderErrors",
@@ -1422,50 +1407,68 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var formtype = this.props.formType === "login" ? "Sign In" : "Sign Up";
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "login-form-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+      var _this$props = this.props,
+          openModal = _this$props.openModal,
+          formType = _this$props.formType,
+          errors = _this$props.errors;
+
+      var formSwitch = function formSwitch() {
+        if (formType === "Sign In") {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+            className: "button--outline",
+            onClick: function onClick() {
+              return openModal('signup');
+            }
+          }, "Sign Up");
+        } else {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+            className: "button--outline",
+            onClick: function onClick() {
+              return openModal('login');
+            }
+          }, "Sign In");
+        }
+      }; // B__E--M
+
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         onSubmit: this.handleSubmit,
-        className: "login-form-box"
+        className: "session-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "login-form-top"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "formType"
-      }, formtype), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        onClick: this.props.closeModal,
-        className: "close-x"
-      }, "X")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "login-form"
+        className: "session-form__header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, formType), formSwitch()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "form-field"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        className: "login-input"
-      }, "Username:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        htmlFor: "username"
+      }, "Username:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        id: "userName",
         type: "text",
         value: this.state.username,
-        onChange: this.update('username')
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        className: "login-input"
-      }, "Password:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        onChange: this.update("username")
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "form-field"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        htmlFor: "password"
+      }, "Password:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        id: "password",
         type: "password",
         value: this.state.password,
-        onChange: this.update('password')
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "session-submit-box"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        className: "session-submit",
+        onChange: this.update("password")
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "button button--primary button--block button--lg",
         type: "submit",
-        value: formtype
-      }), formtype === 'Sign Up' ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-        onClick: this.handleGuest,
-        className: "session-submit guest-user"
-      }, "Guest User"))), this.props.errors ? this.renderErrors() : null));
+        value: formType
+      }), formType === "Sign Up" ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "button--outline button--block button--lg",
+        onClick: this.handleGuest
+      }, "Guest User"), errors.length != 0 && this.renderErrors());
     }
   }]);
 
   return SessionForm;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.withRouter)(SessionForm));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.withRouter)(SessionForm));
 
 /***/ }),
 
@@ -1496,11 +1499,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(_ref) {
+var mapStateToProps = function mapStateToProps(_ref, _ref2) {
   var errors = _ref.errors;
+  var session = _ref2.session;
   return {
     errors: errors.session,
-    formType: 'signup'
+    formType: 'Sign Up',
+    session: session
   };
 };
 
@@ -1514,6 +1519,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     removeErrors: function removeErrors() {
       return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.removeErrors)());
+    },
+    openModal: function openModal(modal) {
+      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__.openModal)(modal));
     }
   };
 };

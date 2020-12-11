@@ -7,18 +7,16 @@ const Header = ({ currentUser, logout, openModal }) => {
     const signedout = () => (
 
         <div className="login-sign-up-box">
-            <span className="login-button" onClick={() => openModal('login')}>Sign In</span>
-                &nbsp;
-            <span className="signup-button" onClick={() => openModal('signup')}>Sign Up</span>                
+            <button className="button button--outline" onClick={() => openModal('login')}>Sign In</button>
         </div>
 
     )
 
     const signedin = () => (
         <div className="login-sign-up-box">
-            <span className="product-form-button" onClick={() => openModal('add_product')}>Add a Product</span>
-                &nbsp;
-            <span className="logout-button" onClick={() => logout()}>Sign Out</span>
+            <button className="button button--primary" onClick={() => openModal('add_product')}>Add a Product</button>
+
+            <button className="button button--link" onClick={() => logout()}>Sign Out</button>
         </div>
     )
 

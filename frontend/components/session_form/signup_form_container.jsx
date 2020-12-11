@@ -5,10 +5,11 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 import { removeErrors } from '../../actions/session_actions'
 import SessionForm from './session_form';
 
-const mapStateToProps = ({ errors }) => {
+const mapStateToProps = ({ errors }, {session}) => {
     return {
         errors: errors.session,
-        formType: 'signup',
+        formType: 'Sign Up',
+        session
     };
 };
 
@@ -16,7 +17,8 @@ const mapDispatchToProps = dispatch => {
     return {
         processForm: (user) => dispatch(signup(user)),
         closeModal: () => dispatch(closeModal()),
-        removeErrors: () => dispatch(removeErrors())
+        removeErrors: () => dispatch(removeErrors()),
+        openModal: (modal) => dispatch(openModal(modal)),
     };
 };
 

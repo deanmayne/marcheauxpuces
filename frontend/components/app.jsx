@@ -11,16 +11,16 @@ import fourohfour from './fourohfour'
 
 
 const App = () => (
-    <div>
-        <HeaderContainer/>
-        <Modal/>
-        <Switch>
-            {/* <Route exact path="/" /> */}
-            <Route exact path="/" component={ProductIndexContainer} />
-            <Route exact path="/404" component={fourohfour} />
-            <Redirect to="/404" />
-        </Switch>
-    </div>
+  <div>
+    <HeaderContainer />
+    <Switch>
+      {/* <Route exact path="/" /> */}
+      <Route exact path="/" component={ProductIndexContainer} />
+      <Route exact path="/404" component={fourohfour} />
+      <Redirect to="/404" />
+    </Switch>
+    <Modal />
+  </div>
 );
 
 export default App;
