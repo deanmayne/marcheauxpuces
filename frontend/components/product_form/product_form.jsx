@@ -1,18 +1,18 @@
-import React from 'react';
-import { withRouter } from 'react-router';
+import React from "react";
+import { withRouter } from "react-router";
 
-class ProductForm extends React.Component{
+class ProductForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        name: '',
-        description: '',
-        price: '',
-        category: '',
-        location: '',
-        free_shipping: "false",
-        owner_id: this.props.session,
-    }
+      name: "",
+      description: "",
+      price: "",
+      category: "",
+      location: "",
+      free_shipping: "false",
+      owner_id: this.props.session,
+    };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.navigateToSearch = this.navigateToSearch.bind(this);
@@ -20,23 +20,21 @@ class ProductForm extends React.Component{
   }
 
   navigateToSearch() {
-    this.props.history.push('/');
+    this.props.history.push("/");
   }
 
   update(property) {
-    return e => 
-        this.setState({
-      [property]: e.target.value
-    });
+    return (e) =>
+      this.setState({
+        [property]: e.target.value,
+      });
   }
 
   handleCloudinary(e) {
     e.preventDefault();
     cloudinary.openUploadWidget(CLOUDINARY_OPTIONS, (error, results) => {
-      if(error)
-        console.log(error);
-      else
-        this.setState({ picture_url: results[0].secure_url });
+      if (error) console.log(error);
+      else this.setState({ picture_url: results[0].secure_url });
     });
   }
 
@@ -46,76 +44,93 @@ class ProductForm extends React.Component{
     this.props.closeModal();
     this.props.createProduct(product);
     this.navigateToSearch();
-    
   }
 
-
-
   render() {
-    const {description, name, price, free_shipping} = this.state;
-    
+    const { description, name, price, free_shipping } = this.state;
 
     return (
-      <div className="new-product-container">
-        <div >
-            <div className = "add-product-form-top-box">
-                <div className="formType">Create A Product!</div>
-                <div onClick={this.props.closeModal} className="close-x">X</div>
-            </div>
-            <div className="new-product-form-box">
-            <form className="new-product-form" onSubmit={this.handleSubmit}>
-            <label className="add-product-input">Name:
-              <input type="text"
-                        value={name}
-                        onChange={this.update('name')}
-                    />
-                </label>
-
-            <label className="add-product-input">Price:
-              <input type="text"
-                        value={price}
-                        onChange={this.update('price')}
-                    />
-                </label>
-
-            <label className="add-product-input">Location:
-              <input type="text"
-                                value={this.state.location}
-                                onChange={this.update('location')}
-                            />
-                        </label>
-
-                    <label className="add-product-input">Category:
-                    <select onChange={this.update('category')}>
-                        {/* <option selected disabled></option> */}
-                        <option value="jewelry-accessories" >Jewelry & Accessories</option>
-                        <option value="clothing-shoes" >Clothing & Shoes</option>
-                        <option value="home-living" >Home & Living</option>
-                        <option value="wedding-party" >Wedding & Party</option>
-                        <option value="toys-enterainment" >Toys & Entertainment</option>
-                        <option value="arts-collectibles" >Arts & Collectibles</option>
-                        <option value="craft-supplies" >Craft Supplies</option>
-                        <option value="gifts-gift-cards" >Gifts & Gift Cards</option>
-                    </select>
-                        </label>
-
-        <label className="add-product-input">Free Shipping:
-            <input type="radio" value={true}  checked={free_shipping === "true"} onChange={this.update('free_shipping')} />True
-            <input type="radio" value={false} checked={free_shipping === "false"} onChange={this.update('free_shipping')} />False
-        </label>
-
-        <label className="add-product-input">Description:
-        <br/>
+      <form className="new-product-form" onSubmit={this.handleSubmit}>
+        <div className="modal__header">
+          <h2>Create A Product!</h2>
+          <button
+            onClick={this.props.closeModal}
+            className="button button--outline"
+          >
+            x
+          </button>
+        </div>
+        <div className="form-field">
+          <label htmlFor="product-name">Name: </label>
+          <input
+            id="product-name"
+            type="text"
+            value={name}
+            onChange={this.update("name")}
+          />
+        </div>
+        <div className="form-field">
+          <label htmlFor="product-price">Price:</label>
+          <input
+            id="product-price"
+            type="text"
+            value={price}
+            onChange={this.update("price")}
+          />
+        </div>
+        <div className="form-field">
+          <label htmlFor="product-location">Location: </label>
+          <input
+            id="product-price"
+            type="text"
+            value={this.state.location}
+            onChange={this.update("location")}
+          />
+        </div>
+        <div className="form-field">
+          <label htmlFor="product-category">Category: </label>
+          <select id="product-category" onChange={this.update("category")}>
+            <option selected disabled></option>
+            <option value="jewelry-accessories">Jewelry & Accessories</option>
+            <option value="clothing-shoes">Clothing & Shoes</option>
+            <option value="home-living">Home & Living</option>
+            <option value="wedding-party">Wedding & Party</option>
+            <option value="toys-enterainment">Toys & Entertainment</option>
+            <option value="arts-collectibles">Arts & Collectibles</option>
+            <option value="craft-supplies">Craft Supplies</option>
+            <option value="gifts-gift-cards">Gifts & Gift Cards</option>
+          </select>
+        </div>
+        <div className="form-field form-field--radio">
+          <label htmlFor="product-shipping">Free Shipping: </label>
+          <input
+            id="product-shipping--true"
+            type="radio"
+            value={true}
+            checked={free_shipping === "true"}
+            onChange={this.update("free_shipping")}
+          />
+          <label htmlFor="product-shipping--true">True</label>
+          <input
+            id="product-shipping--false"
+            type="radio"
+            value={false}
+            checked={free_shipping === "false"}
+            onChange={this.update("free_shipping")}
+          />
+          <label htmlFor="product-shipping--false">False</label>
+        </div>
+        <div className="form-field">
+          <label htmlFor="product-description">Description: </label>
           <textarea
-                cols="30"
-                rows="10"
-                value={description}
-                onChange={this.update("description")}
-            />
-            
-            </label>
+            cols="30"
+            rows="10"
+            value={description}
+            onChange={this.update("description")}
+          />
+        </div>
 
-            {/* <div className="button-holder">
+        {/* <div className="button-holder">
               <button
                 onClick={this.handleCloudinary}
                 className="session-submit"
@@ -124,19 +139,12 @@ class ProductForm extends React.Component{
               </button>
             </div> */}
 
-        <input type="submit" value="Create Product" className="session-submit"/>
-          </form>
-          </div>
-
-
-        </div>
-      </div>
+        <button type="submit" className="button button--primary">
+          Create Product
+        </button>
+      </form>
     );
   }
 }
 
 export default withRouter(ProductForm);
-
-
-
-

@@ -14,10 +14,11 @@
  *= require_self
  */
 
+
+ 
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-
-
+@import 'variables.scss';
 
 a {
     text-decoration: none;
@@ -25,5 +26,12 @@ a {
 }
 
 
+h1,
+.h1 {
+  font-family: "Spartan", sans-serif;
+}
 
-
+h2,
+.h2 {
+  font-family: "Spartan", sans-serif;
+}

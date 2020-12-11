@@ -69,7 +69,7 @@ class SessionForm extends React.Component {
 
         return (
           <form onSubmit={this.handleSubmit} className="session-form">
-            <div className="session-form__header">
+            <div className="modal__header">
               <h2>{formType}</h2>
               {formSwitch()}
             </div>
@@ -95,11 +95,11 @@ class SessionForm extends React.Component {
                 onChange={this.update("password")}
               />
             </div>
-            <input
+            <button
               className="button button--primary button--block button--lg"
               type="submit"
-              value={formType}
-            />
+              
+            >{formType}</button>
             {formType === "Sign Up" ? null : (
               <button
                 className="button--outline button--block button--lg"

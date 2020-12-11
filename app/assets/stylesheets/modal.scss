@@ -28,91 +28,15 @@
   width: 350px;
 }
 
+.modal__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-
-// button base
-button,
-.button {
-  padding: 5px 12px;
-  border-radius: 30px;
-  font-size: 14px;
-  background-color: inherit;
-  box-shadow: none;
-  border: none;
-  margin: 4px 0;
-  font-family: "Spartan", sans-serif;
-
-  &:hover,
-  &:active,
-  &:focus {
-    box-shadow: 0 0 10px #0000001a;
-    outline: none;
-  }
-}
-
-//color styling
-.button {
-  &--primary {
-    background: $primary-color;
-    color: white;
-  }
-
-  &--outline {
-    border: 2px solid $primary-color;
-    color: $primary-color;
-  }
-}
-
-//extra utils
-.button--block {
-  width: 100%;
-}
-
-//size styling
-.button {
-  &--lg {
-    font-size: 1.1em;
-    padding: 8px 10px;
-  }
-
-  &--sm {
-    font-size: 0.9em;
-  }
-}
-
-.form-field {
-  display: grid;
-}
-
-label,
-.label {
-  font-family: "Spartan", sans-serif;
-  font-weight: 500;
-  font-size: 0.8em;
-  margin-bottom: 0.25em;
-  margin-top: 0.75em;
-  display: block;
-}
-
-input[type="text"],
-input[type="password"] {
-  border-width: 1px;
-  border-style: solid;
-  border-color: $primary-color;
-  border-radius: 4px;
-  font-size: 16px;
-  padding: 5px 10px;
-  display: block;
-}
-
-h1,
-.h1 {
-  font-family: "Spartan", sans-serif;
-}
-
-h2,
-.h2 {
-  font-family: "Spartan", sans-serif;
+        h2 {
+      margin: 0;
+    }   
+    
 }
 
 // phil is the best
@@ -122,13 +46,9 @@ h2,
   display: grid;
   grid-gap: 8px;
 
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
     h2 {
       margin: 0;
     }
-  }
 }
+
+

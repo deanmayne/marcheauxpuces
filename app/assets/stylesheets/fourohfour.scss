@@ -1,8 +1,10 @@
+@import 'variables.scss';
+
 .fourohfour-container {
     display: grid;
 
     h1{
-        color: #F1641E;
+        color: $etsy-orange;
         font-size: 200px;
         place-self: center;
         border: 1px solid black;
