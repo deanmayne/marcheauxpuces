@@ -210,7 +210,6 @@ var fetchProduct = function fetchProduct(id) {
 var createProduct = function createProduct(product) {
   return function (dispatch) {
     return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__.createProduct(product).then(function (product) {
-      debugger;
       dispatch(receiveProduct(product));
     });
   };
@@ -590,9 +589,10 @@ function Modal(_ref) {
     case 'login':
       component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__.default, null);
       break;
-    // case 'signup':
-    //     component = <SignupFormContainer />;
-    //     break;
+
+    case 'signup':
+      component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__.default, null);
+      break;
 
     case 'review':
       component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_product_show_review_form_container__WEBPACK_IMPORTED_MODULE_5__.default, null);
@@ -783,30 +783,24 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.update('location')
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
         className: "add-product-input"
-      }, "Category:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "jewelry-accessories",
+      }, "Category:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
         onChange: this.update('category')
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: "jewelry-accessories"
       }, "Jewelry & Accessories"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "clothing-shoes",
-        onChange: this.update('category')
+        value: "clothing-shoes"
       }, "Clothing & Shoes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "home-living",
-        onChange: this.update('category')
+        value: "home-living"
       }, "Home & Living"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "wedding-party",
-        onChange: this.update('category')
+        value: "wedding-party"
       }, "Wedding & Party"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "toys-enterainment",
-        onChange: this.update('category')
+        value: "toys-enterainment"
       }, "Toys & Entertainment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "arts-collectibles",
-        onChange: this.update('category')
+        value: "arts-collectibles"
       }, "Arts & Collectibles"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "craft-supplies",
-        onChange: this.update('category')
+        value: "craft-supplies"
       }, "Craft Supplies"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "gifts-gift-cards",
-        onChange: this.update('category')
+        value: "gifts-gift-cards"
       }, "Gifts & Gift Cards"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
         className: "add-product-input"
       }, "Free Shipping:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
@@ -826,12 +820,7 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
         rows: "10",
         value: description,
         onChange: this.update("description")
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "button-holder"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        onClick: this.handleCloudinary,
-        className: "session-submit"
-      }, "Add image")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "submit",
         value: "Create Product",
         className: "session-submit"
@@ -873,7 +862,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state) {
-  session: state.session.id;
+  return {
+    session: state.session.id
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
@@ -890,7 +881,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(null, mapDispatchToProps)(_product_form__WEBPACK_IMPORTED_MODULE_2__.default));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_product_form__WEBPACK_IMPORTED_MODULE_2__.default));
 
 /***/ }),
 
@@ -1699,7 +1690,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var productesReducer = function productesReducer() {
+var productsReducer = function productsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
@@ -1726,7 +1717,7 @@ var productesReducer = function productesReducer() {
   }
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (productesReducer);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (productsReducer);
 
 /***/ }),
 

@@ -21,7 +21,7 @@ p1 = Product.create(
     description: "what it says",
     price: 10,
     category: "home-living",
-    free_shipping: true,
+    free_shipping: "true",
     location: 'San Francisco',
     owner_id: guest.id,
 
@@ -32,7 +32,7 @@ p2 = Product.create(
     description: "what it says",
     price: 12,
     category: "gift-gift-cards",
-    free_shipping: true,
+    free_shipping: "true",
     location: 'Paris',
     owner_id: guest.id,
 
@@ -43,7 +43,7 @@ p3 = Product.create(
     description: "what it says",
     price: 6,
     category: "clothing-shoes",
-    free_shipping: true,
+    free_shipping: "true",
     location: 'Steamboat Springs',
     owner_id: guest.id,
 
@@ -54,7 +54,7 @@ p4 = Product.create(
     description: "what it says",
     price: 8,
     category: "wedding-party",
-    free_shipping: true,
+    free_shipping: "true",
     location: 'Las Vegas',
     owner_id: guest.id,
 

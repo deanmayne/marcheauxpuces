@@ -42,7 +42,6 @@ export const fetchProduct = id => dispatch => (
 
 export const createProduct = product => dispatch => (
     APIUtil.createProduct(product).then(product => {
-        debugger
         dispatch(receiveProduct(product))
     })
 );

@@ -4,7 +4,7 @@ import {
     RECEIVE_PRODUCT
 } from '../actions/product_actions';
 
-const productesReducer = (state = {}, action) => {
+const productsReducer = (state = {}, action) => {
     Object.freeze(state)
     switch (action.type) {
         case RECEIVE_PRODUCTS:
@@ -23,4 +23,4 @@ const productesReducer = (state = {}, action) => {
     }
 };
 
-export default productesReducer;
+export default productsReducer;

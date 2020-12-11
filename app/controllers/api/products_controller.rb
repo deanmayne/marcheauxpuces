@@ -1,8 +1,12 @@
 class Api::ProductsController < ApplicationController
 
     def create
-        @product = Product.create(product_params)
-        render '/api/products/show'
+        @product = Product.create!(product_params)
+        if @product.save        
+            render '/api/products/show'
+        end
+
+
         
     end
 
@@ -14,7 +18,7 @@ class Api::ProductsController < ApplicationController
 
     private
     def product_params
-        params.require(:product).permit(:name, :description, :location, :price, :free_shipping, :category)
+        params.require(:product).permit(:name, :description, :price, :category, :location, :free_shipping, :category, :owner_id)
     end
 
 end

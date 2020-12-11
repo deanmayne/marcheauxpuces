@@ -5,10 +5,10 @@ import ProductForm from './product_form';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { removeErrors } from '../../actions/session_actions'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => ({
    session: state.session.id
 
-};
+});
 
 
 
@@ -18,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
   removeErrors: () => dispatch(removeErrors())
 });
 
-export default connect(null,mapDispatchToProps)(ProductForm);
+export default connect(mapStateToProps,mapDispatchToProps)(ProductForm);
 
 
 

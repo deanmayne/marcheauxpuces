@@ -4,7 +4,8 @@ class Product < ApplicationRecord
 
   belongs_to :user,
     foreign_key: :owner_id,
-    class_name: :User 
+    class_name: :User,
+    optional: true
 
   has_many :reviews,
     foreign_key: :product_id,

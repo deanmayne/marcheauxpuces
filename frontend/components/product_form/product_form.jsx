@@ -86,16 +86,16 @@ class ProductForm extends React.Component{
                         </label>
 
                     <label className="add-product-input">Category:
-                    <select>
+                    <select onChange={this.update('category')}>
                         {/* <option selected disabled></option> */}
-                        <option value="jewelry-accessories" onChange = {this.update('category')}>Jewelry & Accessories</option>
-                        <option value="clothing-shoes" onChange = {this.update('category')}>Clothing & Shoes</option>
-                        <option value="home-living" onChange = {this.update('category')}>Home & Living</option>
-                        <option value="wedding-party" onChange = {this.update('category')}>Wedding & Party</option>
-                        <option value="toys-enterainment" onChange = {this.update('category')}>Toys & Entertainment</option>
-                        <option value="arts-collectibles" onChange = {this.update('category')}>Arts & Collectibles</option>
-                        <option value="craft-supplies" onChange = {this.update('category')}>Craft Supplies</option>
-                        <option value="gifts-gift-cards" onChange = {this.update('category')}>Gifts & Gift Cards</option>
+                        <option value="jewelry-accessories" >Jewelry & Accessories</option>
+                        <option value="clothing-shoes" >Clothing & Shoes</option>
+                        <option value="home-living" >Home & Living</option>
+                        <option value="wedding-party" >Wedding & Party</option>
+                        <option value="toys-enterainment" >Toys & Entertainment</option>
+                        <option value="arts-collectibles" >Arts & Collectibles</option>
+                        <option value="craft-supplies" >Craft Supplies</option>
+                        <option value="gifts-gift-cards" >Gifts & Gift Cards</option>
                     </select>
                         </label>
 
@@ -115,14 +115,14 @@ class ProductForm extends React.Component{
             
             </label>
 
-            <div className="button-holder">
+            {/* <div className="button-holder">
               <button
                 onClick={this.handleCloudinary}
                 className="session-submit"
               >
                 Add image
               </button>
-            </div>
+            </div> */}
 
         <input type="submit" value="Create Product" className="session-submit"/>
           </form>
