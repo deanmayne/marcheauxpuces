@@ -34,7 +34,7 @@ const Header = ({ currentUser, logout, openModal }) => {
                     {currentUser ? signedin() : signedout()}
             </div>
                 <div className="bottom-header">
-                <Link className="jewelry-accessories" to="/jewelry-accessories">Jewelry & Accessories</Link>
+                    <Link className="jewelry-accessories" to="/jewelry-accessories">Jewelry & Accessories</Link>
                     <Link className="clothing-shoes" to="/clothing-shoes">Clothing & Shoes</Link>
                     <Link className="home-living" to="/home-living">Home & Living</Link>
                     <Link className="wedding-party" to="/wedding-party">Wedding & Party</Link>

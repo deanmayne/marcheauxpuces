@@ -696,9 +696,8 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
       description: '',
       price: '',
       category: '',
-      rating: 5,
-      locale: '',
-      free_shipping: false,
+      location: '',
+      free_shipping: "false",
       owner_id: _this.props.session
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -718,7 +717,7 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       return function (e) {
-        return _this2.setState(_defineProperty({}, property, e.currentTarget.value));
+        return _this2.setState(_defineProperty({}, property, e.target.value));
       };
     }
   }, {
@@ -748,7 +747,8 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
       var _this$state = this.state,
           description = _this$state.description,
           name = _this$state.name,
-          price = _this$state.price;
+          price = _this$state.price,
+          free_shipping = _this$state.free_shipping;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "new-product-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -779,9 +779,47 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
         className: "add-product-input"
       }, "Location:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "text",
-        value: this.state.locale,
-        onChange: this.update('locale')
+        value: this.state.location,
+        onChange: this.update('location')
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        className: "add-product-input"
+      }, "Category:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: "jewelry-accessories",
+        onChange: this.update('category')
+      }, "Jewelry & Accessories"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: "clothing-shoes",
+        onChange: this.update('category')
+      }, "Clothing & Shoes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: "home-living",
+        onChange: this.update('category')
+      }, "Home & Living"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: "wedding-party",
+        onChange: this.update('category')
+      }, "Wedding & Party"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: "toys-enterainment",
+        onChange: this.update('category')
+      }, "Toys & Entertainment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: "arts-collectibles",
+        onChange: this.update('category')
+      }, "Arts & Collectibles"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: "craft-supplies",
+        onChange: this.update('category')
+      }, "Craft Supplies"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        value: "gifts-gift-cards",
+        onChange: this.update('category')
+      }, "Gifts & Gift Cards"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        className: "add-product-input"
+      }, "Free Shipping:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "radio",
+        value: true,
+        checked: free_shipping === "true",
+        onChange: this.update('free_shipping')
+      }), "True", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "radio",
+        value: false,
+        checked: free_shipping === "false",
+        onChange: this.update('free_shipping')
+      }), "False"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
         className: "add-product-input"
       }, "Description:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
         cols: "30",

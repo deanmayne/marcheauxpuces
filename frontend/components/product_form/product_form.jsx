@@ -9,9 +9,8 @@ class ProductForm extends React.Component{
         description: '',
         price: '',
         category: '',
-        rating: 5,
-        locale: '',
-        free_shipping: false,
+        location: '',
+        free_shipping: "false",
         owner_id: this.props.session,
     }
 
@@ -25,8 +24,9 @@ class ProductForm extends React.Component{
   }
 
   update(property) {
-    return e => this.setState({
-      [property]: e.currentTarget.value
+    return e => 
+        this.setState({
+      [property]: e.target.value
     });
   }
 
@@ -52,9 +52,8 @@ class ProductForm extends React.Component{
 
 
   render() {
-    const {description, name, price} = this.state;
+    const {description, name, price, free_shipping} = this.state;
     
-
 
     return (
       <div className="new-product-container">
@@ -81,24 +80,29 @@ class ProductForm extends React.Component{
 
             <label className="add-product-input">Location:
               <input type="text"
-                                value={this.state.locale}
-                                onChange={this.update('locale')}
+                                value={this.state.location}
+                                onChange={this.update('location')}
                             />
                         </label>
 
-                        {/* <label className="add-product-input">Category:
-              <input type="dropdown"
-                                value={category}
-                                onChange={this.update('category')}
-                            />
-                        </label> */}
+                    <label className="add-product-input">Category:
+                    <select>
+                        {/* <option selected disabled></option> */}
+                        <option value="jewelry-accessories" onChange = {this.update('category')}>Jewelry & Accessories</option>
+                        <option value="clothing-shoes" onChange = {this.update('category')}>Clothing & Shoes</option>
+                        <option value="home-living" onChange = {this.update('category')}>Home & Living</option>
+                        <option value="wedding-party" onChange = {this.update('category')}>Wedding & Party</option>
+                        <option value="toys-enterainment" onChange = {this.update('category')}>Toys & Entertainment</option>
+                        <option value="arts-collectibles" onChange = {this.update('category')}>Arts & Collectibles</option>
+                        <option value="craft-supplies" onChange = {this.update('category')}>Craft Supplies</option>
+                        <option value="gifts-gift-cards" onChange = {this.update('category')}>Gifts & Gift Cards</option>
+                    </select>
+                        </label>
 
-                        {/* <label className="add-product-input">Free Shipping?:
-              <input type="radio"
-                                value={free_shipping}
-                                onChange={this.update('free_shipping')}
-                            />
-                        </label> */}
+        <label className="add-product-input">Free Shipping:
+            <input type="radio" value={true}  checked={free_shipping === "true"} onChange={this.update('free_shipping')} />True
+            <input type="radio" value={false} checked={free_shipping === "false"} onChange={this.update('free_shipping')} />False
+        </label>
 
         <label className="add-product-input">Description:
         <br/>
@@ -132,3 +136,7 @@ class ProductForm extends React.Component{
 }
 
 export default withRouter(ProductForm);
+
+
+
+
