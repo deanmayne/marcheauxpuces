@@ -10,10 +10,13 @@
  }
 
  .search-box{
-     display: flex;
-     flex-grow: 2;
+     flex-grow: 20;
+ }
+
+ .search-field{
+     width: 100%;
      margin-left: 8px;
-     margin-right: 8px;
+     margin-right: 10px;
      border: 1px solid black;
      border-radius: 30px;
      height: 35px;
@@ -21,6 +24,8 @@
      padding-left: 10px;
 
  }
+
+
 
  .header-name {
     display: flex;
@@ -76,9 +81,21 @@
 }
 
  .login-sign-up-box{
-    float: right;
-    padding: 8px;
+    justify-content: center;
+    margin-left: 25px;
+    display: flex;
+    flex-grow: .5;
 }
 
 
-
+.login-button, .logout-button, .signup-button, .product-form-button {
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+    outline: none;
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
+    color: gray;
+    background-color: white;
+    transition: color 0.3s ease-in-out;
+}

@@ -328,7 +328,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _header_header_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./header/header_container */ "./frontend/components/header/header_container.js");
-/* harmony import */ var _product_show_product_show_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./product_show/product_show_container */ "./frontend/components/product_show/product_show_container.js");
+/* harmony import */ var _product_show_product_index_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./product_show/product_index_container */ "./frontend/components/product_show/product_index_container.js");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modal */ "./frontend/components/modal.jsx");
 /* harmony import */ var _fourohfour__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./fourohfour */ "./frontend/components/fourohfour.jsx");
@@ -344,11 +344,8 @@ __webpack_require__.r(__webpack_exports__);
 var App = function App() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_header_header_container__WEBPACK_IMPORTED_MODULE_2__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_modal__WEBPACK_IMPORTED_MODULE_5__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
     exact: true,
-    path: "/"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
-    exact: true,
-    path: "/products",
-    component: _product_show_product_show_container__WEBPACK_IMPORTED_MODULE_3__.default
+    path: "/",
+    component: _product_show_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
     exact: true,
     path: "/404",
@@ -456,38 +453,40 @@ var Header = function Header(_ref) {
       className: "top-header"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
       to: "/"
-    }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
       className: "site-title"
-    }, " March\xE9 aux Puces")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-      className: "search-box",
+    }, " March\xE9 aux Puces")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "search-box"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      className: "search-field",
       type: "text",
       placeholder: "Search for Products"
-    }), currentUser ? signedin() : signedout()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    })), currentUser ? signedin() : signedout()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "bottom-header"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
       className: "jewelry-accessories",
-      to: "/"
+      to: "/jewelry-accessories"
     }, "Jewelry & Accessories"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
       className: "clothing-shoes",
-      to: "/"
+      to: "/clothing-shoes"
     }, "Clothing & Shoes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
       className: "home-living",
-      to: "/"
+      to: "/home-living"
     }, "Home & Living"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
       className: "wedding-party",
-      to: "/"
+      to: "/wedding-party"
     }, "Wedding & Party"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
       className: "toys-enterainment",
-      to: "/"
+      to: "/toys-enterainment"
     }, "Toys & Entertainment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
       className: "arts-collectibles",
-      to: "/"
+      to: "/arts-collectibles"
     }, "Arts & Collectibles"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
       className: "craft-supplies",
-      to: "/"
+      to: "/craft-supplies"
     }, "Craft Supplies"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
       className: "gifts-gift-cards",
-      to: "/"
+      to: "/gifts-gift-cards"
     }, "Gifts & Gift Cards"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
       className: "category-animation"
     })));
@@ -698,7 +697,7 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
       price: '',
       category: '',
       rating: 5,
-      location: '',
+      locale: '',
       free_shipping: false,
       owner_id: _this.props.session
     };
@@ -778,6 +777,12 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.update('price')
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
         className: "add-product-input"
+      }, "Location:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        value: this.state.locale,
+        onChange: this.update('locale')
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        className: "add-product-input"
       }, "Description:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
         cols: "30",
         rows: "10",
@@ -851,10 +856,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/product_show/product_detail.jsx":
-/*!*************************************************************!*\
-  !*** ./frontend/components/product_show/product_detail.jsx ***!
-  \*************************************************************/
+/***/ "./frontend/components/product_show/product_index.jsx":
+/*!************************************************************!*\
+  !*** ./frontend/components/product_show/product_index.jsx ***!
+  \************************************************************/
 /*! namespace exports */
 /*! export default [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
@@ -867,98 +872,74 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _review_list_item_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./review_list_item_container */ "./frontend/components/product_show/review_list_item_container.jsx");
+/* harmony import */ var _product_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./product_index_item */ "./frontend/components/product_show/product_index_item.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var reviewList = function reviewList(reviews) {
-  return reviews.map(function (review) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_review_list_item_container__WEBPACK_IMPORTED_MODULE_1__.default, {
-      review: review,
-      key: review.id
-    });
-  });
-};
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-var ProductDetail = function ProductDetail(_ref) {
-  var product = _ref.product,
-      reviews = _ref.reviews;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
-    className: "product-list"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-    className: "index-image",
-    src: product.picture_url
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Name: ", product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Rating: ", product.average_rating || 'No reviews yet'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Description: ", product.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "reviews"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Reviews"), reviewList(reviews)));
-};
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductDetail);
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-/***/ }),
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-/***/ "./frontend/components/product_show/product_show.jsx":
-/*!***********************************************************!*\
-  !*** ./frontend/components/product_show/product_show.jsx ***!
-  \***********************************************************/
-/*! namespace exports */
-/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_exports__, __webpack_require__.r, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _product_detail__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./product_detail */ "./frontend/components/product_show/product_detail.jsx");
-/* harmony import */ var _review_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./review_form_container */ "./frontend/components/product_show/review_form_container.js");
-/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/route_util */ "./frontend/util/route_util.jsx");
-/* harmony import */ var _util_link_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/link_util */ "./frontend/util/link_util.jsx");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
 
 
+var ProductIndex = /*#__PURE__*/function (_React$Component) {
+  _inherits(ProductIndex, _React$Component);
 
+  var _super = _createSuper(ProductIndex);
 
+  function ProductIndex(props) {
+    _classCallCheck(this, ProductIndex);
 
-var ProductShow = function ProductShow(_ref) {
-  var product = _ref.product,
-      productId = _ref.productId,
-      fetchProduct = _ref.fetchProduct,
-      reviews = _ref.reviews,
-      openModal = _ref.openModal;
+    return _super.call(this, props);
+  }
 
-  var products = _defineProperty({}, productId, product);
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "single-product-show"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "product-details"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_product_detail__WEBPACK_IMPORTED_MODULE_1__.default, {
-    product: product,
-    reviews: reviews
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-    className: "review-button",
-    onClick: function onClick() {
-      return openModal('review');
+  _createClass(ProductIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchProducts();
     }
-  }, "Leave a Review")));
-};
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "product-index"
+      }, this.props.products.map(function (product) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_product_index_item__WEBPACK_IMPORTED_MODULE_1__.default, {
+          key: product.id,
+          product: product
+        });
+      }));
+    }
+  }]);
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductShow);
+  return ProductIndex;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductIndex);
 
 /***/ }),
 
-/***/ "./frontend/components/product_show/product_show_container.js":
-/*!********************************************************************!*\
-  !*** ./frontend/components/product_show/product_show_container.js ***!
-  \********************************************************************/
+/***/ "./frontend/components/product_show/product_index_container.js":
+/*!*********************************************************************!*\
+  !*** ./frontend/components/product_show/product_index_container.js ***!
+  \*********************************************************************/
 /*! namespace exports */
 /*! export default [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
@@ -972,39 +953,66 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/product_actions */ "./frontend/actions/product_actions.js");
-/* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
-/* harmony import */ var _product_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./product_show */ "./frontend/components/product_show/product_show.jsx");
-/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _product_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./product_index */ "./frontend/components/product_show/product_index.jsx");
 
 
 
 
-
-
-var mapStateToProps = function mapStateToProps(state, _ref) {
-  var match = _ref.match;
-  var productId = parseInt(match.params.productId);
-  var product = (0,_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__.selectProduct)(state.entities, productId);
-  var reviews = (0,_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__.selectReviewsForProduct)(state.entities, product);
+var mapStateToProps = function mapStateToProps(state) {
   return {
-    productId: productId,
-    product: product,
-    reviews: reviews
+    products: Object.values(state.entities.products)
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchProduct: function fetchProduct(id) {
-      return dispatch((0,_actions_product_actions__WEBPACK_IMPORTED_MODULE_1__.fetchProduct)(id));
-    },
-    openModal: function openModal(modal) {
-      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__.openModal)(modal));
+    fetchProducts: function fetchProducts() {
+      return dispatch((0,_actions_product_actions__WEBPACK_IMPORTED_MODULE_1__.fetchProducts)());
     }
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_product_show__WEBPACK_IMPORTED_MODULE_3__.default));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_product_index__WEBPACK_IMPORTED_MODULE_2__.default));
+
+/***/ }),
+
+/***/ "./frontend/components/product_show/product_index_item.jsx":
+/*!*****************************************************************!*\
+  !*** ./frontend/components/product_show/product_index_item.jsx ***!
+  \*****************************************************************/
+/*! namespace exports */
+/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_exports__, __webpack_require__.r, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+
+var ProductIndexItem = function ProductIndexItem(_ref) {
+  var product = _ref.product;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "product-show-box"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "product-show-name"
+  }, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "product-index-description"
+  }, product.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "product-index-price"
+  }, "$", product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "product-index-image"
+  }, product.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "product-index-shipping"
+  }, product.free_shipping));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductIndexItem);
 
 /***/ }),
 
@@ -1117,6 +1125,8 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
         className: "review-form-box"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Rating"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "number",
+        min: "1",
+        max: "5",
         value: this.state.rating,
         onChange: this.update("rating")
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Comment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
@@ -1173,46 +1183,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(null, mapDispatchToProps)(_review_form__WEBPACK_IMPORTED_MODULE_2__.default));
-
-/***/ }),
-
-/***/ "./frontend/components/product_show/review_list_item_container.jsx":
-/*!*************************************************************************!*\
-  !*** ./frontend/components/product_show/review_list_item_container.jsx ***!
-  \*************************************************************************/
-/*! namespace exports */
-/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_exports__, __webpack_require__.r, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-
-
-
-var Review = function Review(_ref) {
-  var review = _ref.review,
-      author = _ref.author;
-  var rating = review.rating,
-      body = review.body;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Rating: ", rating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, body, " - by ", author.username)));
-};
-
-var mapStateToProps = function mapStateToProps(_ref2, _ref3) {
-  var users = _ref2.entities.users;
-  var review = _ref3.review;
-  return {
-    author: users[review.author_id]
-  };
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps)(Review));
 
 /***/ }),
 
@@ -1399,7 +1369,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       var _this$setState2,
           _this3 = this;
 
-      // e.preventDefault();
+      e.preventDefault();
       this.setState((_this$setState2 = {}, _defineProperty(_this$setState2, 'username', 'guest_user'), _defineProperty(_this$setState2, 'password', 'demouser'), _this$setState2));
       setTimeout(function () {
         var user = Object.assign({}, _this3.state);
@@ -1698,7 +1668,7 @@ var productesReducer = function productesReducer() {
 
   switch (action.type) {
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_PRODUCTS:
-      return action.productes;
+      return action.products;
 
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_PRODUCT:
       var newProduct = _defineProperty({}, action.product.id, action.product);
@@ -1793,47 +1763,6 @@ var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
   ui: _ui_reducer__WEBPACK_IMPORTED_MODULE_3__.default
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (rootReducer);
-
-/***/ }),
-
-/***/ "./frontend/reducers/selectors.js":
-/*!****************************************!*\
-  !*** ./frontend/reducers/selectors.js ***!
-  \****************************************/
-/*! namespace exports */
-/*! export asArray [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export selectProduct [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export selectReviewsForProduct [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "selectProduct": () => /* binding */ selectProduct,
-/* harmony export */   "selectReviewsForProduct": () => /* binding */ selectReviewsForProduct,
-/* harmony export */   "asArray": () => /* binding */ asArray
-/* harmony export */ });
-var selectProduct = function selectProduct(_ref, productId) {
-  var products = _ref.products;
-  return products[productId] || {
-    reviewIds: []
-  };
-};
-var selectReviewsForProduct = function selectReviewsForProduct(_ref2, product) {
-  var products = _ref2.products,
-      reviews = _ref2.reviews;
-  return product.reviewIds.map(function (reviewId) {
-    return reviews[reviewId];
-  });
-};
-var asArray = function asArray(_ref3) {
-  var products = _ref3.products;
-  return Object.keys(products).map(function (key) {
-    return products[key];
-  });
-};
 
 /***/ }),
 
@@ -2029,42 +1958,6 @@ var configureStore = function configureStore() {
 
 /***/ }),
 
-/***/ "./frontend/util/link_util.jsx":
-/*!*************************************!*\
-  !*** ./frontend/util/link_util.jsx ***!
-  \*************************************/
-/*! namespace exports */
-/*! export ReviewLink [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ReviewLink": () => /* binding */ ReviewLink
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
-
-var ReviewLink = function ReviewLink(_ref) {
-  var label = _ref.label,
-      to = _ref.to;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Route, {
-    path: to,
-    children: function children(_ref2) {
-      var match = _ref2.match;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, match ? "" : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-        to: to
-      }, label));
-    }
-  });
-};
-
-/***/ }),
-
 /***/ "./frontend/util/product_api_util.js":
 /*!*******************************************!*\
   !*** ./frontend/util/product_api_util.js ***!
@@ -2092,7 +1985,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var fetchProducts = function fetchProducts() {
   return $.ajax({
-    url: "api/products/",
+    url: "/api/products/",
     method: 'GET'
   });
 };
@@ -2129,7 +2022,7 @@ var deleteProduct = function deleteProduct(productId) {
 var createReview = function createReview(review) {
   return $.ajax({
     method: 'POST',
-    url: 'api/reviews',
+    url: '/api/reviews',
     data: {
       review: review
     }

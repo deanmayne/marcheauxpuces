@@ -1,17 +1,17 @@
 import React from 'react';
 
 import FilterForm from './filter_form';
-import BenchIndex from './bench_index';
-import BenchMap from './../bench_map/bench_map';
+import ProductIndex from './product_index';
+import ProductMap from './../product_map/product_map';
 
-const Search = ({ benches, minSeating, maxSeating, updateFilter }) => (
+const Search = ({ products, minSeating, maxSeating, updateFilter }) => (
   <div className="user-pane">
     <div className="left-half">
-      <h5>Click Map to Add Bench!</h5>
-      <BenchMap
-        benches={benches}
+      <h5>Click Map to Add Product!</h5>
+      <ProductMap
+        products={products}
         updateFilter={updateFilter}
-        singleBench={false}
+        singleProduct={false}
       />
     </div>
     <div className="right-half">
@@ -20,7 +20,7 @@ const Search = ({ benches, minSeating, maxSeating, updateFilter }) => (
         maxSeating={maxSeating}
         updateFilter={updateFilter}
       />
-      <BenchIndex benches={benches} />
+      <ProductIndex products={products} />
     </div>
   </div>
 );

@@ -31,7 +31,7 @@ class SessionForm extends React.Component {
     }
 
     handleGuest(e){
-        // e.preventDefault();
+        e.preventDefault();
         this.setState({
             ['username']: 'guest_user',
             ['password']: 'demouser'

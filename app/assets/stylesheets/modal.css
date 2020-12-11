@@ -51,18 +51,7 @@
     font-size: 20px;
 }
 
-.login-button, .logout-button, .signup-button, .product-form-button {
-    cursor: pointer;
-    padding-right: 3px;
-    display: inline-block;
-    border: none;
-    outline: none;
-    font-family: 'Crimson Text', serif;
-    font-size: 20px;
-    color: gray;
-    background-color: white;
-    transition: color 0.3s ease-in-out;
-}
+
 
 .session-submit-box{
     margin: 3px;
@@ -96,18 +85,7 @@
     display: inline-block;
 }
 
-.login-button, .logout-button, .signup-button, .product-form-button {
-    cursor: pointer;
-    padding-right: 3px;
-    display: inline-block;
-    border: none;
-    outline: none;
-    font-family: 'Crimson Text', serif;
-    font-size: 20px;
-    color: gray;
-    background-color: white;
-    transition: color 0.3s ease-in-out;
-}
+
 
 .login-form-top, .review-form-top-box, .add-product-form-top-box{
     display: block;
@@ -146,7 +124,3 @@
  
 }
 
-.login-sign-up-box{
-    float: right;
-    padding: 8px;
-}

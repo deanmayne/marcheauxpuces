@@ -10,7 +10,7 @@ class ProductForm extends React.Component{
         price: '',
         category: '',
         rating: 5,
-        location: '',
+        locale: '',
         free_shipping: false,
         owner_id: this.props.session,
     }
@@ -78,6 +78,27 @@ class ProductForm extends React.Component{
                         onChange={this.update('price')}
                     />
                 </label>
+
+            <label className="add-product-input">Location:
+              <input type="text"
+                                value={this.state.locale}
+                                onChange={this.update('locale')}
+                            />
+                        </label>
+
+                        {/* <label className="add-product-input">Category:
+              <input type="dropdown"
+                                value={category}
+                                onChange={this.update('category')}
+                            />
+                        </label> */}
+
+                        {/* <label className="add-product-input">Free Shipping?:
+              <input type="radio"
+                                value={free_shipping}
+                                onChange={this.update('free_shipping')}
+                            />
+                        </label> */}
 
         <label className="add-product-input">Description:
         <br/>

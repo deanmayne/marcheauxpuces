@@ -7,13 +7,22 @@ attr_reader :password
 
   after_initialize :ensure_session_token
 
+  has_many :products,
+    foreign_key: :owner_id,
+    class_name: :Product
+
   has_many :reviews,
-    foreign_key: :author_id
+    foreign_key: :author_id,
+    class_name: :Review
+
+  has_many :reviewed_products,
+    through: :reviews,
+    source: :Product
+
+  has_one :cart,
+    foreign_key: :shopper_id,
+    class_name: :Cart
     
-  has_many :favorites
-  has_many :favorite_products,
-    through: :favorites,
-    source: :product
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

@@ -2,7 +2,7 @@
 
 export const fetchProducts = () => (
     $.ajax({
-        url: `api/products/`,
+        url: `/api/products/`,
         method: 'GET'
     })
 );
@@ -40,7 +40,7 @@ export const deleteProduct = productId => (
 export const createReview = review => (
     $.ajax({
         method: 'POST',
-        url: 'api/reviews',
+        url: '/api/reviews',
         data: { review }
     })
 );
