@@ -1,8 +1,8 @@
 class Api::ProductsController < ApplicationController
 
     def create
-        @product = Product.create!(product_params)
-        if @product.save        
+        @product = Product.new(product_params)
+        if @product.save     
             render '/api/products/show'
         end
 
