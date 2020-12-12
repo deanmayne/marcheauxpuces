@@ -139,7 +139,7 @@ class ProductForm extends React.Component {
               </button>
             </div> */}
 
-        <button type="submit" className="button button--primary">
+        <button type="submit" className="button button--primary button--block button--lg">
           Create Product
         </button>
       </form>

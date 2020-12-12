@@ -873,7 +873,7 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.update("description")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         type: "submit",
-        className: "button button--primary"
+        className: "button button--primary button--block button--lg"
       }, "Create Product"));
     }
   }]);
