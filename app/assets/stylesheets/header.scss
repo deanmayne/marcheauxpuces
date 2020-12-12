@@ -54,35 +54,34 @@
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  border-bottom: 2px solid lightgrey;
 }
 
 .bottom-header > a {
-  display: flex 12.5%;
-  flex-direction: row;
   font-family: $secondary-font;
   flex-grow: 1;
   text-align: center;
+  display: grid;
 }
 
 .bottom-header > a:after {
-  display: flex;
-  flex-direction: row;
   content: "";
-  margin-top: 3px;
-  border-bottom: solid 2px $primary-color;
-  transform: scaleX(0);
-  transition: transform 250ms ease-in-out;
-  text-align: center;
+  display: block;
+  place-self: center;
+  width: 0;
+  height: 2px;
+  background-color: $primary-color;
+  transition: width 250ms ease-in-out;
+  margin-top: 8px;
+  margin-bottom: -2px
 }
 
-.bottom-header > hr {
-  display: flex;
-  flex-basis: 100%;
-}
 
 .bottom-header > a:hover:after {
-  transform: scaleX(0.52);
+  width: 50%;
 }
+
+
 
 .login-sign-up-box {
   justify-content: center;

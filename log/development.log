@@ -32865,3 +32865,1149 @@ Processing by Api::ProductsController#index as JSON
 Completed 200 OK in 19ms (Views: 18.3ms | ActiveRecord: 0.8ms)
 
 
+Started POST "/api/session" for ::1 at 2020-12-11 15:43:08 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"guest_user", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "guest_user"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:28
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "H9RWA9LvG2g2CuOfcpr0YQ"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:60
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:44
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "guest_user"], ["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "H9RWA9LvG2g2CuOfcpr0YQ"], ["updated_at", "2020-12-11 23:43:09.190632"], ["id", 11]]
+  ↳ app/models/user.rb:44
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:44
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered api/users/show.json.jbuilder (1.4ms)
+Completed 200 OK in 298ms (Views: 7.7ms | ActiveRecord: 5.5ms)
+
+
+Started POST "/api/products/" for ::1 at 2020-12-11 15:43:58 -0800
+Processing by Api::ProductsController#create as JSON
+  Parameters: {"product"=>{"name"=>"Vintage Onsies for Visionaries", "description"=>"Comfortable sleepwear", "price"=>"100000000", "category"=>"clothing-shoes", "location"=>"Hong Kong", "free_shipping"=>"false", "owner_id"=>"11"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/products_controller.rb:5
+  [1m[36mProduct Create (0.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category", "location", "owner_id", "created_at", "updated_at", "free_shipping") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["name", "Vintage Onsies for Visionaries"], ["description", "Comfortable sleepwear"], ["price", 100000000.0], ["category", "clothing-shoes"], ["location", "Hong Kong"], ["owner_id", 11], ["created_at", "2020-12-11 23:43:58.218095"], ["updated_at", "2020-12-11 23:43:58.218095"], ["free_shipping", "false"]]
+  ↳ app/controllers/api/products_controller.rb:5
+  [1m[35m (40.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/products_controller.rb:5
+  Rendering api/products/show.json.jbuilder
+  Rendered api/products/_product.json.jbuilder (0.3ms)
+  Rendered api/products/show.json.jbuilder (1.3ms)
+Completed 200 OK in 51ms (Views: 5.7ms | ActiveRecord: 41.1ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:44:33 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "H9RWA9LvG2g2CuOfcpr0YQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (1.2ms)
+  Rendered static_pages/root.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 157ms (Views: 155.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:44:34 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (1.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (1.0ms)
+  Rendered api/products/_product.json.jbuilder (0.7ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.3ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/index.json.jbuilder (20.9ms)
+Completed 200 OK in 38ms (Views: 35.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:45:07 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "H9RWA9LvG2g2CuOfcpr0YQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 137ms (Views: 134.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:45:08 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (90.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (1.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.3ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.4ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/index.json.jbuilder (118.9ms)
+Completed 200 OK in 141ms (Views: 49.8ms | ActiveRecord: 90.4ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:45:24 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "H9RWA9LvG2g2CuOfcpr0YQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 179ms (Views: 176.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:45:24 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.9ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.5ms)
+  Rendered api/products/index.json.jbuilder (45.8ms)
+Completed 200 OK in 55ms (Views: 53.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:45:29 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "H9RWA9LvG2g2CuOfcpr0YQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 63ms (Views: 55.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:45:30 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (34.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.4ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.5ms)
+  Rendered api/products/index.json.jbuilder (50.3ms)
+Completed 200 OK in 58ms (Views: 23.7ms | ActiveRecord: 34.2ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:45:38 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "H9RWA9LvG2g2CuOfcpr0YQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 156ms (Views: 153.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:45:38 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (11.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.7ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.9ms)
+  Rendered api/products/_product.json.jbuilder (0.3ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/index.json.jbuilder (46.2ms)
+Completed 200 OK in 69ms (Views: 56.0ms | ActiveRecord: 11.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:46:04 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "H9RWA9LvG2g2CuOfcpr0YQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 139ms (Views: 136.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:46:05 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.7ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.5ms)
+  Rendered api/products/_product.json.jbuilder (1.2ms)
+  Rendered api/products/_product.json.jbuilder (0.5ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/index.json.jbuilder (101.8ms)
+Completed 200 OK in 133ms (Views: 127.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:46:48 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (10.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "H9RWA9LvG2g2CuOfcpr0YQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (18.6ms)
+Completed 200 OK in 333ms (Views: 319.5ms | ActiveRecord: 10.9ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:46:49 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (29.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (2.4ms)
+  Rendered api/products/_product.json.jbuilder (0.3ms)
+  Rendered api/products/_product.json.jbuilder (0.5ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.3ms)
+  Rendered api/products/_product.json.jbuilder (0.3ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/index.json.jbuilder (74.7ms)
+Completed 200 OK in 115ms (Views: 84.6ms | ActiveRecord: 29.4ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:46:52 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "H9RWA9LvG2g2CuOfcpr0YQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (1.2ms)
+  Rendered static_pages/root.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 55ms (Views: 51.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:46:52 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (3.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.8ms)
+  Rendered api/products/_product.json.jbuilder (0.4ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.4ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/index.json.jbuilder (20.2ms)
+Completed 200 OK in 47ms (Views: 42.4ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:48:17 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "H9RWA9LvG2g2CuOfcpr0YQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 70ms (Views: 66.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:48:17 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (2.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (1.8ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.7ms)
+  Rendered api/products/index.json.jbuilder (23.8ms)
+Completed 200 OK in 37ms (Views: 33.1ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:48:47 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "H9RWA9LvG2g2CuOfcpr0YQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (1.0ms)
+  Rendered static_pages/root.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 82ms (Views: 77.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:48:48 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (74.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (1.5ms)
+  Rendered api/products/_product.json.jbuilder (0.3ms)
+  Rendered api/products/_product.json.jbuilder (1.1ms)
+  Rendered api/products/_product.json.jbuilder (1.9ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/index.json.jbuilder (110.2ms)
+Completed 200 OK in 123ms (Views: 47.5ms | ActiveRecord: 74.4ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:49:09 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "H9RWA9LvG2g2CuOfcpr0YQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.9ms)
+  Rendered static_pages/root.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 169ms (Views: 163.9ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:49:10 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (63.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (1.0ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (1.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.8ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/index.json.jbuilder (99.6ms)
+Completed 200 OK in 132ms (Views: 67.9ms | ActiveRecord: 63.2ms)
+
+
+Started DELETE "/api/session" for ::1 at 2020-12-11 15:49:14 -0800
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "H9RWA9LvG2g2CuOfcpr0YQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Gt1rBdgL21q6sWJVohitag"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:60
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:44
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "guest_user"], ["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "Gt1rBdgL21q6sWJVohitag"], ["updated_at", "2020-12-11 23:49:14.553497"], ["id", 11]]
+  ↳ app/models/user.rb:44
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:44
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered api/users/show.json.jbuilder (1.4ms)
+Completed 200 OK in 17ms (Views: 9.0ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/api/session" for ::1 at 2020-12-11 15:49:25 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"guest_user", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "guest_user"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:28
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Na_G5taRCEE4eoM619sodw"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:60
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:44
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "guest_user"], ["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "Na_G5taRCEE4eoM619sodw"], ["updated_at", "2020-12-11 23:49:25.705153"], ["id", 11]]
+  ↳ app/models/user.rb:44
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:44
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered api/users/show.json.jbuilder (2.0ms)
+Completed 200 OK in 397ms (Views: 9.3ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:51:01 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Na_G5taRCEE4eoM619sodw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (2.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (13.6ms)
+Completed 500 Internal Server Error in 109ms (ActiveRecord: 3.4ms)
+
+
+
+Sass::SyntaxError - Invalid CSS after "    padding-top: ": expected expression (e.g. 1px, bold), was ";":
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb__3593707672614802428_70111054878800'
+
+Started POST "/__better_errors/8e27a5c8a67cb182/variables" for ::1 at 2020-12-11 15:51:01 -0800
+Started GET "/" for ::1 at 2020-12-11 15:51:03 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (10.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Na_G5taRCEE4eoM619sodw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (2.2ms)
+  Rendered static_pages/root.html.erb within layouts/application (21.4ms)
+Completed 200 OK in 192ms (Views: 178.6ms | ActiveRecord: 10.9ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:51:04 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.7ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.5ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/index.json.jbuilder (14.3ms)
+Completed 200 OK in 24ms (Views: 22.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:51:06 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Na_G5taRCEE4eoM619sodw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 63ms (Views: 58.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:51:06 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (1.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (1.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.3ms)
+  Rendered api/products/index.json.jbuilder (19.3ms)
+Completed 200 OK in 28ms (Views: 26.5ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/api/session" for ::1 at 2020-12-11 15:51:37 -0800
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Na_G5taRCEE4eoM619sodw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "inRHVUEbAAhdZ0lU2krUtA"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:60
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:44
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "guest_user"], ["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "inRHVUEbAAhdZ0lU2krUtA"], ["updated_at", "2020-12-11 23:51:37.101413"], ["id", 11]]
+  ↳ app/models/user.rb:44
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:44
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.2ms)
+  Rendered api/users/show.json.jbuilder (1.2ms)
+Completed 200 OK in 14ms (Views: 5.8ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/api/session" for ::1 at 2020-12-11 15:51:40 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"guest_user", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "guest_user"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:28
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2pa3xls-3bpbiI0UmKHVog"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:60
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:44
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "guest_user"], ["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "2pa3xls-3bpbiI0UmKHVog"], ["updated_at", "2020-12-11 23:51:41.131533"], ["id", 11]]
+  ↳ app/models/user.rb:44
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:44
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered api/users/show.json.jbuilder (1.4ms)
+Completed 200 OK in 283ms (Views: 6.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:53:27 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2pa3xls-3bpbiI0UmKHVog"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (2.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 214ms (Views: 210.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:53:28 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (24.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (2.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (1.1ms)
+  Rendered api/products/index.json.jbuilder (59.1ms)
+Completed 200 OK in 71ms (Views: 46.8ms | ActiveRecord: 24.1ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:53:42 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2pa3xls-3bpbiI0UmKHVog"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 124ms (Views: 121.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:53:42 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (25.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (1.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.5ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/index.json.jbuilder (53.4ms)
+Completed 200 OK in 69ms (Views: 42.3ms | ActiveRecord: 25.7ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:54:18 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2pa3xls-3bpbiI0UmKHVog"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 184ms (Views: 182.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:54:18 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (15.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (1.4ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.3ms)
+  Rendered api/products/index.json.jbuilder (33.9ms)
+Completed 200 OK in 50ms (Views: 33.6ms | ActiveRecord: 15.7ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:55:04 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2pa3xls-3bpbiI0UmKHVog"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 160ms (Views: 158.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:55:04 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (63.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (1.6ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/index.json.jbuilder (81.0ms)
+Completed 200 OK in 98ms (Views: 33.5ms | ActiveRecord: 63.6ms)
+
+
+Started DELETE "/api/session" for ::1 at 2020-12-11 15:55:09 -0800
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2pa3xls-3bpbiI0UmKHVog"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "GOgOwod4N--3aw1Ahygrkg"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:60
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:44
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "guest_user"], ["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "GOgOwod4N--3aw1Ahygrkg"], ["updated_at", "2020-12-11 23:55:09.971768"], ["id", 11]]
+  ↳ app/models/user.rb:44
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:44
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered api/users/show.json.jbuilder (1.9ms)
+Completed 200 OK in 15ms (Views: 6.4ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/api/session" for ::1 at 2020-12-11 15:55:15 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"guest_user", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "guest_user"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:28
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:60
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:44
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "guest_user"], ["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["updated_at", "2020-12-11 23:55:15.322797"], ["id", 11]]
+  ↳ app/models/user.rb:44
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:44
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.8ms)
+  Rendered api/users/show.json.jbuilder (2.9ms)
+Completed 200 OK in 328ms (Views: 9.4ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:57:06 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.9ms)
+  Rendered static_pages/root.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 199ms (Views: 192.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:58:41 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (15.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (21.3ms)
+Completed 200 OK in 513ms (Views: 494.9ms | ActiveRecord: 15.3ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:58:42 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (12.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.5ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/index.json.jbuilder (26.6ms)
+Completed 200 OK in 37ms (Views: 24.8ms | ActiveRecord: 12.1ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:59:06 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (5.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 216ms (Views: 208.5ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:59:07 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.5ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.5ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/index.json.jbuilder (26.0ms)
+Completed 200 OK in 34ms (Views: 33.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:59:18 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (2.1ms)
+  Rendered static_pages/root.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 276ms (Views: 272.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:59:18 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (4.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.6ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (3.9ms)
+  Rendered api/products/index.json.jbuilder (52.1ms)
+Completed 200 OK in 64ms (Views: 59.4ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:59:31 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 65ms (Views: 62.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:59:31 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (4.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.9ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.3ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/index.json.jbuilder (19.0ms)
+Completed 200 OK in 39ms (Views: 34.1ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:59:34 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 223ms (Views: 217.0ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:59:34 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (26.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.7ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.4ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/index.json.jbuilder (46.6ms)
+Completed 200 OK in 64ms (Views: 37.3ms | ActiveRecord: 26.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:59:44 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (2.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (16.2ms)
+Completed 200 OK in 131ms (Views: 123.6ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:59:45 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (38.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.5ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (1.6ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (7.6ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/index.json.jbuilder (109.7ms)
+Completed 200 OK in 139ms (Views: 100.1ms | ActiveRecord: 38.8ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 15:59:47 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (1.1ms)
+  Rendered static_pages/root.html.erb within layouts/application (14.9ms)
+Completed 200 OK in 275ms (Views: 272.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 15:59:48 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (12.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.5ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.6ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.5ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/index.json.jbuilder (53.3ms)
+Completed 200 OK in 63ms (Views: 50.2ms | ActiveRecord: 12.8ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 16:03:59 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (1.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (14.1ms)
+Completed 200 OK in 194ms (Views: 192.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 16:04:00 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (42.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.4ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/index.json.jbuilder (53.9ms)
+Completed 200 OK in 60ms (Views: 17.2ms | ActiveRecord: 42.5ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 16:07:43 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 318ms (Views: 315.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 16:07:44 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (292.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.5ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.3ms)
+  Rendered api/products/_product.json.jbuilder (0.5ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/index.json.jbuilder (315.2ms)
+Completed 200 OK in 336ms (Views: 35.7ms | ActiveRecord: 292.7ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 16:11:19 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (24.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (30.3ms)
+Completed 200 OK in 390ms (Views: 362.4ms | ActiveRecord: 24.5ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 16:11:20 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (42.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.5ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.5ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/index.json.jbuilder (64.4ms)
+Completed 200 OK in 76ms (Views: 33.1ms | ActiveRecord: 42.4ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 16:11:58 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 821ms (Views: 818.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 16:11:59 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (47.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.6ms)
+  Rendered api/products/_product.json.jbuilder (1.4ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.5ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/index.json.jbuilder (74.7ms)
+Completed 200 OK in 90ms (Views: 41.3ms | ActiveRecord: 47.6ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 16:12:13 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (68.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (80.5ms)
+Completed 200 OK in 353ms (Views: 278.4ms | ActiveRecord: 68.5ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 16:12:14 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (1.6ms)
+  Rendered api/products/_product.json.jbuilder (0.3ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (1.0ms)
+  Rendered api/products/_product.json.jbuilder (0.4ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/index.json.jbuilder (45.6ms)
+Completed 200 OK in 55ms (Views: 53.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 16:14:11 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (6.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 1064ms (Views: 1055.1ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 16:14:13 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (14.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.8ms)
+  Rendered api/products/_product.json.jbuilder (1.9ms)
+  Rendered api/products/_product.json.jbuilder (0.3ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/index.json.jbuilder (45.1ms)
+Completed 200 OK in 75ms (Views: 60.4ms | ActiveRecord: 14.7ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 16:14:59 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 276ms (Views: 270.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 16:15:00 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (3.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (1.3ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/index.json.jbuilder (18.4ms)
+Completed 200 OK in 31ms (Views: 27.0ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 16:15:41 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 135ms (Views: 129.8ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 16:15:41 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (31.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.6ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (2.4ms)
+  Rendered api/products/_product.json.jbuilder (0.7ms)
+  Rendered api/products/index.json.jbuilder (71.7ms)
+Completed 200 OK in 86ms (Views: 54.3ms | ActiveRecord: 31.1ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 16:19:03 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 1452ms (Views: 1448.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 16:19:05 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (143.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.8ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.6ms)
+  Rendered api/products/_product.json.jbuilder (0.4ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/index.json.jbuilder (169.0ms)
+Completed 200 OK in 183ms (Views: 39.2ms | ActiveRecord: 143.1ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 16:21:49 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (11.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (17.1ms)
+Completed 200 OK in 399ms (Views: 383.2ms | ActiveRecord: 11.2ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 16:21:50 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (12.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.7ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (1.1ms)
+  Rendered api/products/index.json.jbuilder (28.8ms)
+Completed 200 OK in 39ms (Views: 26.1ms | ActiveRecord: 12.4ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 16:22:12 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 217ms (Views: 211.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 16:22:13 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (23.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.8ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.3ms)
+  Rendered api/products/_product.json.jbuilder (1.3ms)
+  Rendered api/products/index.json.jbuilder (64.9ms)
+Completed 200 OK in 74ms (Views: 50.7ms | ActiveRecord: 23.2ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 16:25:14 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (5.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 229ms (Views: 221.1ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 16:25:15 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (132.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.9ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/index.json.jbuilder (171.7ms)
+Completed 200 OK in 198ms (Views: 65.0ms | ActiveRecord: 132.7ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 16:25:56 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "VgWvM0cejHWlTukeQgXaXA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10
+  Rendered api/users/_user.json.jbuilder (0.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 243ms (Views: 240.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/products/" for ::1 at 2020-12-11 16:25:56 -0800
+Processing by Api::ProductsController#index as JSON
+  Rendering api/products/index.json.jbuilder
+  [1m[36mProduct Load (3.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/api/products/index.json.jbuilder:1
+  Rendered api/products/_product.json.jbuilder (0.9ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.2ms)
+  Rendered api/products/_product.json.jbuilder (0.1ms)
+  Rendered api/products/_product.json.jbuilder (0.3ms)
+  Rendered api/products/_product.json.jbuilder (0.4ms)
+  Rendered api/products/index.json.jbuilder (28.4ms)
+Completed 200 OK in 61ms (Views: 57.0ms | ActiveRecord: 3.2ms)
+
+

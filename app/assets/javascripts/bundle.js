@@ -479,9 +479,7 @@ var Header = function Header(_ref) {
     }, "Craft Supplies"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
       className: "gifts-gift-cards",
       to: "/gifts-gift-cards"
-    }, "Gifts & Gift Cards"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
-      className: "category-animation"
-    })));
+    }, "Gifts & Gift Cards")));
   };
 
   return header();

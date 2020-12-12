@@ -4,6 +4,7 @@
   display: grid;
 }
 
+
 label,
 .label {
   font-family: $primary-font;
@@ -12,10 +13,14 @@ label,
   margin-bottom: 0.25em;
   margin-top: 0.75em;
   display: block;
+  color: $secondary-color
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+select,
+textarea {
+  font-family: $primary-font;
   border-width: 1px;
   border-style: solid;
   border-color: $secondary-color;
@@ -23,11 +28,13 @@ input[type="password"] {
   font-size: 16px;
   padding: 5px 10px;
   display: block;
+  outline: $secondary-color;
 }
 
 .form-field--radio{
     display: flex;
     align-items: center;
+    padding-top: 3px;
 
     label{
         align-self: center;
@@ -37,3 +44,4 @@ input[type="password"] {
         align-self: center;
     }
 }
+
