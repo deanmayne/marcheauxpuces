@@ -17,12 +17,19 @@
 .products-container{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
 
     .product-card{
         display: grid;
         grid-gap: 8px;
         font-size: 15px;
         margin-top: 20px;
+        max-width: 250px;
+
+        img{
+            max-width: 100%;
+            max-height: 200px;
+        }
 
         &__price{
             font-weight: bolder;
@@ -34,6 +41,7 @@
 
         &__detail{
             display: flex;
+            flex-wrap: wrap;
             font-size: 11px;
             
         }

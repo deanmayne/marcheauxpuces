@@ -1097,17 +1097,19 @@ var ProductIndexItem = function ProductIndexItem(_ref) {
   var product = _ref.product;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "product-card"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: "https://visualsound.com/wp-content/uploads/2019/05/unavailable-image.jpg"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "product-card__name"
   }, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "product-card__price"
-  }, "$", product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "product-card__detail"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "product-card__location"
   }, product.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "product-card__shipping__" + product.free_shipping
-  }, product.free_shipping === "true" ? "Free Shipping" : "Paid Shipping")));
+  }, product.free_shipping === "true" ? "Free Shipping" : "Paid Shipping")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "product-card__price"
+  }, "$", product.price));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductIndexItem);
