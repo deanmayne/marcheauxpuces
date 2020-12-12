@@ -7,7 +7,7 @@ const ProductIndexItem = ({ product }) => (
     <div className="product-card__name">{product.name}</div>
     <div className="product-card__detail">
       <div className="product-card__location">{product.location}</div>
-      <div className={"product-card__shipping__" + product.free_shipping}>
+      <div className={"product-card__shipping--" + product.free_shipping}>
         {product.free_shipping === "true" ? "Free Shipping" : "Paid Shipping"}
       </div>
     </div>
