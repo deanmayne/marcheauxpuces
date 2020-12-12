@@ -12,7 +12,7 @@ const ProductIndexItem = ({ product }) => (
         <div className="product-index-price">
             ${product.price}
         </div>
-        <div className="product-index-image">
+        <div className="product-index-location">
             {product.location}
         </div>
         <div className="product-index-shipping">

@@ -28,8 +28,14 @@ export const createReview = review => dispatch => (
     ))
 );
 
-export const fetchProducts = filters => dispatch => (
-    APIUtil.fetchProducts(filters).then(products => (
+export const fetchProducts = () => dispatch => (
+    APIUtil.fetchProducts().then(products => (
+        dispatch(receiveProducts(products))
+    ))
+);
+
+export const fetchCategoryProducts = (category) => dispatch => (
+    APIUtil.fetchCategoryProducts(category).then(products => (
         dispatch(receiveProducts(products))
     ))
 );

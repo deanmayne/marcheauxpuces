@@ -7,6 +7,14 @@ export const fetchProducts = () => (
     })
 );
 
+export const fetchCategoryProducts = (category) => (
+    $.ajax({
+        url: `/api/products/`,
+        method: 'GET',
+        data: {category}
+    })
+);
+
 export const fetchProduct = productId => (
     $.ajax({
         url: `/api/products/${productId}/`,

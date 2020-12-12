@@ -11,8 +11,14 @@ class Api::ProductsController < ApplicationController
     end
 
     def index
-        @products = Product.all
-        render '/api/products/index'
+        if params[:category] == ""
+            @products = Product.all
+            render '/api/products/index'
+        else
+            @products = Product.where(category: params[:category])
+            render '/api/products/index'
+        end
+        
     end
 
 
@@ -22,3 +28,12 @@ class Api::ProductsController < ApplicationController
     end
 
 end
+
+# // "/jewelry-accessories"
+# // "/clothing-shoes"
+# // "/home-living"
+# // "/wedding-party"
+# // "/toys-enterainment"
+# // "/arts-collectibles"
+# // "/craft-supplies"
+# // "/gifts-gift-cards"

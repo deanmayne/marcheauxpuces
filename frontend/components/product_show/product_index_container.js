@@ -1,12 +1,18 @@
 import { connect } from 'react-redux';
-import { fetchProducts } from '../../actions/product_actions';
+import { fetchProducts, fetchCategoryProducts } from '../../actions/product_actions';
+import { selectProduct } from '../../reducers/selectors';
+
 import ProductIndex from './product_index';
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+
+   const category = ownProps.match.path.slice(1)
+
 
     return ({
-        products: Object.values(state.entities.products)
+        products: Object.values(state.entities.products),
+        category: category
     })
 }
 
@@ -14,8 +20,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return ({
-        fetchProducts: () => dispatch(fetchProducts())
+        fetchProducts: () => dispatch(fetchProducts()),
+        fetchCategoryProducts: (category) => dispatch(fetchCategoryProducts(category)),
     })
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductIndex)
+
