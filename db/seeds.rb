@@ -16,6 +16,12 @@ guest = User.create(
 
 )
 
+philip = User.create(
+    username: 'philip',
+    password: 'philiplau'
+
+)
+
 p1 = Product.create(
     name: "hedghog pillow",
     description: "what it says",
@@ -59,3 +65,4 @@ p4 = Product.create(
     owner_id: guest.id,
 
 )
+

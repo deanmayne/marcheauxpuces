@@ -21,6 +21,14 @@ class Api::ProductsController < ApplicationController
         
     end
 
+    def show
+        @product = Product.find_by(id: params[:id])
+        
+        if @product
+            render '/api/products/show'
+        end
+    end
+
 
     private
     def product_params
@@ -28,12 +36,3 @@ class Api::ProductsController < ApplicationController
     end
 
 end
-
-# // "/jewelry-accessories"
-# // "/clothing-shoes"
-# // "/home-living"
-# // "/wedding-party"
-# // "/toys-enterainment"
-# // "/arts-collectibles"
-# // "/craft-supplies"
-# // "/gifts-gift-cards"

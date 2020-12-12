@@ -211,8 +211,8 @@ var fetchCategoryProducts = function fetchCategoryProducts(category) {
 };
 var fetchProduct = function fetchProduct(id) {
   return function (dispatch) {
-    return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchProduct(id).then(function (payload) {
-      return dispatch(receiveProduct(payload));
+    return _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchProduct(id).then(function (product) {
+      return dispatch(receiveProduct(product));
     });
   };
 };
@@ -336,7 +336,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _header_header_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./header/header_container */ "./frontend/components/header/header_container.js");
-/* harmony import */ var _product_show_product_index_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./product_show/product_index_container */ "./frontend/components/product_show/product_index_container.js");
+/* harmony import */ var _product_index_product_index_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./product_index/product_index_container */ "./frontend/components/product_index/product_index_container.js");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modal */ "./frontend/components/modal.jsx");
 /* harmony import */ var _fourohfour__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./fourohfour */ "./frontend/components/fourohfour.jsx");
@@ -347,45 +347,45 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+ // import ProductShowContainer from "./product_show/product_show_container";
 
 var App = function App() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_header_header_container__WEBPACK_IMPORTED_MODULE_2__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
     exact: true,
     path: "/jewelry-accessories",
-    component: _product_show_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
+    component: _product_index_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
     exact: true,
     path: "/clothing-shoes",
-    component: _product_show_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
+    component: _product_index_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
     exact: true,
     path: "/home-living",
-    component: _product_show_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
+    component: _product_index_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
     exact: true,
     path: "/wedding-party",
-    component: _product_show_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
+    component: _product_index_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
     exact: true,
     path: "/toys-enterainment",
-    component: _product_show_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
+    component: _product_index_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
     exact: true,
     path: "/arts-collectibles",
-    component: _product_show_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
+    component: _product_index_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
     exact: true,
     path: "/craft-supplies",
-    component: _product_show_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
+    component: _product_index_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
     exact: true,
     path: "/gifts-gift-cards",
-    component: _product_show_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
+    component: _product_index_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
     exact: true,
     path: "/",
-    component: _product_show_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
+    component: _product_index_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
     exact: true,
     path: "/404",
@@ -597,7 +597,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
 /* harmony import */ var _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./session_form/signup_form_container */ "./frontend/components/session_form/signup_form_container.jsx");
-/* harmony import */ var _product_show_review_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./product_show/review_form_container */ "./frontend/components/product_show/review_form_container.js");
+/* harmony import */ var _review_form_review_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./review_form/review_form_container */ "./frontend/components/review_form/review_form_container.js");
 /* harmony import */ var _product_form_product_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./product_form/product_form_container */ "./frontend/components/product_form/product_form_container.js");
 
 
@@ -627,7 +627,7 @@ function Modal(_ref) {
       break;
 
     case "review":
-      component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_product_show_review_form_container__WEBPACK_IMPORTED_MODULE_5__.default, null);
+      component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_review_form_review_form_container__WEBPACK_IMPORTED_MODULE_5__.default, null);
       break;
 
     case "add_product":
@@ -935,10 +935,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/product_show/product_index.jsx":
-/*!************************************************************!*\
-  !*** ./frontend/components/product_show/product_index.jsx ***!
-  \************************************************************/
+/***/ "./frontend/components/product_index/product_index.jsx":
+/*!*************************************************************!*\
+  !*** ./frontend/components/product_index/product_index.jsx ***!
+  \*************************************************************/
 /*! namespace exports */
 /*! export default [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
@@ -951,7 +951,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _product_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./product_index_item */ "./frontend/components/product_show/product_index_item.jsx");
+/* harmony import */ var _product_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./product_index_item */ "./frontend/components/product_index/product_index_item.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1027,14 +1027,14 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/product_show/product_index_container.js":
-/*!*********************************************************************!*\
-  !*** ./frontend/components/product_show/product_index_container.js ***!
-  \*********************************************************************/
+/***/ "./frontend/components/product_index/product_index_container.js":
+/*!**********************************************************************!*\
+  !*** ./frontend/components/product_index/product_index_container.js ***!
+  \**********************************************************************/
 /*! namespace exports */
 /*! export default [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_exports__, __webpack_require__.r, __webpack_require__.d, __webpack_require__.* */
+/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_exports__, __webpack_require__.r, __webpack_require__.d, __webpack_require__.* */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1045,7 +1045,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/product_actions */ "./frontend/actions/product_actions.js");
 /* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
-/* harmony import */ var _product_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./product_index */ "./frontend/components/product_show/product_index.jsx");
+/* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _product_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./product_index */ "./frontend/components/product_index/product_index.jsx");
 
 
 
@@ -1074,10 +1075,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/product_show/product_index_item.jsx":
-/*!*****************************************************************!*\
-  !*** ./frontend/components/product_show/product_index_item.jsx ***!
-  \*****************************************************************/
+/***/ "./frontend/components/product_index/product_index_item.jsx":
+/*!******************************************************************!*\
+  !*** ./frontend/components/product_index/product_index_item.jsx ***!
+  \******************************************************************/
 /*! namespace exports */
 /*! export default [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
@@ -1090,12 +1091,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
 var ProductIndexItem = function ProductIndexItem(_ref) {
   var product = _ref.product;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    to: "/product/" + product.id,
     className: "product-card"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     src: "https://visualsound.com/wp-content/uploads/2019/05/unavailable-image.jpg"
@@ -1116,10 +1120,10 @@ var ProductIndexItem = function ProductIndexItem(_ref) {
 
 /***/ }),
 
-/***/ "./frontend/components/product_show/review_form.jsx":
-/*!**********************************************************!*\
-  !*** ./frontend/components/product_show/review_form.jsx ***!
-  \**********************************************************/
+/***/ "./frontend/components/review_form/review_form.jsx":
+/*!*********************************************************!*\
+  !*** ./frontend/components/review_form/review_form.jsx ***!
+  \*********************************************************/
 /*! namespace exports */
 /*! export default [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
@@ -1247,10 +1251,10 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/product_show/review_form_container.js":
-/*!*******************************************************************!*\
-  !*** ./frontend/components/product_show/review_form_container.js ***!
-  \*******************************************************************/
+/***/ "./frontend/components/review_form/review_form_container.js":
+/*!******************************************************************!*\
+  !*** ./frontend/components/review_form/review_form_container.js ***!
+  \******************************************************************/
 /*! namespace exports */
 /*! export default [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
@@ -1264,7 +1268,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_product_actions_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/product_actions.js */ "./frontend/actions/product_actions.js");
-/* harmony import */ var _review_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./review_form */ "./frontend/components/product_show/review_form.jsx");
+/* harmony import */ var _review_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./review_form */ "./frontend/components/review_form/review_form.jsx");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 
 
@@ -1889,40 +1893,11 @@ var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
 /*!****************************************!*\
   !*** ./frontend/reducers/selectors.js ***!
   \****************************************/
-/*! namespace exports */
-/*! export asArray [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export selectProduct [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export selectReviewsForProduct [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements:  */
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "selectProduct": () => /* binding */ selectProduct,
-/* harmony export */   "selectReviewsForProduct": () => /* binding */ selectReviewsForProduct,
-/* harmony export */   "asArray": () => /* binding */ asArray
-/* harmony export */ });
-var selectProduct = function selectProduct(_ref, productId) {
-  var products = _ref.products;
-  return products[productId] || {
-    reviewIds: []
-  };
-};
-var selectReviewsForProduct = function selectReviewsForProduct(_ref2, product) {
-  var products = _ref2.products,
-      reviews = _ref2.reviews;
-  return product.reviewIds.map(function (reviewId) {
-    return reviews[reviewId];
-  });
-};
-var asArray = function asArray(_ref3) {
-  var products = _ref3.products;
-  return Object.keys(products).map(function (key) {
-    return products[key];
-  });
-};
+
 
 /***/ }),
 

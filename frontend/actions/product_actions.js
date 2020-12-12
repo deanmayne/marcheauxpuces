@@ -41,8 +41,8 @@ export const fetchCategoryProducts = (category) => dispatch => (
 );
 
 export const fetchProduct = id => dispatch => (
-    APIUtil.fetchProduct(id).then(payload => (
-        dispatch(receiveProduct(payload))
+    APIUtil.fetchProduct(id).then(product => (
+        dispatch(receiveProduct(product))
     ))
 );
 
