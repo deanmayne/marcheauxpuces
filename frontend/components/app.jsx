@@ -15,7 +15,6 @@ const App = () => (
     <HeaderContainer />
     <Switch>
       <Route
-        exact
         path="/product/:productId"
         component={ProductShowContainer}
       />
