@@ -11,7 +11,7 @@ class Api::ProductsController < ApplicationController
     end
 
     def index
-        if params[:category] == ""
+        if params[:category] == "" || params[:category].nil?
             @products = Product.all
             render '/api/products/index'
         else

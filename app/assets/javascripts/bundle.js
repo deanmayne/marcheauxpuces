@@ -1010,7 +1010,7 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var products = this.props.products;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "product-index"
+        className: "products-container"
       }, products.map(function (product) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_product_index_item__WEBPACK_IMPORTED_MODULE_1__.default, {
           key: product.id,
@@ -1096,18 +1096,18 @@ __webpack_require__.r(__webpack_exports__);
 var ProductIndexItem = function ProductIndexItem(_ref) {
   var product = _ref.product;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "product-show-box"
+    className: "product-card"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "product-show-name"
+    className: "product-card__name"
   }, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "product-index-description"
-  }, product.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "product-index-price"
+    className: "product-card__price"
   }, "$", product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "product-index-location"
+    className: "product-card__detail"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "product-card__location"
   }, product.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "product-index-shipping"
-  }, product.free_shipping));
+    className: "product-card__shipping__" + product.free_shipping
+  }, product.free_shipping === "true" ? "Free Shipping" : "Paid Shipping")));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductIndexItem);
