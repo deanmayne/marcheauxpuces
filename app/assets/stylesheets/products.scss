@@ -16,6 +16,10 @@
 
 .product-index{
     display: grid;
+    grid-template-columns: repeat(4, 1fr);
 
+    .product-show-box{
+        margin-top: 8px;
+    }
 
 }
