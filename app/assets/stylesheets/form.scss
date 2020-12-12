@@ -4,10 +4,8 @@
   display: grid;
 }
 
-
 label,
 .label {
-  font-family: $primary-font;
   font-weight: 500;
   font-size: 0.8em;
   margin-bottom: 0.25em;
@@ -20,7 +18,6 @@ input[type="text"],
 input[type="password"],
 select,
 textarea {
-  font-family: $primary-font;
   border-width: 1px;
   border-style: solid;
   border-color: $secondary-color;
@@ -31,6 +28,9 @@ textarea {
   outline: $secondary-color;
 }
 
+textarea{
+    font-family: $primary-font;
+}
 .form-field--radio{
     display: flex;
     align-items: center;

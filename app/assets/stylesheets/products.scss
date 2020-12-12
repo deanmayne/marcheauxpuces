@@ -1,15 +1,21 @@
 @import 'variables.scss';
 
-.product-show-index{
-    display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
+// .product-show-index{
+//     display:flex;
+//     flex-direction: row;
+//     flex-wrap: wrap;
+// }
 
-.product-show-box{
-    display: inline-block;
-    border: 1px black solid;
-    border-radius: 20px;
-    padding: 5px;
-    margin: 10px;
+// .product-show-box{
+//     display: inline-block;
+//     border: 1px black solid;
+//     border-radius: 20px;
+//     padding: 5px;
+//     margin: 10px;
+// }
+
+.product-index{
+    display: grid;
+
+
 }

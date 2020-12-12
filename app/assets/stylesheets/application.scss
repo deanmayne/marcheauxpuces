@@ -26,13 +26,19 @@ a {
 }
 
 
-h1,
-.h1 {
-  font-family: $primary-font;
+
+
+ul.errors-list{
+    margin-top: 8px;
+    display: grid;
+    grid-gap: 8px;
+    list-style-type: none;
+
+    li.errors-list__item{
+        color: red;
+    }
 }
 
-h2,
-.h2 {
-  font-family: $primary-font;
+body{
+    font-family: $primary-font;
 }
-
