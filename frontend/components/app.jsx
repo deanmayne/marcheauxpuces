@@ -8,17 +8,17 @@ import ProductIndexContainer from "./product_index/product_index_container";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import Modal from "./modal";
 import fourohfour from "./fourohfour";
-// import ProductShowContainer from "./product_show/product_show_container";
+import ProductShowContainer from "./product_show/product_show_container";
 
 const App = () => (
   <div>
     <HeaderContainer />
     <Switch>
-      {/* <Route
+      <Route
         exact
         path="/product/:productId"
         component={ProductShowContainer}
-      /> */}
+      />
       <Route
         exact
         path="/jewelry-accessories"
