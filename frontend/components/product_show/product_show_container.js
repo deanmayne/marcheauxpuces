@@ -10,7 +10,7 @@ const mapStateToProps = (state, {match: {params: { productId }}}) => ({
     });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchProduct: (id) => dispatch(fetchProduct(id)),
+  fetchProduct: (productId) => dispatch(fetchProduct(productId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductShow);
