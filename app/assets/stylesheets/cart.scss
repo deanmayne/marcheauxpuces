@@ -33,10 +33,16 @@
   margin-left: 20px;
   margin-top: 20px;
 
+
   .cart-item {
     display: flex;
+    justify-content: space-between;
 
-    img {
+    a{
+        display: flex;
+
+    .cart-item--left{
+        display: grid;
       width: 200px;
       height: 175px;
     }
@@ -79,6 +85,17 @@
         font-size: 15px;
         font-weight: bolder;
       }
+
     }
-  }
+
+    }
+
+
+    .cart-item--far-right{
+        display: grid;
+        place-content: center;
+    }
+
+
+}
 }
