@@ -6,6 +6,7 @@ import {addToCart} from '../../actions/cart_actions'
 const mapStateToProps = (state, {match: {params: { productId }}}) => ({
 
       product: state.entities.products[productId],
+      session: state.session.id,
       productId
 
     });

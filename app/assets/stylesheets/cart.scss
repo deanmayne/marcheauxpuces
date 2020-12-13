@@ -2,7 +2,6 @@
 
 .cart--not-signed-in, .cart--empty{
         display: grid;
-        justify-content: center;
 
     h1{
         color: $primary-color;
@@ -11,10 +10,12 @@
         border: 1px solid black;
         padding: 40px;
         border-radius: 20px;
+        margin-left: 150px;
+        margin-right: 150px;
 
     p > a{
         color: $secondary-color;
-        padding:8px;
+        padding: 8px;
 
     }
 

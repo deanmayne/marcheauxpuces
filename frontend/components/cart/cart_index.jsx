@@ -25,7 +25,7 @@ class CartIndex extends React.Component {
     if (!shopper_id) {
       return (
         <div className="cart--not-signed-in">
-          <h1>Please sign in to view items in your cart !</h1>
+          <h1>Please sign in to view or add items to your cart !</h1>
         </div>
       );
     } else if (products.length === 0) {
@@ -33,7 +33,7 @@ class CartIndex extends React.Component {
         <div className="cart--empty">
           <h1>
             <p>Your cart is empty ! </p>
-            <p><Link>Go discover something cool !</Link>
+            <p><Link to="/">Go discover something cool !</Link>
             </p>
           </h1>
         </div>

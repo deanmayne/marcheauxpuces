@@ -460,7 +460,7 @@ var App = function App() {
     component: _product_index_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     exact: true,
-    path: "/toys-enterainment",
+    path: "/toys-entertainment",
     component: _product_index_product_index_container__WEBPACK_IMPORTED_MODULE_3__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     exact: true,
@@ -623,11 +623,13 @@ var CartIndex = /*#__PURE__*/function (_React$Component) {
       if (!shopper_id) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "cart--not-signed-in"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Please sign in to view items in your cart !"));
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Please sign in to view or add items to your cart !"));
       } else if (products.length === 0) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "cart--empty"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Your cart is empty ! "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, null, "Go discover something cool !"))));
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Your cart is empty ! "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+          to: "/"
+        }, "Go discover something cool !"))));
       } else {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "cart"
@@ -803,8 +805,8 @@ var Header = function Header(_ref) {
       className: "wedding-party",
       to: "/wedding-party"
     }, "Wedding & Party"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-      className: "toys-enterainment",
-      to: "/toys-enterainment"
+      className: "toys-entertainment",
+      to: "/toys-entertainment"
     }, "Toys & Entertainment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
       className: "arts-collectibles",
       to: "/arts-collectibles"
@@ -1129,7 +1131,7 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
       }, "Home & Living"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
         value: "wedding-party"
       }, "Wedding & Party"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        value: "toys-enterainment"
+        value: "toys-entertainment"
       }, "Toys & Entertainment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
         value: "arts-collectibles"
       }, "Arts & Collectibles"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
@@ -1470,8 +1472,13 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
     key: "cartAdd",
     value: function cartAdd(e) {
       e.preventDefault();
-      this.props.addToCart(this.props.product);
-      this.props.history.push('/cart');
+
+      if (this.props.session) {
+        this.props.addToCart(this.props.product);
+        this.props.history.push("/cart");
+      } else {
+        this.props.history.push("/cart");
+      }
     }
   }, {
     key: "componentDidMount",
@@ -1549,6 +1556,7 @@ var mapStateToProps = function mapStateToProps(state, _ref) {
   var productId = _ref.match.params.productId;
   return {
     product: state.entities.products[productId],
+    session: state.session.id,
     productId: productId
   };
 };

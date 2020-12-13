@@ -50,7 +50,7 @@ const Header = ({ currentUser, logout, openModal }) => {
           <Link className="wedding-party" to="/wedding-party">
             Wedding & Party
           </Link>
-          <Link className="toys-enterainment" to="/toys-enterainment">
+          <Link className="toys-entertainment" to="/toys-entertainment">
             Toys & Entertainment
           </Link>
           <Link className="arts-collectibles" to="/arts-collectibles">

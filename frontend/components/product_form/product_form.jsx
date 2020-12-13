@@ -95,7 +95,7 @@ class ProductForm extends React.Component {
             <option value="clothing-shoes">Clothing & Shoes</option>
             <option value="home-living">Home & Living</option>
             <option value="wedding-party">Wedding & Party</option>
-            <option value="toys-enterainment">Toys & Entertainment</option>
+            <option value="toys-entertainment">Toys & Entertainment</option>
             <option value="arts-collectibles">Arts & Collectibles</option>
             <option value="craft-supplies">Craft Supplies</option>
             <option value="gifts-gift-cards">Gifts & Gift Cards</option>

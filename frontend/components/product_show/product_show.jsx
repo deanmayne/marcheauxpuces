@@ -7,11 +7,14 @@ class ProductShow extends React.Component {
     this.cartAdd = this.cartAdd.bind(this);
   }
 
-  cartAdd(e){
-      e.preventDefault();
+  cartAdd(e) {
+    e.preventDefault();
+    if (this.props.session) {
       this.props.addToCart(this.props.product);
-      this.props.history.push('/cart')
-
+      this.props.history.push("/cart");
+    }else{
+        this.props.history.push("/cart");
+    }
   }
 
   componentDidMount() {
@@ -22,7 +25,6 @@ class ProductShow extends React.Component {
     if (!product) {
       return null;
     } else {
-
       return (
         <div className="product-show-container">
           <img
@@ -38,10 +40,16 @@ class ProductShow extends React.Component {
                 : "Paid Shipping"}
             </div>
             <div className="product-show__price">${product.price}</div>
-            <button type="button" onClick={this.cartAdd}className="button button--primary button--lg">
+            <button
+              type="button"
+              onClick={this.cartAdd}
+              className="button button--primary button--lg"
+            >
               Add to Cart
             </button>
-            <label className="product-show__description--label">Description</label>
+            <label className="product-show__description--label">
+              Description
+            </label>
             <div className="product-show__description">
               {product.description}
             </div>
