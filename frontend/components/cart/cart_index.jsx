@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import CartIndexItem from "./cart_index_item";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 class CartIndex extends React.Component {
   constructor(props) {
@@ -15,7 +15,10 @@ class CartIndex extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.match.path !== this.props.match.path && this.props.shopper_id) {
+    if (
+      prevProps.match.path !== this.props.match.path &&
+      this.props.shopper_id
+    ) {
       this.props.receiveCartProducts(this.props.shopper_id);
     }
   }
@@ -33,7 +36,8 @@ class CartIndex extends React.Component {
         <div className="cart--empty">
           <h1>
             <p>Your cart is empty ! </p>
-            <p><Link to="/">Go discover something cool !</Link>
+            <p>
+              <Link to="/">Go discover something cool !</Link>
             </p>
           </h1>
         </div>
