@@ -24,7 +24,7 @@ const Header = ({ currentUser, logout, openModal }) => {
       </button>
       <Link to="/cartRedirect" className="button button--link">
         Cart
-        {/* <img src={ShoppingCartIcon} /> */}
+        {/* <img src={ShoppingCartIcon}/> */}
       </Link>
 
       <button className="button button--link" onClick={() => logout()}>
