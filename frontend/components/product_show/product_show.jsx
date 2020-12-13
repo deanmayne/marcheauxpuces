@@ -3,6 +3,15 @@ import React from "react";
 class ProductShow extends React.Component {
   constructor(props) {
     super(props);
+
+    this.cartAdd = this.cartAdd.bind(this);
+  }
+
+  cartAdd(e){
+      e.preventDefault();
+      this.props.addToCart(this.props.product);
+      this.props.history.push('/cart')
+
   }
 
   componentDidMount() {
@@ -29,7 +38,7 @@ class ProductShow extends React.Component {
                 : "Paid Shipping"}
             </div>
             <div className="product-show__price">${product.price}</div>
-            <button type="submit" className="button button--primary button--lg">
+            <button type="button" onClick={this.cartAdd}className="button button--primary button--lg">
               Add to Cart
             </button>
             <label className="product-show__description--label">Description</label>

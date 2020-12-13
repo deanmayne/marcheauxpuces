@@ -122,7 +122,7 @@ class SessionForm extends React.Component {
           </button>
         )}
 
-        {errors.length != 0 && this.renderErrors()}
+        {errors.length !== 0 && this.renderErrors()}
       </form>
     );
   }

@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { fetchProducts, fetchCategoryProducts } from '../../actions/product_actions';
-import { selectProduct } from '../../reducers/selectors';
 
 import ProductIndex from './product_index';
 

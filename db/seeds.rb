@@ -8,6 +8,7 @@
 
 User.destroy_all
 Product.destroy_all
+Cart.destroy_all
 
 
 guest = User.create(
@@ -66,3 +67,22 @@ p4 = Product.create(
 
 )
 
+c1 = Cart.creat(
+    product_id: p1.id,
+    shopper_id: guest.id
+)
+
+c2 = Cart.creat(
+    product_id: p2.id,
+    shopper_id: guest.id
+)
+
+c3 = Cart.creat(
+    product_id: p3.id,
+    shopper_id: guest.id
+)
+
+c4 = Cart.creat(
+    product_id: p4.id,
+    shopper_id: guest.id
+)

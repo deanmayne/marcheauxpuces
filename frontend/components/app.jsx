@@ -9,15 +9,14 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import Modal from "./modal";
 import fourohfour from "./fourohfour";
 import ProductShowContainer from "./product_show/product_show_container";
+import CartContainer from "./cart/cart_container"
 
 const App = () => (
   <div>
     <HeaderContainer />
     <Switch>
-      <Route
-        path="/product/:productId"
-        component={ProductShowContainer}
-      />
+      <Route exact path="/cart" component={CartContainer} />
+      <Route path="/product/:productId" component={ProductShowContainer} />
       <Route
         exact
         path="/jewelry-accessories"

@@ -6,8 +6,6 @@ class Api::ProductsController < ApplicationController
             render '/api/products/show'
         end
 
-
-        
     end
 
     def index
