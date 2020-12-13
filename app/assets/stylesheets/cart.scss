@@ -1,33 +1,30 @@
 @import "variables.scss";
 
-.cart--not-signed-in, .cart--empty{
-        display: grid;
+.cart--not-signed-in,
+.cart--empty {
+  display: grid;
 
-    h1{
-        color: $primary-color;
-        font-size: 50px;
-        place-self: center;
-        border: 1px solid black;
-        padding: 40px;
-        border-radius: 20px;
-        margin-left: 150px;
-        margin-right: 150px;
-
-    p > a{
-        color: $secondary-color;
-        padding: 8px;
-
-    }
-
-    p > a:hover{
-    box-shadow: 0 0 10px #0000001a;
-    border-bottom: 0000001a;
+  h1 {
+    color: $primary-color;
+    font-size: 50px;
+    place-self: center;
+    border: 1px solid black;
+    padding: 40px;
     border-radius: 20px;
+    margin-left: 150px;
+    margin-right: 150px;
+
+    p > a {
+      color: $secondary-color;
+      padding: 8px;
     }
 
+    p > a:hover {
+      box-shadow: 0 0 10px #0000001a;
+      border-bottom: 0000001a;
+      border-radius: 20px;
     }
-
-
+  }
 }
 
 .cart {
@@ -36,13 +33,13 @@
   margin-left: 20px;
   margin-top: 20px;
 
-  img {
-    width: 200px;
-    height: 175px;
-  }
-
   .cart-item {
     display: flex;
+
+    img {
+      width: 200px;
+      height: 175px;
+    }
 
     .cart-item--right {
       display: grid;

@@ -508,8 +508,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_cart_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/cart_actions */ "./frontend/actions/cart_actions.js");
-/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
-/* harmony import */ var _cart_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./cart_index */ "./frontend/components/cart/cart_index.jsx");
+/* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/product_actions */ "./frontend/actions/product_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _cart_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./cart_index */ "./frontend/components/cart/cart_index.jsx");
+
 
 
 
@@ -530,16 +532,19 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     removeFromCart: function removeFromCart(product) {
       return dispatch((0,_actions_cart_actions__WEBPACK_IMPORTED_MODULE_1__.removeFromCart)(product));
     },
+    fetchProducts: function fetchProducts() {
+      return dispatch((0,_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__.fetchProducts)());
+    },
     receiveCartProducts: function receiveCartProducts(shopper_id) {
       return dispatch((0,_actions_cart_actions__WEBPACK_IMPORTED_MODULE_1__.receiveCartProducts)(shopper_id));
     },
     openModal: function openModal(modal) {
-      return (0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__.openModal)(modal);
+      return (0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__.openModal)(modal);
     }
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_cart_index__WEBPACK_IMPORTED_MODULE_3__.default));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_cart_index__WEBPACK_IMPORTED_MODULE_4__.default));
 
 /***/ }),
 
@@ -605,14 +610,15 @@ var CartIndex = /*#__PURE__*/function (_React$Component) {
       if (this.props.shopper_id) {
         this.props.receiveCartProducts(this.props.shopper_id);
       }
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      if (prevProps.match.path !== this.props.match.path && this.props.shopper_id) {
-        this.props.receiveCartProducts(this.props.shopper_id);
-      }
-    }
+    } //   componentDidUpdate(prevProps) {
+    //     if (
+    //       prevProps.match.path !== this.props.match.path &&
+    //       this.props.shopper_id
+    //     ) {
+    //       this.props.receiveCartProducts(this.props.shopper_id);
+    //     }
+    //   }
+
   }, {
     key: "render",
     value: function render() {
@@ -767,11 +773,11 @@ var Header = function Header(_ref) {
       onClick: function onClick() {
         return openModal("add_product");
       }
-    }, "Add a Product"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-      to: "/cart"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    }, "Add a Product"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       className: "button button--link"
-    }, "Cart")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      to: "/cart"
+    }, "Cart ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       className: "button button--link",
       onClick: function onClick() {
         return logout();

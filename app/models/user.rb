@@ -19,7 +19,7 @@ attr_reader :password
     through: :reviews,
     source: :Product
 
-  has_one :cart,
+  has_many :cart_items,
     foreign_key: :shopper_id,
     class_name: :Cart
     

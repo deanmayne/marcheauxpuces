@@ -2,13 +2,18 @@ class Product < ApplicationRecord
     validates :name, :description, :price, :location, :free_shipping, :category, presence: true
     validates :free_shipping, inclusion: {in: ["true", "false"]} 
 
-  belongs_to :user,
+    belongs_to :user,
     foreign_key: :owner_id,
     class_name: :User,
     optional: true
 
-  has_many :reviews,
+    has_many :reviews,
     foreign_key: :product_id,
     class_name: :Review
+
+    belongs_to :cart,
+    foreign_key: :product_id,
+    class_name: :Cart,
+    optional: true
 
 end

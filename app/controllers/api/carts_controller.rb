@@ -10,7 +10,7 @@ class Api::CartsController < ApplicationController
 
     def index
         @products = Cart.where(shopper_id: params[:shopper_id])
-        render '/api/carts/index'
+            render '/api/carts/index'
     end
 
 

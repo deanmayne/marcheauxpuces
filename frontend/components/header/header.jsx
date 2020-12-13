@@ -20,9 +20,11 @@ const Header = ({ currentUser, logout, openModal }) => {
         >
           Add a Product
         </button>
-        <Link to="/cart">
-          <button className="button button--link">Cart</button>
-        </Link>
+
+        <button className="button button--link">
+          <Link to="/cart">Cart </Link>
+        </button>
+
         <button className="button button--link" onClick={() => logout()}>
           Sign Out
         </button>
@@ -32,7 +34,6 @@ const Header = ({ currentUser, logout, openModal }) => {
 
     const header = () => (
       <header className="main-header">
-          {/* acll  header__top etc */}
         <div className="top-header">
           <Link to="/">
             <h1 className="site-title"> Marché aux Puces</h1>

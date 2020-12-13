@@ -14,14 +14,14 @@ class CartIndex extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if (
-      prevProps.match.path !== this.props.match.path &&
-      this.props.shopper_id
-    ) {
-      this.props.receiveCartProducts(this.props.shopper_id);
-    }
-  }
+//   componentDidUpdate(prevProps) {
+//     if (
+//       prevProps.match.path !== this.props.match.path &&
+//       this.props.shopper_id
+//     ) {
+//       this.props.receiveCartProducts(this.props.shopper_id);
+//     }
+//   }
 
   render() {
     const { products, shopper_id } = this.props;
