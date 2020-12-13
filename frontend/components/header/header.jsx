@@ -13,12 +13,21 @@ const Header = ({ currentUser, logout, openModal }) => {
     )
 
     const signedin = () => (
-        <div className="login-sign-up-box">
-            <button className="button button--primary" onClick={() => openModal('add_product')}>Add a Product</button>
-
-            <button className="button button--link" onClick={() => logout()}>Sign Out</button>
-        </div>
-    )
+      <div className="login-sign-up-box">
+        <button
+          className="button button--primary"
+          onClick={() => openModal("add_product")}
+        >
+          Add a Product
+        </button>
+        <Link to="/cart">
+          <button className="button button--link">Cart</button>
+        </Link>
+        <button className="button button--link" onClick={() => logout()}>
+          Sign Out
+        </button>
+      </div>
+    );
 
 
     const header = () => (
