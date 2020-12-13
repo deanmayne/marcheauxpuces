@@ -10,11 +10,12 @@ import {
 import { openModal } from "../../actions/modal_actions";
 import CartIndex from "./cart_index";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
 
   return {
-    products: Object.values(state.entities.products),
-    shopper_id: state.session.id
+    carts: Object.values(state.entities.carts),
+    shopper_id: state.session.id,
+    loaded: false
   };
 };
 

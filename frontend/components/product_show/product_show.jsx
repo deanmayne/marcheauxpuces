@@ -4,22 +4,25 @@ class ProductShow extends React.Component {
   constructor(props) {
     super(props);
 
+
     this.cartAdd = this.cartAdd.bind(this);
   }
 
   cartAdd(e) {
     e.preventDefault();
     if (this.props.session) {
-      this.props.addToCart(this.props.product);
-      this.props.history.push("/cart");
-    }else{
-        this.props.history.push("/cart");
+      this.props.addToCart({ cart:{
+        product_id: this.props.product.id,
+        shopper_id: this.props.session,
+      }});
     }
+    this.props.history.push("/cartRedirect");
   }
 
   componentDidMount() {
     this.props.fetchProduct(this.props.productId);
   }
+
   render() {
     const { product } = this.props;
     if (!product) {

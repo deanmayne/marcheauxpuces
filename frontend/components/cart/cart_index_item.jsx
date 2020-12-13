@@ -2,7 +2,7 @@ import { withRouter } from "react-router-dom";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CartIndexItem = ({ product }) => (
+const CartIndexItem = ( { product } ) => (
   <Link to={"/product/" + product.id} className="cart-item">
       <img src="https://visualsound.com/wp-content/uploads/2019/05/unavailable-image.jpg" />
       <div className="cart-item--right">

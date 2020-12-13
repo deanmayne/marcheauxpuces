@@ -9,13 +9,12 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import Modal from "./modal";
 import fourohfour from "./fourohfour";
 import ProductShowContainer from "./product_show/product_show_container";
-import CartContainer from "./cart/cart_container"
+import CartContainer from "./cart/cart_container";
 
 const App = () => (
   <div>
     <HeaderContainer />
     <Switch>
-      <Route exact path="/cart" component={CartContainer} />
       <Route path="/product/:productId" component={ProductShowContainer} />
       <Route
         exact
@@ -39,6 +38,10 @@ const App = () => (
       <Route exact path="/gifts-gift-cards" component={ProductIndexContainer} />
       <Route exact path="/" component={ProductIndexContainer} />
       <Route exact path="/404" component={fourohfour} />
+      <Route exact path="/cartRedirect">
+        <Redirect to="/cart" />
+      </Route>
+      <Route exact path="/cart" component={CartContainer} />
       <Redirect to="/404" />
     </Switch>
     <Modal />

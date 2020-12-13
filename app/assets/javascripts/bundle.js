@@ -127,22 +127,19 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_CART_PRODUCTS = "RECEIVE_CART_PRODUCTS";
 var ADD_TO_CART = "ADD_TO_CART";
 var REMOVE_FROM_CART = "REMOVE_FROM_CART";
-var receivecartproducts = function receivecartproducts(_ref) {
-  var products = _ref.products;
+var receivecartproducts = function receivecartproducts(products) {
   return {
     type: RECEIVE_CART_PRODUCTS,
     products: products
   };
 };
-var addtocart = function addtocart(_ref2) {
-  var product = _ref2.product;
+var addtocart = function addtocart(product) {
   return {
     type: ADD_TO_CART,
     product: product
   };
 };
-var removefromcart = function removefromcart(_ref3) {
-  var product = _ref3.product;
+var removefromcart = function removefromcart(product) {
   return {
     type: REMOVE_FROM_CART,
     product: product
@@ -436,10 +433,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var App = function App() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_header_header_container__WEBPACK_IMPORTED_MODULE_2__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
-    exact: true,
-    path: "/cart",
-    component: _cart_cart_container__WEBPACK_IMPORTED_MODULE_8__.default
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     path: "/product/:productId",
     component: _product_show_product_show_container__WEBPACK_IMPORTED_MODULE_7__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
@@ -482,6 +475,15 @@ var App = function App() {
     exact: true,
     path: "/404",
     component: _fourohfour__WEBPACK_IMPORTED_MODULE_6__.default
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+    exact: true,
+    path: "/cartRedirect"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Redirect, {
+    to: "/cart"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+    exact: true,
+    path: "/cart",
+    component: _cart_cart_container__WEBPACK_IMPORTED_MODULE_8__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Redirect, {
     to: "/404"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_modal__WEBPACK_IMPORTED_MODULE_5__.default, null));
@@ -517,10 +519,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state) {
+var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    products: Object.values(state.entities.products),
-    shopper_id: state.session.id
+    carts: Object.values(state.entities.carts),
+    shopper_id: state.session.id,
+    loaded: false
   };
 };
 
@@ -599,9 +602,13 @@ var CartIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(CartIndex);
 
   function CartIndex(props) {
+    var _this;
+
     _classCallCheck(this, CartIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.loaded = _this.props.loaded;
+    return _this;
   }
 
   _createClass(CartIndex, [{
@@ -609,28 +616,31 @@ var CartIndex = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       if (this.props.shopper_id) {
         this.props.receiveCartProducts(this.props.shopper_id);
+        this.loaded = true;
       }
-    } //   componentDidUpdate(prevProps) {
-    //     if (
-    //       prevProps.match.path !== this.props.match.path &&
-    //       this.props.shopper_id
-    //     ) {
-    //       this.props.receiveCartProducts(this.props.shopper_id);
-    //     }
-    //   }
-
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.match.path !== this.props.match.path) {
+        this.props.receiveCartProducts(this.props.shopper_id);
+        this.loaded = true;
+      }
+    }
   }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
-          products = _this$props.products,
+          carts = _this$props.carts,
           shopper_id = _this$props.shopper_id;
 
       if (!shopper_id) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "cart--not-signed-in"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Please sign in to view or add items to your cart !"));
-      } else if (products.length === 0) {
+      } else if (!this.loaded) {
+        return null;
+      } else if (this.loaded && shopper_id && carts.length === 0) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "cart--empty"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Your cart is empty ! "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
@@ -639,7 +649,7 @@ var CartIndex = /*#__PURE__*/function (_React$Component) {
       } else {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "cart"
-        }, products.map(function (product) {
+        }, carts.map(function (product) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_index_item__WEBPACK_IMPORTED_MODULE_1__.default, {
             key: product.id,
             product: product
@@ -747,7 +757,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
-
+ // import {ShoppingCartIcon} from '../../../app/assets/images/icons/unavailable-image.jpg';
 
 var Header = function Header(_ref) {
   var currentUser = _ref.currentUser,
@@ -760,7 +770,7 @@ var Header = function Header(_ref) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       className: "button button--link",
       onClick: function onClick() {
-        return openModal('login');
+        return openModal("login");
       }
     }, "Sign In"));
   };
@@ -773,11 +783,10 @@ var Header = function Header(_ref) {
       onClick: function onClick() {
         return openModal("add_product");
       }
-    }, "Add a Product"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    }, "Add a Product"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      to: "/cartRedirect",
       className: "button button--link"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-      to: "/cart"
-    }, "Cart ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    }, "Cart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       className: "button button--link",
       onClick: function onClick() {
         return logout();
@@ -1484,11 +1493,15 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
 
       if (this.props.session) {
-        this.props.addToCart(this.props.product);
-        this.props.history.push("/cart");
-      } else {
-        this.props.history.push("/cart");
+        this.props.addToCart({
+          cart: {
+            product_id: this.props.product.id,
+            shopper_id: this.props.session
+          }
+        });
       }
+
+      this.props.history.push("/cartRedirect");
     }
   }, {
     key: "componentDidMount",
@@ -2623,16 +2636,18 @@ var fetchCartProducts = function fetchCartProducts(shopper_id) {
     }
   });
 };
-var addToCart = function addToCart(product) {
+var addToCart = function addToCart(_ref) {
+  var cart = _ref.cart;
   return $.ajax({
     url: "/api/carts/",
     method: "POST",
     data: {
-      product: product
+      cart: cart
     }
   });
 };
-var removeFromCart = function removeFromCart(product) {
+var removeFromCart = function removeFromCart(_ref2) {
+  var product = _ref2.product;
   return $.ajax({
     url: "/api/carts/",
     method: "DELETE",

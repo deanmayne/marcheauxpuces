@@ -3,7 +3,7 @@ class Cart < ApplicationRecord
         foreign_key: :shopper_id,
         class_name: :User
 
-    has_many :products,
+    belongs_to :product,
         foreign_key: :product_id,
         class_name: :Product
 

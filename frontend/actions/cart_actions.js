@@ -4,17 +4,17 @@ export const RECEIVE_CART_PRODUCTS = "RECEIVE_CART_PRODUCTS";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 
-export const receivecartproducts = ({products}) => ({
+export const receivecartproducts = (products) => ({
   type: RECEIVE_CART_PRODUCTS,
   products,
 });
 
-export const addtocart = ({ product }) => ({
+export const addtocart = (product) => ({
   type: ADD_TO_CART,
   product,
 });
 
-export const removefromcart = ({ product }) => ({
+export const removefromcart = (product) => ({
   type: REMOVE_FROM_CART,
   product,
 });

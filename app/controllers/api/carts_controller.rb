@@ -1,18 +1,19 @@
 class Api::CartsController < ApplicationController
 
     def create
+        product_id = params[:product_id]
         @product = Cart.new(cart_params)
-        if @product.save     
-            render '/api/carts/index'
+        if @product.save
+            @product = Product.find_by(id: params['cart']['product_id'])
+            render '/api/carts/show'
         end
 
     end
 
     def index
-        @products = Cart.where(shopper_id: params[:shopper_id])
+        @products = Product.joins(:carts).where('carts.shopper_id = ?', params[:shopper_id])
             render '/api/carts/index'
     end
-
 
     private
     def cart_params

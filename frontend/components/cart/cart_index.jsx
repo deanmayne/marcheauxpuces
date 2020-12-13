@@ -6,32 +6,35 @@ import { Link } from "react-router-dom";
 class CartIndex extends React.Component {
   constructor(props) {
     super(props);
+    this.loaded = this.props.loaded;
   }
 
   componentDidMount() {
     if (this.props.shopper_id) {
       this.props.receiveCartProducts(this.props.shopper_id);
+      this.loaded = true;
     }
   }
 
-//   componentDidUpdate(prevProps) {
-//     if (
-//       prevProps.match.path !== this.props.match.path &&
-//       this.props.shopper_id
-//     ) {
-//       this.props.receiveCartProducts(this.props.shopper_id);
-//     }
-//   }
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.path !== this.props.match.path) {
+      this.props.receiveCartProducts(this.props.shopper_id);
+      this.loaded = true;
+    }
+  }
 
   render() {
-    const { products, shopper_id } = this.props;
+    const { carts, shopper_id } = this.props;
     if (!shopper_id) {
       return (
         <div className="cart--not-signed-in">
           <h1>Please sign in to view or add items to your cart !</h1>
         </div>
       );
-    } else if (products.length === 0) {
+    } else
+    if (!this.loaded) {
+      return null;
+    } else if (this.loaded && shopper_id && carts.length === 0) {
       return (
         <div className="cart--empty">
           <h1>
@@ -45,7 +48,7 @@ class CartIndex extends React.Component {
     } else {
       return (
         <div className="cart">
-          {products.map((product) => {
+          {carts.map((product) => {
             return <CartIndexItem key={product.id} product={product} />;
           })}
         </div>
