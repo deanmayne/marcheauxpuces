@@ -13,19 +13,18 @@
       grid-gap: 2px;
       justify-content: center;
       align-content: center;
-      margin-top: 10px;
-      margin-left: 10px;
 
       .site-title {
         cursor: pointer;
         display: block;
-        flex-grow: 1;
         color: $primary-color;
         font-family: "Spartan", serif;
         font-size: 35px;
         padding-left: 5px;
         font-weight: 200;
-        margin: 0px;
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-bottom: 0px;
       }
 
       .tagline {
@@ -39,47 +38,46 @@
       }
     }
 
-    .search-box {
-      flex-grow: 20;
+    .search-field {
+      flex: 1;
+      margin-left: 10px;
+      margin-right: 10px;
+      border: 1px solid grey;
+      border-radius: 30px;
+      height: 35px;
+      outline: none;
+      padding-left: 17.5px;
+      font-family: $secondary-font;
+      background-color: rgba(34, 34, 34, 0.07);
 
-      .search-field {
-        width: 100%;
-        margin-left: 8px;
-        margin-right: 10px;
-        border: 1px solid grey;
-        border-radius: 30px;
-        height: 35px;
-        outline: none;
-        padding-left: 10px;
-        font-family: $secondary-font;
-        background-color: rgba(34, 34, 34, 0.07);
-
-        &:active,
-        &:focus {
-          background-color: white;
-          transition: 0.3s ease-in-out;
-        }
+      &:active,
+      &:focus {
+        background-color: white;
+        transition: 0.3s ease-in-out;
       }
     }
     .login-sign-up-box {
-      justify-content: center;
-      margin-left: 35px;
       display: flex;
-      flex-grow: 0.5;
+      justify-content: center;
 
-      .login-button,
-      .logout-button,
-      .product-form-button {
-        cursor: pointer;
-        display: inline-block;
-        border: none;
-        outline: none;
-        font-family: $secondary-font;
-        font-size: 20px;
-        color: gray;
-        background-color: white;
-        transition: color 0.3s ease-in-out;
-      }
+
+     & > * {
+        margin: 0 2px; 
+     }
+
+    //   .login-button,
+    //   .logout-button,
+    //   .product-form-button {
+    //     cursor: pointer;
+    //     display: inline-block;
+    //     border: none;
+    //     outline: none;
+    //     font-family: $secondary-font;
+    //     font-size: 20px;
+    //     color: gray;
+    //     background-color: white;
+    //     transition: color 0.3s ease-in-out;
+    //   }
     }
   }
 

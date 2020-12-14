@@ -760,7 +760,7 @@ var CartIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "cart-item__shipping--" + product.free_shipping
       }, product.free_shipping === "true" ? "Free Shipping" : "Paid Shipping"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-item__price"
-      }, "$", product.price))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, "$", /\.\d$/.test(product.price) ? product.price + "0" : !/\./.test(product.price) ? product.price + ".00" : product.price))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-item--far-right"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "button button--primary button--sm",
@@ -870,13 +870,11 @@ var Header = function Header(_ref) {
       className: "site-title"
     }, " March\xE9 aux Puces"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", {
       className: "tagline"
-    }, "Nonesense. Even in English.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "search-box"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    }, "Nonesense. Even in English.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
       className: "search-field",
       type: "text",
       placeholder: "Search for Products"
-    })), currentUser ? signedin() : signedout()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    }), currentUser ? signedin() : signedout()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "bottom-header"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
       className: "jewelry-accessories",
@@ -1490,7 +1488,7 @@ var ProductIndexItem = function ProductIndexItem(_ref) {
     className: "product-card__shipping--" + product.free_shipping
   }, product.free_shipping === "true" ? "Free Shipping" : "Paid Shipping"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "product-card__price"
-  }, "$", product.price));
+  }, "$", /\.\d$/.test(product.price) ? product.price + "0" : !/\./.test(product.price) ? product.price + ".00" : product.price));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductIndexItem);
@@ -1596,7 +1594,7 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
           className: "product-show__shipping--" + product.free_shipping
         }, product.free_shipping === "true" ? "Free Shipping" : "Paid Shipping"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "product-show__price"
-        }, "$", product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        }, "$", /\.\d$/.test(product.price) ? product.price + "0" : !/\./.test(product.price) ? product.price + ".00" : product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
           className: "product-show__description--label"
         }, "Description:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "product-show__description"

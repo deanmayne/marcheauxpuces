@@ -40,13 +40,11 @@ const Header = ({ currentUser, logout, openModal }) => {
             <h1 className="site-title"> Marché aux Puces</h1>
             <h4 className="tagline">Nonesense. Even in English.</h4>
           </Link>
-        <div className="search-box">
           <input
             className="search-field"
             type="text"
             placeholder="Search for Products"
           />
-        </div>
         {currentUser ? signedin() : signedout()}
       </div>
       <div className="bottom-header">

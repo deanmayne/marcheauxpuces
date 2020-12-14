@@ -21,10 +21,7 @@ class CartIndexItem extends React.Component {
     return (
       <div className="cart-item">
         <Link to={"/product/" + product.id}>
-          <img
-            className="cart-item--left"
-            src={product.img_url}
-          />
+          <img className="cart-item--left" src={product.img_url} />
           <div className="cart-item--right">
             <div className="cart-item__name">{product.name}</div>
             <div className="cart-item__location">{product.location}</div>
@@ -33,7 +30,12 @@ class CartIndexItem extends React.Component {
                 ? "Free Shipping"
                 : "Paid Shipping"}
             </div>
-            <div className="cart-item__price">${product.price}</div>
+            <div className="cart-item__price">
+              $
+              {/\.\d$/.test(product.price)
+                ? product.price + "0"
+                : !/\./.test(product.price) ? product.price + ".00" : product.price}
+            </div>
           </div>
         </Link>
         <div className="cart-item--far-right">

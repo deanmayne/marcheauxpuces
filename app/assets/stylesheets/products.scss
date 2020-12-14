@@ -13,10 +13,12 @@
     font-size: 16px;
     max-width: 200px;
     padding: 25px;
+    grid-template-rows: repeat(4, min-content) auto;
 
     img {
       max-width: 100%;
       max-height: 200px;
+      border-radius: 4px;
 
     }
 
@@ -77,6 +79,7 @@
   .product-show--left {
     max-height: 400px;
     max-width: 400px;
+    border-radius: 20px;
   }
 
   .product-show--right {

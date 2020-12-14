@@ -30,10 +30,7 @@ class ProductShow extends React.Component {
     } else {
       return (
         <div className="product-show-container">
-          <img
-            className="product-show--left"
-            src={product.img_url}
-          />
+          <img className="product-show--left" src={product.img_url} />
           <div className="product-show--right">
             <div className="product-show__name">{product.name}</div>
             <div className="product-show__location">{product.location}</div>
@@ -42,7 +39,14 @@ class ProductShow extends React.Component {
                 ? "Free Shipping"
                 : "Paid Shipping"}
             </div>
-            <div className="product-show__price">${product.price}</div>
+            <div className="product-show__price">
+              $
+              {/\.\d$/.test(product.price)
+                ? product.price + "0"
+                : !/\./.test(product.price)
+                ? product.price + ".00"
+                : product.price}
+            </div>
             <label className="product-show__description--label">
               Description:
             </label>
