@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import {ShoppingCartIcon} from '../../../app/assets/images/icons/unavailable-image.jpg';
+// import {ShoppingCartIcon} from '../../../app/assets/images/icons/shopping-cart.svg';
 
 const Header = ({ currentUser, logout, openModal }) => {
   const signedout = () => (

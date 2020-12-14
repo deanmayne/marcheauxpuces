@@ -822,7 +822,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
- // import {ShoppingCartIcon} from '../../../app/assets/images/icons/unavailable-image.jpg';
+ // import {ShoppingCartIcon} from '../../../app/assets/images/icons/shopping-cart.svg';
 
 var Header = function Header(_ref) {
   var currentUser = _ref.currentUser,
