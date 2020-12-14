@@ -15,6 +15,14 @@ class Api::CartsController < ApplicationController
             render '/api/carts/index'
     end
 
+    def destroy
+        @product = Cart.find_by(shopper_id: current_user.id, product_id: params[:id])
+        if @product && @product.delete
+            render '/api/carts/destroy'
+        end
+      end
+
+
     private
     def cart_params
         params.require(:cart).permit(:product_id, :shopper_id)

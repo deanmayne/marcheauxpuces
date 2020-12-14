@@ -24,7 +24,7 @@ class CartIndex extends React.Component {
   }
 
   render() {
-    const { carts, shopper_id } = this.props;
+    const { carts, shopper_id, removeFromCart } = this.props;
     if (!shopper_id) {
       return (
         <div className="cart--not-signed-in">
@@ -49,7 +49,7 @@ class CartIndex extends React.Component {
       return (
         <div className="cart">
           {carts.map((product) => {
-            return <CartIndexItem key={product.id} product={product} />;
+            return <CartIndexItem history = {this.props.history} key={product.id} product={product} removeFromCart={removeFromCart} />;
           })}
         </div>
       );

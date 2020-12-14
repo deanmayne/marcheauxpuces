@@ -159,9 +159,9 @@ var receiveCartProducts = function receiveCartProducts(shopper_id) {
     });
   };
 };
-var removeFromCart = function removeFromCart(product) {
+var removeFromCart = function removeFromCart(id) {
   return function (dispatch) {
-    return _util_cart_api_util__WEBPACK_IMPORTED_MODULE_0__.removeFromCart(product).then(function (product) {
+    return _util_cart_api_util__WEBPACK_IMPORTED_MODULE_0__.removeFromCart(id).then(function (product) {
       return dispatch(removefromcart(product));
     });
   };
@@ -519,7 +519,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state, ownProps) {
+var mapStateToProps = function mapStateToProps(state) {
   return {
     carts: Object.values(state.entities.carts),
     shopper_id: state.session.id,
@@ -532,8 +532,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     addToCart: function addToCart(product) {
       return dispatch((0,_actions_cart_actions__WEBPACK_IMPORTED_MODULE_1__.addToCart)(product));
     },
-    removeFromCart: function removeFromCart(product) {
-      return dispatch((0,_actions_cart_actions__WEBPACK_IMPORTED_MODULE_1__.removeFromCart)(product));
+    removeFromCart: function removeFromCart(product_id) {
+      return dispatch((0,_actions_cart_actions__WEBPACK_IMPORTED_MODULE_1__.removeFromCart)(product_id));
     },
     fetchProducts: function fetchProducts() {
       return dispatch((0,_actions_product_actions__WEBPACK_IMPORTED_MODULE_2__.fetchProducts)());
@@ -630,9 +630,12 @@ var CartIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$props = this.props,
           carts = _this$props.carts,
-          shopper_id = _this$props.shopper_id;
+          shopper_id = _this$props.shopper_id,
+          removeFromCart = _this$props.removeFromCart;
 
       if (!shopper_id) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -651,8 +654,10 @@ var CartIndex = /*#__PURE__*/function (_React$Component) {
           className: "cart"
         }, carts.map(function (product) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_index_item__WEBPACK_IMPORTED_MODULE_1__.default, {
+            history: _this2.props.history,
             key: product.id,
-            product: product
+            product: product,
+            removeFromCart: removeFromCart
           });
         }));
       }
@@ -682,36 +687,90 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _util_cart_api_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/cart_api_util */ "./frontend/util/cart_api_util.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
 
-var CartIndexItem = function CartIndexItem(_ref) {
-  var product = _ref.product;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "cart-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-    to: "/product/" + product.id
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-    className: "cart-item--left",
-    src: "https://visualsound.com/wp-content/uploads/2019/05/unavailable-image.jpg"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "cart-item--right"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "cart-item__name"
-  }, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "cart-item__location"
-  }, product.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "cart-item__shipping--" + product.free_shipping
-  }, product.free_shipping === "true" ? "Free Shipping" : "Paid Shipping"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "cart-item__price"
-  }, "$", product.price))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "cart-item--far-right"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-    className: "button button--primary button--sm"
-  }, "Remove from Cart")));
-};
+
+
+var CartIndexItem = /*#__PURE__*/function (_React$Component) {
+  _inherits(CartIndexItem, _React$Component);
+
+  var _super = _createSuper(CartIndexItem);
+
+  function CartIndexItem(props) {
+    var _this;
+
+    _classCallCheck(this, CartIndexItem);
+
+    _this = _super.call(this, props);
+    _this.handleRemove = _this.handleRemove.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(CartIndexItem, [{
+    key: "handleRemove",
+    value: function handleRemove(e) {
+      var product = this.props.product;
+      e.preventDefault;
+      this.props.removeFromCart(product.id);
+      this.props.history.push("/cartRedirect");
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var product = this.props.product;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "cart-item"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+        to: "/product/" + product.id
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        className: "cart-item--left",
+        src: "https://visualsound.com/wp-content/uploads/2019/05/unavailable-image.jpg"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "cart-item--right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "cart-item__name"
+      }, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "cart-item__location"
+      }, product.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "cart-item__shipping--" + product.free_shipping
+      }, product.free_shipping === "true" ? "Free Shipping" : "Paid Shipping"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "cart-item__price"
+      }, "$", product.price))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "cart-item--far-right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "button button--primary button--sm",
+        onClick: this.handleRemove
+      }, "Remove from Cart")));
+    }
+  }]);
+
+  return CartIndexItem;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CartIndexItem);
 
@@ -2652,14 +2711,10 @@ var addToCart = function addToCart(_ref) {
     }
   });
 };
-var removeFromCart = function removeFromCart(_ref2) {
-  var product = _ref2.product;
+var removeFromCart = function removeFromCart(product_id) {
   return $.ajax({
-    url: "/api/carts/",
-    method: "DELETE",
-    data: {
-      product: product
-    }
+    url: "/api/carts/".concat(product_id),
+    method: "DELETE"
   });
 };
 

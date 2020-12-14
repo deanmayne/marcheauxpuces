@@ -1,0 +1,1 @@
+json.extract! @product, :id, :product_id, :shopper_id

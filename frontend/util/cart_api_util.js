@@ -15,11 +15,10 @@ export const addToCart = ({ cart }) => (
   })
 )
 
-export const removeFromCart = ({product}) => (
+export const removeFromCart = (product_id) => (
   $.ajax({
-    url: `/api/carts/`,
-    method: "DELETE",
-    data: {product}
+    url: `/api/carts/${product_id}`,
+    method: "DELETE"
   })
 
 )

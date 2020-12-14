@@ -29,8 +29,8 @@ export const receiveCartProducts = (shopper_id) => (dispatch) =>
     dispatch(receivecartproducts(products))
   );
 
-export const removeFromCart = (product) => (dispatch) =>
-  APIUtil.removeFromCart(product).then((product) =>
+export const removeFromCart = (id) => (dispatch) =>
+  APIUtil.removeFromCart(id).then((product) =>
     dispatch(removefromcart(product))
   );
 

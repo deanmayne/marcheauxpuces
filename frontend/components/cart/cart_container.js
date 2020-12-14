@@ -10,7 +10,7 @@ import {
 import { openModal } from "../../actions/modal_actions";
 import CartIndex from "./cart_index";
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
 
   return {
     carts: Object.values(state.entities.carts),
@@ -22,7 +22,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addToCart: (product) => dispatch(addToCart(product)),
-    removeFromCart: (product) => dispatch(removeFromCart(product)),
+    removeFromCart: (product_id) => dispatch(removeFromCart(product_id)),
     fetchProducts: () => dispatch(fetchProducts()),
     receiveCartProducts: (shopper_id) => dispatch(receiveCartProducts(shopper_id)),
     openModal: (modal) => openModal(modal)
