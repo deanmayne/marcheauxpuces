@@ -23,7 +23,7 @@ class CartIndexItem extends React.Component {
         <Link to={"/product/" + product.id}>
           <img
             className="cart-item--left"
-            src="https://visualsound.com/wp-content/uploads/2019/05/unavailable-image.jpg"
+            src={product.img_url}
           />
           <div className="cart-item--right">
             <div className="cart-item__name">{product.name}</div>

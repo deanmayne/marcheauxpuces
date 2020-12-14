@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-    validates :name, :description, :price, :location, :free_shipping, :category, presence: true
+    validates :name, :description, :price, :location, :free_shipping, :category, :img_url, presence: true
     validates :free_shipping, inclusion: {in: ["true", "false"]} 
 
     belongs_to :user,

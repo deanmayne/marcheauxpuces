@@ -32,7 +32,7 @@ class ProductShow extends React.Component {
         <div className="product-show-container">
           <img
             className="product-show--left"
-            src="https://visualsound.com/wp-content/uploads/2019/05/unavailable-image.jpg"
+            src={product.img_url}
           />
           <div className="product-show--right">
             <div className="product-show__name">{product.name}</div>

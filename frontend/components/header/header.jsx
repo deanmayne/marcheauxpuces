@@ -36,9 +36,10 @@ const Header = ({ currentUser, logout, openModal }) => {
   const header = () => (
     <header className="main-header">
       <div className="top-header">
-        <Link to="/">
-          <h1 className="site-title"> Marché aux Puces</h1>
-        </Link>
+          <Link to="/">
+            <h1 className="site-title"> Marché aux Puces</h1>
+            <h4 className="tagline">Nonesense. Even in English.</h4>
+          </Link>
         <div className="search-box">
           <input
             className="search-field"

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 const ProductIndexItem = ({ product }) => (
   <Link to={"/product/"+product.id} className="product-card">
-    <img src="https://visualsound.com/wp-content/uploads/2019/05/unavailable-image.jpg" />
+    <img src={product.img_url} />
     <div className="product-card__name">{product.name}</div>
     <div className="product-card__detail">
       <div className="product-card__location">{product.location}</div>
