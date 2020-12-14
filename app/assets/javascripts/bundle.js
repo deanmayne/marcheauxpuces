@@ -1482,7 +1482,7 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
         className: "product-index__highlight"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "THIS WILL BE SOME SORT OF HIGHLIGHT")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "products-index__grid"
-      }, products.slice(0, 14).map(function (product) {
+      }, products.slice(0, 15).map(function (product) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_product_index_item__WEBPACK_IMPORTED_MODULE_1__.default, {
           key: product.id,
           product: product

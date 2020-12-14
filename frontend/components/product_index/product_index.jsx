@@ -30,7 +30,7 @@ class ProductIndex extends React.Component {
           <h1>THIS WILL BE SOME SORT OF HIGHLIGHT</h1>
         </div>
         <div className="products-index__grid">
-          {products.slice(0, 14).map((product) => {
+          {products.slice(0, 15).map((product) => {
             return <ProductIndexItem key={product.id} product={product} />;
           })}
         </div>
