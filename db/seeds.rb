@@ -25,11 +25,10 @@ philip = User.create(
 )
 
 
-75.times do
+100.times do
     name = Faker::Commerce.unique.product_name
-    until !name.include?("Pants") && !name.include?("Shirt")
-        name = Faker::Commerce.unique.product_name
-    end
+
+
 
     Product.create(
     name: name,
@@ -37,7 +36,7 @@ philip = User.create(
     price: Faker::Commerce.price(range: 0..100.0),
     category: ["jewelry-accessories","clothing-shoes","home-living","wedding-party","toys-entertainment","arts-collectibles","craft-supplies","gifts-gift-cards"].sample,
     free_shipping: ["true","false"].sample,
-    img_url: Faker::LoremFlickr.image(search_terms: name.split(" ").drop(1), match_all: true),
+    img_url:  "https://source.unsplash.com/300x300/?" + name.split(" ")[-2].downcase + "," + name.split(" ").last.downcase + "&content-filter=low",
     location: Faker::Address.full_address.split(", ").drop(1).join(", ")[/([a-zA-Z\s])+\,\s[a-zA-Z]{2}/],
     owner_id: [guest.id, philip.id].sample
 
