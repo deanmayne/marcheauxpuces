@@ -44,7 +44,7 @@ class ProductShow extends React.Component {
             </div>
             <div className="product-show__price">${product.price}</div>
             <label className="product-show__description--label">
-              Description
+              Description:
             </label>
             <div className="product-show__description">
               {product.description}
