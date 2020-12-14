@@ -820,9 +820,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _icons_icon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../icons/icon */ "./frontend/components/icons/icon.jsx");
 
  // import {ShoppingCartIcon} from '../../../app/assets/images/icons/shopping-cart.svg';
+
+
 
 var Header = function Header(_ref) {
   var currentUser = _ref.currentUser,
@@ -848,10 +851,12 @@ var Header = function Header(_ref) {
       onClick: function onClick() {
         return openModal("add_product");
       }
-    }, "Add a Product"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    }, "Add a Product"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
       to: "/cartRedirect",
-      className: "button button--link"
-    }, "Cart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      className: "button button--link button--icon"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_icons_icon__WEBPACK_IMPORTED_MODULE_1__.default, {
+      icon: "basket"
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       className: "button button--link",
       onClick: function onClick() {
         return logout();
@@ -864,7 +869,7 @@ var Header = function Header(_ref) {
       className: "main-header"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "top-header"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
       to: "/"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
       className: "site-title"
@@ -876,28 +881,28 @@ var Header = function Header(_ref) {
       placeholder: "Search for Products"
     }), currentUser ? signedin() : signedout()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "bottom-header"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
       className: "jewelry-accessories",
       to: "/jewelry-accessories"
-    }, "Jewelry & Accessories"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    }, "Jewelry & Accessories"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
       className: "clothing-shoes",
       to: "/clothing-shoes"
-    }, "Clothing & Shoes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    }, "Clothing & Shoes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
       className: "home-living",
       to: "/home-living"
-    }, "Home & Living"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    }, "Home & Living"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
       className: "wedding-party",
       to: "/wedding-party"
-    }, "Wedding & Party"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    }, "Wedding & Party"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
       className: "toys-entertainment",
       to: "/toys-entertainment"
-    }, "Toys & Entertainment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    }, "Toys & Entertainment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
       className: "arts-collectibles",
       to: "/arts-collectibles"
-    }, "Arts & Collectibles"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    }, "Arts & Collectibles"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
       className: "craft-supplies",
       to: "/craft-supplies"
-    }, "Craft Supplies"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    }, "Craft Supplies"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
       className: "gifts-gift-cards",
       to: "/gifts-gift-cards"
     }, "Gifts & Gift Cards")));
@@ -954,6 +959,88 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_header__WEBPACK_IMPORTED_MODULE_3__.default));
+
+/***/ }),
+
+/***/ "./frontend/components/icons/icon.jsx":
+/*!********************************************!*\
+  !*** ./frontend/components/icons/icon.jsx ***!
+  \********************************************/
+/*! namespace exports */
+/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_exports__, __webpack_require__.r, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var Icon = function Icon(_ref) {
+  var icon = _ref.icon;
+
+  switch (icon) {
+    case "basket":
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
+        className: "icon icon--basket",
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 24 24"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+        d: "M21,8H17.68L15.93,3.63a1,1,0,1,0-1.86.74L15.52,8h-7L9.93,4.37a1,1,0,0,0-1.86-.74L6.32,8H3a1,1,0,0,0,0,2h.18L5,19.2A1,1,0,0,0,6,20H18a1,1,0,0,0,1-.8L20.82,10H21a1,1,0,0,0,0-2ZM17.18,18H6.82l-1.6-8H18.78Z"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("rect", {
+        x: "9",
+        y: "12",
+        width: "6",
+        height: "3",
+        rx: "1"
+      }));
+
+    case "cross":
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
+        className: "icon icon--cross",
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 24 24"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+        d: "M17.71,16.29a1,1,0,0,1,0,1.42,1,1,0,0,1-1.42,0L12,13.42,7.71,17.71a1,1,0,0,1-1.42,0,1,1,0,0,1,0-1.42L10.58,12,6.29,7.71A1,1,0,0,1,7.71,6.29L12,10.58l4.29-4.29a1,1,0,1,1,1.42,1.42L13.42,12Z"
+      }));
+
+    case "star":
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
+        className: "icon icon--star",
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 24 24"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+        d: "M17.56,21.56a1,1,0,0,1-.52-.15l-5-3.08L7,21.41a1,1,0,0,1-1.49-1.08l1.37-5.75L2.35,10.74A1,1,0,0,1,2.92,9l5.89-.48,2.27-5.45a1,1,0,0,1,1.84,0l2.27,5.45L21.08,9a1,1,0,0,1,.57,1.75l-4.49,3.84,1.37,5.75a1,1,0,0,1-.38,1A1.06,1.06,0,0,1,17.56,21.56ZM12,16.16a1,1,0,0,1,.52.15L16,18.45l-1-4a1,1,0,0,1,.33-1l3.12-2.67-4.1-.33a1,1,0,0,1-.84-.62L12,6l-1.58,3.8a1,1,0,0,1-.84.62l-4.1.33L8.6,13.46a1,1,0,0,1,.33,1l-1,4,3.51-2.14A1,1,0,0,1,12,16.16Z"
+      }));
+
+    case "star-filled":
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
+        className: "icon icon--star-filled",
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 24 24"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+        d: "M17.56,21.56a1,1,0,0,1-.52-.15l-5-3.08L7,21.41a1,1,0,0,1-1.49-1.08l1.37-5.75L2.35,10.74A1,1,0,0,1,2.92,9l5.89-.48,2.27-5.45a1,1,0,0,1,1.84,0l2.27,5.45L21.08,9a1,1,0,0,1,.57,1.75l-4.49,3.84,1.37,5.75a1,1,0,0,1-.38,1A1.06,1.06,0,0,1,17.56,21.56Z"
+      }));
+
+    case "search":
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
+        className: "icon icon--search",
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 24 24"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+        d: "M13.89,12.47a6,6,0,0,0,.95-4.87,6,6,0,1,0-2.37,6.29L18.58,20A1,1,0,0,0,20,20h0a1,1,0,0,0,0-1.42ZM9,13a4,4,0,1,1,4-4A4,4,0,0,1,9,13Z"
+      }));
+
+    default:
+      return null;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Icon);
 
 /***/ }),
 
@@ -1390,13 +1477,26 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var products = this.props.products;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "products-index-container"
-      }, products.map(function (product) {
+        className: "product-index"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "product-index__highlight"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "THIS WILL BE SOME SORT OF HIGHLIGHT")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "products-index__grid"
+      }, products.slice(0, 14).map(function (product) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_product_index_item__WEBPACK_IMPORTED_MODULE_1__.default, {
           key: product.id,
           product: product
         });
-      }));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "product-index__highlight"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "THIS WILL BE SOME SORT OF HIGHLIGHT")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "products-index__grid"
+      }, products.slice(15, products.length).map(function (product) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_product_index_item__WEBPACK_IMPORTED_MODULE_1__.default, {
+          key: product.id,
+          product: product
+        });
+      })));
     }
   }]);
 

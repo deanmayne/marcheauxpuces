@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // import {ShoppingCartIcon} from '../../../app/assets/images/icons/shopping-cart.svg';
+import Icon from "../icons/icon";
 
 const Header = ({ currentUser, logout, openModal }) => {
   const signedout = () => (
@@ -22,9 +23,8 @@ const Header = ({ currentUser, logout, openModal }) => {
       >
         Add a Product
       </button>
-      <Link to="/cartRedirect" className="button button--link">
-        Cart
-        {/* <img src={ShoppingCartIcon}/> */}
+      <Link to="/cartRedirect" className="button button--link button--icon">
+        <Icon icon="basket"/>
       </Link>
 
       <button className="button button--link" onClick={() => logout()}>
@@ -36,15 +36,15 @@ const Header = ({ currentUser, logout, openModal }) => {
   const header = () => (
     <header className="main-header">
       <div className="top-header">
-          <Link to="/">
-            <h1 className="site-title"> Marché aux Puces</h1>
-            <h4 className="tagline">Nonesense. Even in English.</h4>
-          </Link>
-          <input
-            className="search-field"
-            type="text"
-            placeholder="Search for Products"
-          />
+        <Link to="/">
+          <h1 className="site-title"> Marché aux Puces</h1>
+          <h4 className="tagline">Nonesense. Even in English.</h4>
+        </Link>
+        <input
+          className="search-field"
+          type="text"
+          placeholder="Search for Products"
+        />
         {currentUser ? signedin() : signedout()}
       </div>
       <div className="bottom-header">

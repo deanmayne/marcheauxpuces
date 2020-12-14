@@ -28,8 +28,6 @@ philip = User.create(
 100.times do
     name = Faker::Commerce.unique.product_name
 
-
-
     Product.create(
     name: name,
     description: Faker::Lorem.sentences(number: 4).join(" "),

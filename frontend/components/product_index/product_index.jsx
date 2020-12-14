@@ -25,10 +25,25 @@ class ProductIndex extends React.Component {
   render() {
     const { products } = this.props;
     return (
-      <div className="products-index-container">
-        {products.map((product) => {
-          return <ProductIndexItem key={product.id} product={product} />;
-        })}
+      <div className="product-index">
+        <div className="product-index__highlight">
+          <h1>THIS WILL BE SOME SORT OF HIGHLIGHT</h1>
+        </div>
+        <div className="products-index__grid">
+          {products.slice(0, 14).map((product) => {
+            return <ProductIndexItem key={product.id} product={product} />;
+          })}
+        </div>
+        <div className="product-index__highlight">
+          <h1>THIS WILL BE SOME SORT OF HIGHLIGHT</h1>
+        </div>
+        <div className="products-index__grid">
+          {products
+            .slice(15, products.length)
+            .map((product) => {
+              return <ProductIndexItem key={product.id} product={product} />;
+            })}
+        </div>
       </div>
     );
   }
