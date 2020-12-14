@@ -43,6 +43,12 @@ class ProductShow extends React.Component {
                 : "Paid Shipping"}
             </div>
             <div className="product-show__price">${product.price}</div>
+            <label className="product-show__description--label">
+              Description
+            </label>
+            <div className="product-show__description">
+              {product.description}
+            </div>
             <button
               type="button"
               onClick={this.cartAdd}
@@ -50,12 +56,9 @@ class ProductShow extends React.Component {
             >
               Add to Cart
             </button>
-            <label className="product-show__description--label">
-              Description
-            </label>
-            <div className="product-show__description">
-              {product.description}
-            </div>
+            <button type="button" className="button button--primary button--lg">
+              Leave a Review
+            </button>
           </div>
         </div>
       );

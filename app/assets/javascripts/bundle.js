@@ -1596,15 +1596,18 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
           className: "product-show__shipping--" + product.free_shipping
         }, product.free_shipping === "true" ? "Free Shipping" : "Paid Shipping"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "product-show__price"
-        }, "$", product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          type: "button",
-          onClick: this.cartAdd,
-          className: "button button--primary button--lg"
-        }, "Add to Cart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        }, "$", product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
           className: "product-show__description--label"
         }, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "product-show__description"
-        }, product.description)));
+        }, product.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          type: "button",
+          onClick: this.cartAdd,
+          className: "button button--primary button--lg"
+        }, "Add to Cart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          type: "button",
+          className: "button button--primary button--lg"
+        }, "Leave a Review")));
       }
     }
   }]);

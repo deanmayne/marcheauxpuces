@@ -4,6 +4,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
+  margin-bottom: 100px;
 
   .product-card {
     display: grid;
@@ -64,9 +65,7 @@
   .product-show--right {
     display: grid;
     grid-gap: 8px;
-    max-height: 15px;
     font-size: 35px;
-    margin-top: 24px;
     margin-left: 20px;
     max-width: 200px;
 
@@ -82,27 +81,24 @@
       font-size: 15px;
       background: #d4e9d7;
       border-radius: 20px;
-      padding: 2px 4px;
+      padding: 4px 8px;
       margin-right: 56px;
       max-width: 7.4em;
+      text-align: center;
     }
 
     .product-show__shipping--false {
       font-size: 15px;
       background: #fdebd2;
       border-radius: 20px;
-      padding: 2px 4px;
+      padding: 4px 8px;
       margin-right: 56px;
       max-width: 7.4em;
+      text-align: center;
     }
 
     .product-show__price {
       font-size: 20px;
-    }
-
-    button {
-      margin: 0;
-      max-width: 174.06px;
     }
 
     .product-show__description--label {
