@@ -52,3 +52,11 @@ export const createReview = review => (
         data: { review }
     })
 );
+
+export const fetchReviews = (product_id) => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/reviews`,
+    data: { product_id },
+  })
+);

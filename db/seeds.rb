@@ -10,6 +10,7 @@
 User.destroy_all
 Product.destroy_all
 Cart.destroy_all
+Review.destroy_all
 
 
 guest = User.create(
@@ -25,19 +26,33 @@ philip = User.create(
 )
 
 
-100.times do
+50.times do
     name = Faker::Commerce.unique.product_name
 
-    Product.create(
-    name: name,
-    description: Faker::Lorem.sentences(number: 4).join(" "),
-    price: Faker::Commerce.price(range: 0..100.0),
-    category: ["jewelry-accessories","clothing-shoes","home-living","wedding-party","toys-entertainment","arts-collectibles","craft-supplies","gifts-gift-cards"].sample,
-    free_shipping: ["true","false"].sample,
-    img_url:  "https://source.unsplash.com/400x400/?" + name.split(" ")[-2].downcase + "," + name.split(" ").last.downcase + "&content-filter=low",
-    location: Faker::Address.full_address.split(", ").drop(1).join(", ")[/([a-zA-Z\s])+\,\s[a-zA-Z]{2}/],
-    owner_id: [guest.id, philip.id].sample
+    product = Product.create(
+        name: name,
+        description: Faker::Lorem.sentences(number: 4).join(" "),
+        price: Faker::Commerce.price(range: 0..100.0),
+        category: ["jewelry-accessories","clothing-shoes","home-living","wedding-party","toys-entertainment","arts-collectibles","craft-supplies","gifts-gift-cards"].sample,
+        free_shipping: ["true","false"].sample,
+        img_url:  "https://source.unsplash.com/400x400/?" + name.split(" ")[-2].downcase + "," + name.split(" ").last.downcase + "&content-filter=low",
+        location: Faker::Address.full_address.split(", ").drop(1).join(", ")[/([a-zA-Z\s])+\,\s[a-zA-Z]{2}/],
+        owner_id: [guest.id, philip.id].sample
 
+    )
+
+    review = Review.create(
+        body: Faker::Lorem.sentences(number: 8).join(" "),
+        rating: Faker::Number.within(range: 1..5),
+        product_id: product.id,
+        author_id: philip.id
+    )
+
+    review1 = Review.create(
+        body: Faker::Lorem.sentences(number: 8).join(" "),
+        rating: Faker::Number.within(range: 1..5),
+        product_id: product.id,
+        author_id: guest.id
     )
 
 end

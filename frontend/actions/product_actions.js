@@ -3,6 +3,7 @@ import * as APIUtil from '../util/product_api_util';
 export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS';
 export const RECEIVE_PRODUCT = 'RECEIVE_PRODUCT';
 export const RECEIVE_REVIEW = 'RECEIVE_REVIEW';
+export const RECEIVE_REVIEWS = 'RECEIVE_REVIEWS';
 
 
 export const receiveProducts = products => ({
@@ -20,7 +21,17 @@ export const receiveReview = ({ review }) => ({
     review,
 });
 
+export const receiveReviews = (reviews) => ({
+    type: RECEIVE_REVIEWS,
+    reviews,
+})
 
+
+export const fetchReviews = (product_id) => dispatch => (
+    APIUtil.fetchReviews(product_id).then(reviews => (
+        dispatch(receiveReviews(reviews))
+    ))
+)
 
 export const createReview = review => dispatch => (
     APIUtil.createReview(review).then(review => (

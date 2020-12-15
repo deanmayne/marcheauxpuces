@@ -1,6 +1,6 @@
 import React from "react";
 
-const Icon = ({icon}) => {
+const Icon = ({ icon }) => {
   switch (icon) {
     case "basket":
       return (
@@ -51,6 +51,26 @@ const Icon = ({icon}) => {
           viewBox="0 0 24 24"
         >
           <path d="M13.89,12.47a6,6,0,0,0,.95-4.87,6,6,0,1,0-2.37,6.29L18.58,20A1,1,0,0,0,20,20h0a1,1,0,0,0,0-1.42ZM9,13a4,4,0,1,1,4-4A4,4,0,0,1,9,13Z" />
+        </svg>
+      );
+    case "heart":
+      return (
+        <svg
+          className="icon icon--heart"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <path d="M12,20.59a1,1,0,0,1-.71-.29L3.56,12.57A5.37,5.37,0,0,1,11.16,5l.84.85L12.84,5a5.37,5.37,0,0,1,7.6,7.6L12.71,20.3A1,1,0,0,1,12,20.59ZM7.36,5.4A3.34,3.34,0,0,0,5,6.39a3.37,3.37,0,0,0,0,4.76l7,7,7-7a3.37,3.37,0,1,0-4.76-4.76L12.71,7.94a1,1,0,0,1-1.42,0L9.74,6.39A3.34,3.34,0,0,0,7.36,5.4Z" />
+        </svg>
+      );
+    case "heart-filled":
+      return (
+        <svg
+          className="icon icon--heart-filled"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <path d="M12,20.59a1,1,0,0,1-.71-.29L3.56,12.57A5.37,5.37,0,0,1,11.16,5l.84.85L12.84,5a5.37,5.37,0,0,1,7.6,7.6L12.71,20.3A1,1,0,0,1,12,20.59Z" />
         </svg>
       );
     default:

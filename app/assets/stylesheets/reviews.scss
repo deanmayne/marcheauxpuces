@@ -1,0 +1,31 @@
+@import "variables.scss";
+
+.reviews-grid {
+  display: grid;
+  align-self: flex-start;
+  margin-left: 35px;
+  grid-gap: 25px;
+
+  &__title {
+    padding-bottom: 8px;
+    font-size: 20px;
+    font-weight: 200;
+    border-bottom: 1px solid grey;
+  }
+
+  .review-detail {
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &--username {
+      color: $secondary-color;
+      font-size: 12px;
+      font-weight: bolder;
+      align-self: center;
+    }
+  }
+}
+
+

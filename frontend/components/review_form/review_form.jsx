@@ -1,12 +1,14 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React from "react";
+import { withRouter } from "react-router-dom";
+import Icon from "../icons/icon";
 
 class ReviewForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       rating: 5,
-      body: ''
+      body: "",
+      author_id: this.props.session,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.navigateToProductShow = this.navigateToProductShow.bind(this);
@@ -14,62 +16,58 @@ class ReviewForm extends React.Component {
 
   navigateToProductShow() {
     this.props.closeModal();
-    const url = `/products/${this.props.match.params.productId}`
+    const url = `/product/${this.props.match.params.productId}`;
     this.props.history.push(url);
-    
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const productId = parseInt(this.props.match.params.productId);
     const review = Object.assign({}, this.state, {
-      product_id: productId
+      product_id: productId,
     });
     this.props.createReview(review);
     this.navigateToProductShow();
   }
 
   update(property) {
-    return e => this.setState({ [property]: e.currentTarget.value });
+    return (e) => this.setState({ [property]: e.currentTarget.value });
   }
 
   render() {
+      const {closeModal} = this.props;
     return (
-      <div className="review-form">
-        <form onSubmit={this.handleSubmit}>
-            <div className="review-form-top-box">
-            <div className='formType' >Write a Review</div>
-            <div className="close-x" onClick={this.props.closeModal}>X</div>
-            </div>
-            <br/>
-            <div className = "review-form-box">
-          <label>Rating</label>
-          <br/>
-          <input
-            type="number"
-            min = '1'
-            max ='5'
-            value={this.state.rating}
-            onChange={this.update("rating")}
-          />
-          <br/>
-
-          <label>Comment</label>
-          <br/>
-
+      <form className="review-form" onSubmit={this.handleSubmit}>
+        <div className="modal__header">
+          <h2>Write a Review:</h2>
+          <button type = "button" className="button button--link button--icon" onClick={closeModal}>
+            <Icon icon="cross" />
+          </button>
+        </div>
+        <div className="form-field">
           <textarea
             cols="30"
             rows="10"
             value={this.state.body}
             onChange={this.update("body")}
           />
-          <br/>
-          <input type="submit" />
-                </div>
-        </form>
-      </div>
+        </div>
+
+        <div className="form-field">
+          <label htmlFor="rating">Rating:</label>
+
+          <select id="rating" onChange={this.update("rating")}>
+            <option value={1}>1</option>
+            <option value={2}>2</option>
+            <option value={3}>3</option>
+            <option value={4}>4</option>
+            <option value={5}>5</option>
+          </select>
+        </div>
+        <button type="submit" className="button button--primary button--lg">Submit</button>
+      </form>
     );
- }
+  }
 }
 
 export default withRouter(ReviewForm);

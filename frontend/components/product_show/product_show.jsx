@@ -1,9 +1,11 @@
 import React from "react";
+import Icon from "../icons/icon";
+import { Link } from "react-router-dom";
+import ReviewsContainer from "../reviews_index/reviews_container";
 
 class ProductShow extends React.Component {
   constructor(props) {
     super(props);
-
 
     this.cartAdd = this.cartAdd.bind(this);
   }
@@ -11,10 +13,12 @@ class ProductShow extends React.Component {
   cartAdd(e) {
     e.preventDefault();
     if (this.props.session) {
-      this.props.addToCart({ cart:{
-        product_id: this.props.product.id,
-        shopper_id: this.props.session,
-      }});
+      this.props.addToCart({
+        cart: {
+          product_id: this.props.product.id,
+          shopper_id: this.props.session,
+        },
+      });
     }
     this.props.history.push("/cartRedirect");
   }
@@ -24,14 +28,14 @@ class ProductShow extends React.Component {
   }
 
   render() {
-    const { product } = this.props;
+    const { product, openModal } = this.props;
     if (!product) {
       return null;
     } else {
       return (
         <div className="product-show-container">
-          <img className="product-show--left" src={product.img_url} />
-          <div className="product-show--right">
+          <div className="product-show--info">
+            <img src={product.img_url} />
             <div className="product-show__name">{product.name}</div>
             <div className="product-show__location">{product.location}</div>
             <div className={"product-show__shipping--" + product.free_shipping}>
@@ -60,10 +64,14 @@ class ProductShow extends React.Component {
             >
               Add to Cart
             </button>
-            <button type="button" className="button button--primary button--lg">
+            <button type="button" onClick={ () => openModal("review")} className="button button--primary button--lg">
               Leave a Review
             </button>
           </div>
+          <div className="button button--link button--icon">
+            <Icon icon="heart" className="icon icon--heart" />
+          </div>
+          <ReviewsContainer product={product} />
         </div>
       );
     }

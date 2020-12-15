@@ -4,6 +4,10 @@ import { createReview } from '../../actions/product_actions.js';
 import ReviewForm from './review_form';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
+const mapStateToProps = (state) => ({
+    session: state.session.id,
+})
+
 const mapDispatchToProps = dispatch => {
     return{
         createReview: review => dispatch(createReview(review)),
@@ -11,4 +15,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(null,mapDispatchToProps)(ReviewForm);
+export default connect(mapStateToProps,mapDispatchToProps)(ReviewForm);

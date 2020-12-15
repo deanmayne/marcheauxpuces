@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
+import Icon from '../icons/icon';
 
 class ProductForm extends React.Component {
   constructor(props) {
@@ -47,17 +48,17 @@ class ProductForm extends React.Component {
   }
 
   render() {
-    const { description, name, price, free_shipping } = this.state;
+    const { description, name, price, free_shipping, closeModal } = this.state;
 
     return (
       <form className="new-product-form" onSubmit={this.handleSubmit}>
         <div className="modal__header">
           <h2>Create A Product!</h2>
-          <button
-            onClick={this.props.closeModal}
-            className="button button--outline"
+          <button type="button"
+            className="button button--link button--icon"
+            onClick={closeModal}
           >
-            x
+            <Icon icon="cross" className="icon icon--cross"/>
           </button>
         </div>
         <div className="form-field">
@@ -90,7 +91,7 @@ class ProductForm extends React.Component {
         <div className="form-field">
           <label htmlFor="product-category">Category: </label>
           <select id="product-category" onChange={this.update("category")}>
-            <option selected disabled></option>
+            <option defaultValue="" disabled></option>
             <option value="jewelry-accessories">Jewelry & Accessories</option>
             <option value="clothing-shoes">Clothing & Shoes</option>
             <option value="home-living">Home & Living</option>
@@ -139,7 +140,10 @@ class ProductForm extends React.Component {
               </button>
             </div> */}
 
-        <button type="submit" className="button button--primary button--block button--lg">
+        <button
+          type="submit"
+          className="button button--primary button--block button--lg"
+        >
           Create Product
         </button>
       </form>

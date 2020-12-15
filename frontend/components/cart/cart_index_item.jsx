@@ -12,8 +12,8 @@ class CartIndexItem extends React.Component {
   handleRemove(e) {
     const { product } = this.props;
     e.preventDefault;
-    this.props.removeFromCart(product.id);
-    this.props.history.push("/cartRedirect");
+    this.props.removeFromCart(product.id).then(
+    this.props.history.push("/cartRedirect"));
   }
 
   render() {
