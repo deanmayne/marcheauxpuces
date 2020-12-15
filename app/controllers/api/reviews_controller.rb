@@ -3,7 +3,6 @@ class Api::ReviewsController < ApplicationController
 
   def create
     @review = Review.create(review_params)
-
     if @review.save
       render :show
     else

@@ -5,8 +5,8 @@ import ReviewForm from './review_form';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state) => ({
-    session: state.session.id,
-})
+  session: state.session.id,
+});
 
 const mapDispatchToProps = dispatch => {
     return{

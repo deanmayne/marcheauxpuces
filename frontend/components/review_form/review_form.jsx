@@ -6,28 +6,18 @@ class ReviewForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      rating: 5,
+      rating: "5",
       body: "",
+      product_id: this.props.history.location.pathname.match(/\d+/)[0],
       author_id: this.props.session,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.navigateToProductShow = this.navigateToProductShow.bind(this);
-  }
-
-  navigateToProductShow() {
-    this.props.closeModal();
-    const url = `/product/${this.props.match.params.productId}`;
-    this.props.history.push(url);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const productId = parseInt(this.props.match.params.productId);
-    const review = Object.assign({}, this.state, {
-      product_id: productId,
-    });
-    this.props.createReview(review);
-    this.navigateToProductShow();
+    const review = Object.assign({}, this.state);
+    this.props.createReview(review).then(this.props.closeModal);
   }
 
   update(property) {
@@ -35,12 +25,16 @@ class ReviewForm extends React.Component {
   }
 
   render() {
-      const {closeModal} = this.props;
+    const { closeModal } = this.props;
     return (
       <form className="review-form" onSubmit={this.handleSubmit}>
         <div className="modal__header">
           <h2>Write a Review:</h2>
-          <button type = "button" className="button button--link button--icon" onClick={closeModal}>
+          <button
+            type="button"
+            className="button button--link button--icon"
+            onClick={closeModal}
+          >
             <Icon icon="cross" />
           </button>
         </div>
@@ -57,6 +51,7 @@ class ReviewForm extends React.Component {
           <label htmlFor="rating">Rating:</label>
 
           <select id="rating" onChange={this.update("rating")}>
+            <option selected disabled></option>
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>
@@ -64,7 +59,9 @@ class ReviewForm extends React.Component {
             <option value={5}>5</option>
           </select>
         </div>
-        <button type="submit" className="button button--primary button--lg">Submit</button>
+        <button type="submit" className="button button--primary button--lg">
+          Submit
+        </button>
       </form>
     );
   }

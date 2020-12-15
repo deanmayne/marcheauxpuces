@@ -16,7 +16,7 @@ class ReviewsIndex extends React.Component {
       <div className="reviews-grid">
           <div className="reviews-grid__title">Reviews:</div>
         {reviews.map((review) => {
-          return <ReviewsIndexItem key={review.id} review={review} />;
+          return ( <ReviewsIndexItem key={review.id} review={review} />);
         })}
       </div>
     );

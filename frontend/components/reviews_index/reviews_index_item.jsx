@@ -2,10 +2,9 @@ import React from "react";
 import Icon from "../icons/icon";
 
 const ReviewsIndexItem = ({ review }) => {
-
     let stars = [];
     for (let i = 1; i <= review.rating; i++) {
-      stars.push(<Icon icon="star-filled" />);
+      stars.push(<Icon icon="star-filled" key ={i}/>);
     }
 
   return (

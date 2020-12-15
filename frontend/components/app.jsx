@@ -38,6 +38,9 @@ const App = () => (
       <Route exact path="/gifts-gift-cards" component={ProductIndexContainer} />
       <Route exact path="/" component={ProductIndexContainer} />
       <Route exact path="/404" component={fourohfour} />
+      <Route path="/productRedirect/:productId">
+        <Redirect to="/product/:productId" />
+      </Route>
       <Route exact path="/cartRedirect">
         <Redirect to="/cart" />
       </Route>

@@ -1,6 +1,6 @@
 class Review < ApplicationRecord
   validates :rating, inclusion: { in: (1..5) }
-  validates_uniqueness_of :author_id, :scope => :product_id
+#   validates :author_id, uniqueness: { scope: :product_id }
 
   belongs_to :product,
     foreign_key: :product_id,

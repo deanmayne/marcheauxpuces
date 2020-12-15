@@ -249,10 +249,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _util_product_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/product_api_util */ "./frontend/util/product_api_util.js");
 
-var RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS';
-var RECEIVE_PRODUCT = 'RECEIVE_PRODUCT';
-var RECEIVE_REVIEW = 'RECEIVE_REVIEW';
-var RECEIVE_REVIEWS = 'RECEIVE_REVIEWS';
+var RECEIVE_PRODUCTS = "RECEIVE_PRODUCTS";
+var RECEIVE_PRODUCT = "RECEIVE_PRODUCT";
+var RECEIVE_REVIEW = "RECEIVE_REVIEW";
+var RECEIVE_REVIEWS = "RECEIVE_REVIEWS";
 var receiveProducts = function receiveProducts(products) {
   return {
     type: RECEIVE_PRODUCTS,
@@ -266,8 +266,7 @@ var receiveProduct = function receiveProduct(_ref) {
     product: product
   };
 };
-var receiveReview = function receiveReview(_ref2) {
-  var review = _ref2.review;
+var receiveReview = function receiveReview(review) {
   return {
     type: RECEIVE_REVIEW,
     review: review
@@ -496,6 +495,10 @@ var App = function App() {
     path: "/404",
     component: _fourohfour__WEBPACK_IMPORTED_MODULE_6__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+    path: "/productRedirect/:productId"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Redirect, {
+    to: "/product/:productId"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     exact: true,
     path: "/cartRedirect"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Redirect, {
@@ -1236,6 +1239,7 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
       category: "",
       location: "",
       free_shipping: "false",
+      img_url: "",
       owner_id: _this.props.session
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -1246,16 +1250,20 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
 
   _createClass(ProductForm, [{
     key: "navigateToSearch",
-    value: function navigateToSearch() {
-      this.props.history.push("/");
-    }
+    value: function navigateToSearch() {}
   }, {
     key: "update",
     value: function update(property) {
       var _this2 = this;
 
       return function (e) {
-        return _this2.setState(_defineProperty({}, property, e.target.value));
+        if (property === "name") {
+          var _this2$setState;
+
+          _this2.setState((_this2$setState = {}, _defineProperty(_this2$setState, property, e.currentTarget.value), _defineProperty(_this2$setState, "img_url", "https://source.unsplash.com/400x400/?" + e.currentTarget.value.split(" ").join(",")), _this2$setState));
+        } else {
+          _this2.setState(_defineProperty({}, property, e.target.value));
+        }
       };
     }
   }, {
@@ -1273,11 +1281,15 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this4 = this;
+
       e.preventDefault();
       var product = Object.assign({}, this.state);
-      this.props.closeModal();
-      this.props.createProduct(product);
-      this.navigateToSearch();
+      this.props.createProduct(product).then(function () {
+        _this4.props.closeModal();
+
+        _this4.props.history.push("/");
+      });
     }
   }, {
     key: "render",
@@ -1307,7 +1319,7 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
       }, "Name: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         id: "product-name",
         type: "text",
-        value: name,
+        value: this.state.name,
         onChange: this.update("name")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "form-field"
@@ -1316,14 +1328,14 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
       }, "Price:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         id: "product-price",
         type: "text",
-        value: price,
+        value: this.state.price,
         onChange: this.update("price")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "form-field"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
         htmlFor: "product-location"
       }, "Location: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        id: "product-price",
+        id: "product-location",
         type: "text",
         value: this.state.location,
         onChange: this.update("location")
@@ -1335,7 +1347,7 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
         id: "product-category",
         onChange: this.update("category")
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-        defaultValue: "",
+        selected: true,
         disabled: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
         value: "jewelry-accessories"
@@ -1380,7 +1392,7 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
       }, "Description: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
         cols: "30",
         rows: "10",
-        value: description,
+        value: this.state.description,
         onChange: this.update("description")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         type: "submit",
@@ -1725,7 +1737,8 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           product = _this$props.product,
-          openModal = _this$props.openModal;
+          openModal = _this$props.openModal,
+          session = _this$props.session;
 
       if (!product) {
         return null;
@@ -1752,13 +1765,13 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
           type: "button",
           onClick: this.cartAdd,
           className: "button button--primary button--lg"
-        }, "Add to Cart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        }, "Add to Cart"), session ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           type: "button",
           onClick: function onClick() {
             return openModal("review");
           },
           className: "button button--primary button--lg"
-        }, "Leave a Review")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        }, "Leave a Review") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "button button--link button--icon"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_icons_icon__WEBPACK_IMPORTED_MODULE_1__.default, {
           icon: "heart",
@@ -1889,32 +1902,21 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      rating: 5,
+      rating: "5",
       body: "",
+      product_id: _this.props.history.location.pathname.match(/\d+/)[0],
       author_id: _this.props.session
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.navigateToProductShow = _this.navigateToProductShow.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ReviewForm, [{
-    key: "navigateToProductShow",
-    value: function navigateToProductShow() {
-      this.props.closeModal();
-      var url = "/product/".concat(this.props.match.params.productId);
-      this.props.history.push(url);
-    }
-  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      var productId = parseInt(this.props.match.params.productId);
-      var review = Object.assign({}, this.state, {
-        product_id: productId
-      });
-      this.props.createReview(review);
-      this.navigateToProductShow();
+      var review = Object.assign({}, this.state);
+      this.props.createReview(review).then(this.props.closeModal);
     }
   }, {
     key: "update",
@@ -1955,6 +1957,9 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
         id: "rating",
         onChange: this.update("rating")
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+        selected: true,
+        disabled: true
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
         value: 1
       }, "1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
         value: 2
@@ -2175,7 +2180,8 @@ var ReviewsIndexItem = function ReviewsIndexItem(_ref) {
 
   for (var i = 1; i <= review.rating; i++) {
     stars.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_icons_icon__WEBPACK_IMPORTED_MODULE_1__.default, {
-      icon: "star-filled"
+      icon: "star-filled",
+      key: i
     }));
   }
 
@@ -2751,14 +2757,6 @@ var productsReducer = function productsReducer() {
 
       return Object.assign({}, state, newProduct);
 
-    case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_REVIEW:
-      var review = action.review,
-          average_rating = action.average_rating;
-      var newState = Object.assign({}, state);
-      newState[review.product_id].reviewIds.push(review.id);
-      newState[review.product_id].average_rating = average_rating;
-      return newState;
-
     default:
       return state;
   }
@@ -2784,8 +2782,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/product_actions */ "./frontend/actions/product_actions.js");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 var reviewsReducer = function reviewsReducer() {
@@ -2796,7 +2792,8 @@ var reviewsReducer = function reviewsReducer() {
   switch (action.type) {
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_REVIEW:
       var review = action.review;
-      return Object.assign({}, state, _defineProperty({}, review.id, review));
+      debugger;
+      return Object.assign({}, state, review);
 
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_REVIEWS:
       var reviews = action.reviews;
@@ -2988,9 +2985,6 @@ var usersReducer = function usersReducer() {
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
       return Object.assign({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
-
-    case _actions_product_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_REVIEW:
-      return Object.assign({}, state, _defineProperty({}, action.author.id, action.author));
 
     case _actions_product_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_PRODUCT:
       return Object.assign({}, state, action.authors);

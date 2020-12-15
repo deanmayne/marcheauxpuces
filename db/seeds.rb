@@ -25,6 +25,13 @@ philip = User.create(
 
 )
 
+dean = User.create(
+    username: 'dean',
+    password: 'deanmayne'
+
+)
+
+
 
 50.times do
     name = Faker::Commerce.unique.product_name

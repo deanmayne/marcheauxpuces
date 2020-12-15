@@ -12,6 +12,7 @@ class ProductForm extends React.Component {
       category: "",
       location: "",
       free_shipping: "false",
+      img_url: "",
       owner_id: this.props.session,
     };
 
@@ -21,14 +22,28 @@ class ProductForm extends React.Component {
   }
 
   navigateToSearch() {
-    this.props.history.push("/");
+
   }
 
   update(property) {
-    return (e) =>
+        return(e) => {
+        if (property === "name"){
+        this.setState({
+          [property]: e.currentTarget.value,
+          ["img_url"]:
+            "https://source.unsplash.com/400x400/?" +
+            e.currentTarget.value.split(" ").join(","),
+        });
+
+
+        }else{
+
+
       this.setState({
         [property]: e.target.value,
       });
+    }
+}
   }
 
   handleCloudinary(e) {
@@ -42,9 +57,12 @@ class ProductForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const product = Object.assign({}, this.state);
-    this.props.closeModal();
-    this.props.createProduct(product);
-    this.navigateToSearch();
+    this.props.createProduct(product).then(()=> {
+        this.props.closeModal();
+        this.props.history.push("/");
+    })
+    
+
   }
 
   render() {
@@ -66,7 +84,7 @@ class ProductForm extends React.Component {
           <input
             id="product-name"
             type="text"
-            value={name}
+            value={this.state.name}
             onChange={this.update("name")}
           />
         </div>
@@ -75,14 +93,14 @@ class ProductForm extends React.Component {
           <input
             id="product-price"
             type="text"
-            value={price}
+            value={this.state.price}
             onChange={this.update("price")}
           />
         </div>
         <div className="form-field">
           <label htmlFor="product-location">Location: </label>
           <input
-            id="product-price"
+            id="product-location"
             type="text"
             value={this.state.location}
             onChange={this.update("location")}
@@ -91,7 +109,7 @@ class ProductForm extends React.Component {
         <div className="form-field">
           <label htmlFor="product-category">Category: </label>
           <select id="product-category" onChange={this.update("category")}>
-            <option defaultValue="" disabled></option>
+            <option selected disabled></option>
             <option value="jewelry-accessories">Jewelry & Accessories</option>
             <option value="clothing-shoes">Clothing & Shoes</option>
             <option value="home-living">Home & Living</option>
@@ -126,19 +144,10 @@ class ProductForm extends React.Component {
           <textarea
             cols="30"
             rows="10"
-            value={description}
+            value={this.state.description}
             onChange={this.update("description")}
           />
         </div>
-
-        {/* <div className="button-holder">
-              <button
-                onClick={this.handleCloudinary}
-                className="session-submit"
-              >
-                Add image
-              </button>
-            </div> */}
 
         <button
           type="submit"

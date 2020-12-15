@@ -28,7 +28,7 @@ class ProductShow extends React.Component {
   }
 
   render() {
-    const { product, openModal } = this.props;
+    const { product, openModal, session } = this.props;
     if (!product) {
       return null;
     } else {
@@ -64,9 +64,10 @@ class ProductShow extends React.Component {
             >
               Add to Cart
             </button>
+            { session ?
             <button type="button" onClick={ () => openModal("review")} className="button button--primary button--lg">
               Leave a Review
-            </button>
+            </button> : <div></div>}
           </div>
           <div className="button button--link button--icon">
             <Icon icon="heart" className="icon icon--heart" />
