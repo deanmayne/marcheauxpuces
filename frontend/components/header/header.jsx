@@ -23,7 +23,7 @@ const Header = ({ currentUser, logout, openModal }) => {
       >
         Add a Product
       </button>
-      <Link to="/cartRedirect" className="button button--link button--icon">
+      <Link to="/cart" className="button button--link button--icon">
         <Icon icon="basket"/>
       </Link>
 

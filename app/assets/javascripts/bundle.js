@@ -893,7 +893,7 @@ var Header = function Header(_ref) {
         return openModal("add_product");
       }
     }, "Add a Product"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "/cartRedirect",
+      to: "/cart",
       className: "button button--link button--icon"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_icons_icon__WEBPACK_IMPORTED_MODULE_1__.default, {
       icon: "basket"
@@ -1405,8 +1405,7 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
         this.setState(_defineProperty({}, "id", this.props.history.location.pathname.match(/\d+/)[0]));
       }
 
-      var product = Object.assign({}, this.state, _defineProperty({}, 'id', this.props.history.location.pathname.match(/\d+/)[0]));
-      debugger;
+      var product = Object.assign({}, this.state);
       this.props.processForm(product).then(function () {
         _this3.props.closeModal();
 
@@ -1800,6 +1799,8 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
           }
         });
       }
+
+      this.props.history.push("/cart");
     }
   }, {
     key: "componentDidMount",
@@ -2707,7 +2708,7 @@ var cartsReducer = function cartsReducer() {
       return action.products;
 
     case _actions_cart_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_FROM_CART:
-      delete newState[action.product.id];
+      delete newState[action.product.product_id];
       return newState;
 
     default:

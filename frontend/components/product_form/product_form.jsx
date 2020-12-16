@@ -47,15 +47,15 @@ class ProductForm extends React.Component {
       });
     }
 
-    const product = Object.assign({}, this.state, {['id']: this.props.history.location.pathname.match(/\d+/)[0] });
-    debugger
+    const product = Object.assign({}, this.state);
     this.props.processForm(product).then(() => {
-          this.props.closeModal();
-          if (this.props.formType === "Create A Product !") {
-            this.props.history.push("/");
-          }
-    })
-    };
+      this.props.closeModal();
+      if (this.props.formType === "Create A Product !") {
+        this.props.history.push("/");
+      }
+    });
+  }
+
 
 
   render() {

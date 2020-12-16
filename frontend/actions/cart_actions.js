@@ -20,9 +20,7 @@ export const removefromcart = (product) => ({
 });
 
 export const addToCart = (product) => (dispatch) =>
-  APIUtil.addToCart(product).then((product) =>
-    dispatch(addtocart(product))
-  );
+  APIUtil.addToCart(product).then((product) => dispatch(addtocart(product)));
 
 export const receiveCartProducts = (shopper_id) => (dispatch) =>
   APIUtil.fetchCartProducts(shopper_id).then((products) =>
@@ -33,6 +31,3 @@ export const removeFromCart = (id) => (dispatch) =>
   APIUtil.removeFromCart(id).then((product) =>
     dispatch(removefromcart(product))
   );
-
-
-

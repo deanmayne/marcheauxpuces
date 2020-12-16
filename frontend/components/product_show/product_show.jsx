@@ -21,6 +21,8 @@ class ProductShow extends React.Component {
       });
     }
 
+    this.props.history.push("/cart");
+
   }
 
   componentDidMount() {

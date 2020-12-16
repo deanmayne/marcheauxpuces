@@ -24,6 +24,7 @@ class ReviewForm extends React.Component {
     return (e) => this.setState({ [property]: e.currentTarget.value });
   }
 
+
   render() {
     const { closeModal } = this.props;
     return (
