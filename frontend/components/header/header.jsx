@@ -45,6 +45,7 @@ const Header = ({ currentUser, logout, openModal }) => {
           type="text"
           placeholder="Search for Products"
         />
+        <Icon icon="search"/>
         {currentUser ? signedin() : signedout()}
       </div>
       <div className="bottom-header">

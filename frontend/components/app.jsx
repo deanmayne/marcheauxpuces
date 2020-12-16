@@ -5,7 +5,7 @@ import { Route, Redirect, Switch, Link, HashRouter } from "react-router-dom";
 import HeaderContainer from "./header/header_container";
 
 import ProductIndexContainer from "./product_index/product_index_container";
-import { AuthRoute, ProtectedRoute } from "../util/route_util";
+// import SearchContainer from './search/search_container';
 import Modal from "./modal";
 import fourohfour from "./fourohfour";
 import ProductShowContainer from "./product_show/product_show_container";
@@ -15,6 +15,7 @@ const App = () => (
   <div>
     <HeaderContainer />
     <Switch>
+      {/* <Route path="/search/:searchTerm" component={SearchContainer} /> */}
       <Route path="/product/:productId" component={ProductShowContainer} />
       <Route
         exact
@@ -38,7 +39,7 @@ const App = () => (
       <Route exact path="/gifts-gift-cards" component={ProductIndexContainer} />
       <Route exact path="/" component={ProductIndexContainer} />
       <Route exact path="/404" component={fourohfour} />
-  
+
       <Route exact path="/cart" component={CartContainer} />
       <Redirect to="/404" />
     </Switch>

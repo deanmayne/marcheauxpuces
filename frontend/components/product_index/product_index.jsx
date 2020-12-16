@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
 import ProductIndexItem from "./product_index_item";
 
 class ProductIndex extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
   componentDidMount() {
@@ -38,11 +36,9 @@ class ProductIndex extends React.Component {
           <h1>THIS WILL BE SOME SORT OF HIGHLIGHT</h1>
         </div>
         <div className="products-index__grid">
-          {products
-            .slice(15, products.length)
-            .map((product) => {
-              return <ProductIndexItem key={product.id} product={product} />;
-            })}
+          {products.slice(15, products.length).map((product) => {
+            return <ProductIndexItem key={product.id} product={product} />;
+          })}
         </div>
       </div>
     );

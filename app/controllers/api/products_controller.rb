@@ -43,6 +43,11 @@ class Api::ProductsController < ApplicationController
         end
     end
 
+    def search
+            @products = Product.where("name LIKE (?)", "%#{params[:searchTerm]}%")
+            render '/api/products/index'
+    end
+
 
     private
     def product_params
