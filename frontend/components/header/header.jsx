@@ -11,11 +11,15 @@ class Header extends React.Component {
     };
 
     this.handleSearch = this.handleSearch.bind(this);
+
+
   }
 
   handleSearch(e) {
     e.preventDefault;
-    this.props.history.push(`/search/${this.state.search}`)
+    this.props.history.push(`/search/${this.state.search}`);
+    this.setState({search:""});
+
   }
 
   update(field) {
@@ -25,8 +29,10 @@ class Header extends React.Component {
       });
   }
 
+
   render() {
     const { currentUser, logout, openModal } = this.props;
+
     const signedout = () => (
       <div className="login-sign-up-box">
         <button
@@ -74,10 +80,11 @@ class Header extends React.Component {
           </Link>
           <form onSubmit={this.handleSearch}>
             <input
-              onChange={this.update('search')}
+              onChange={this.update("search")}
               className="search-field"
               type="text"
               placeholder="Search for Products"
+              value={this.state.search}
             />
             <button type="submit" className="button button--link button--icon">
               <Icon icon="search" />

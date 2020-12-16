@@ -15,13 +15,13 @@ export const receiveFavoriteProduct = (product) => ({
   product,
 });
 
-export const removeFavorite = (product_id) => ({
+export const removeFavorite = (product) => ({
   type: REMOVE_FAVORITE,
-  product_id,
+  product,
 });
 
-export const removeFavoriteProduct = (product) => (dispatch) =>
-  APIUtil.removeFromFavorites(product).then((product) =>
+export const removeFavoriteProduct = (product_id) => (dispatch) =>
+  APIUtil.removeFromFavorites(product_id).then((product) =>
     dispatch(removeFavorite(product))
   );
 

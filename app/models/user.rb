@@ -22,6 +22,14 @@ attr_reader :password
   has_many :cart_items,
     foreign_key: :shopper_id,
     class_name: :Cart
+
+    has_many :likes,
+    foreign_key: :liker_id,
+    class_name: :Favorite
+
+    has_many :liked_products,
+    through: :likes,
+    source: :product
     
 
   def self.find_by_credentials(username, password)

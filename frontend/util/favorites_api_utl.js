@@ -5,7 +5,7 @@ export const fetchFavoriteProducts = (liker_id) =>
     data: { liker_id },
   });
 
-export const addToFavorites = ({ product }) =>
+export const addToFavorites = ( product ) =>
   $.ajax({
     url: `/api/favorites/`,
     method: "POST",

@@ -22,15 +22,47 @@ class ProductShow extends React.Component {
     }
 
     this.props.history.push("/cart");
-
   }
 
   componentDidMount() {
     this.props.fetchProduct(this.props.productId);
+    this.props.fetchFavoriteProducts(this.props.session);
   }
 
   render() {
-    const { product, openModal, session, deleteProduct } = this.props;
+    const {
+      product,
+      openModal,
+      session,
+      deleteProduct,
+      favorites,
+      removeFavoriteProduct,
+      addFavoriteProduct,
+    } = this.props;
+
+
+    const icon = () => {
+      if (favorites[product.id]) {
+        return (
+          <button type="button" className="button button--link button--icon" onClick={() => removeFavoriteProduct(product.id)}>
+            <Icon
+              icon="heart-filled"
+              className="icon icon--heart"
+            />
+          </button>
+        );
+      } else {
+        return (
+          <button type="button"
+            className="button button--link button--icon"
+            onClick={() => addFavoriteProduct(product)}
+          >
+            <Icon icon="heart" className="icon icon--heart" />
+          </button>
+        );
+      }
+    };
+
     if (!product) {
       return null;
     } else {
@@ -71,7 +103,11 @@ class ProductShow extends React.Component {
                 </button>
                 <button
                   type="button"
-                  onClick={() => { deleteProduct(product.id).then(this.props.history.push("/"))}}
+                  onClick={() => {
+                    deleteProduct(product.id).then(
+                      this.props.history.push("/")
+                    );
+                  }}
                   className="button button--primary button--lg"
                 >
                   Delete
@@ -96,9 +132,7 @@ class ProductShow extends React.Component {
               </React.Fragment>
             ) : null}
           </div>
-          <div className="button button--link button--icon">
-            <Icon icon="heart" className="icon icon--heart" />
-          </div>
+          {icon()}
           <ReviewsContainer product={product} />
         </div>
       );

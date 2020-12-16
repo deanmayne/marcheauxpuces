@@ -14,7 +14,7 @@ const favoritesReducer = (state = {}, action) => {
       return Object.assign({}, state, newProduct);
     case REMOVE_FAVORITE:
       let nextState = Object.assign({}, state);
-      delete nextState[action.product.id];
+      delete nextState[action.product.product_id];
       return nextState;
     default:
       return state;

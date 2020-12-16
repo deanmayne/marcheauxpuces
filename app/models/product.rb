@@ -15,8 +15,13 @@ class Product < ApplicationRecord
     foreign_key: :product_id,
     class_name: :Cart
 
-    has_many :favorites,
+    has_many :likes,
     foreign_key: :product_id,
     class_name: :Favorite
+
+    has_many :likers,
+    through: :likes,
+    source: :liker
+
 
 end
