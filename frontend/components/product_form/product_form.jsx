@@ -17,10 +17,8 @@ class ProductForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.navigateToSearch = this.navigateToSearch.bind(this);
   }
 
-  navigateToSearch() {}
 
   update(property) {
     return (e) => {
@@ -48,10 +46,10 @@ class ProductForm extends React.Component {
     }
 
     const product = Object.assign({}, this.state);
-    this.props.processForm(product).then(() => {
+    this.props.processForm(product).then((product) => {
       this.props.closeModal();
       if (this.props.formType === "Create A Product !") {
-        this.props.history.push("/");
+        this.props.history.push(`/product/${product.product.id}`);
       }
     });
   }

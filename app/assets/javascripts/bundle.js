@@ -1192,13 +1192,12 @@ var Header = /*#__PURE__*/function (_React$Component) {
           className: "button button--link button--icon"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_icons_icon__WEBPACK_IMPORTED_MODULE_1__.default, {
           icon: "heart"
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          type: "button",
-          className: "button button--primary",
-          onClick: function onClick() {
-            return openModal("add_product");
-          }
-        }, "Add a Product"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+          to: "/me",
+          className: "button button--link button--icon"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_icons_icon__WEBPACK_IMPORTED_MODULE_1__.default, {
+          icon: "account"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
           to: "/cart",
           className: "button button--link button--icon"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_icons_icon__WEBPACK_IMPORTED_MODULE_1__.default, {
@@ -1414,6 +1413,15 @@ var Icon = function Icon(_ref) {
         viewBox: "0 0 24 24"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
         d: "M12,20.59a1,1,0,0,1-.71-.29L3.56,12.57A5.37,5.37,0,0,1,11.16,5l.84.85L12.84,5a5.37,5.37,0,0,1,7.6,7.6L12.71,20.3A1,1,0,0,1,12,20.59Z"
+      }));
+
+    case "account":
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
+        className: "icon icon--heart-filled",
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 24 24"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+        d: "M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm4,16.92a7.95,7.95,0,0,1-8,0V18a4,4,0,0,1,8,0ZM9.5,9.5A2.5,2.5,0,1,1,12,12,2.5,2.5,0,0,1,9.5,9.5ZM18,17.32A6,6,0,0,0,15,12.82,4.43,4.43,0,0,0,16.5,9.5a4.5,4.5,0,0,0-9,0A4.43,4.43,0,0,0,9,12.82,6,6,0,0,0,6,17.32,7.89,7.89,0,0,1,4,12a8,8,0,0,1,16,0A7.89,7.89,0,0,1,18,17.32Z"
       }));
 
     default:
@@ -1696,14 +1704,10 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
       owner_id: _this.props.session
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.navigateToSearch = _this.navigateToSearch.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ProductForm, [{
-    key: "navigateToSearch",
-    value: function navigateToSearch() {}
-  }, {
     key: "update",
     value: function update(property) {
       var _this2 = this;
@@ -1730,11 +1734,11 @@ var ProductForm = /*#__PURE__*/function (_React$Component) {
       }
 
       var product = Object.assign({}, this.state);
-      this.props.processForm(product).then(function () {
+      this.props.processForm(product).then(function (product) {
         _this3.props.closeModal();
 
         if (_this3.props.formType === "Create A Product !") {
-          _this3.props.history.push("/");
+          _this3.props.history.push("/product/".concat(product.product.id));
         }
       });
     }
@@ -3713,12 +3717,12 @@ var fetchCartProducts = function fetchCartProducts(shopper_id) {
   });
 };
 var addToCart = function addToCart(_ref) {
-  var product = _ref.product;
+  var cart = _ref.cart;
   return $.ajax({
     url: "/api/carts/",
     method: "POST",
     data: {
-      product: product
+      cart: cart
     }
   });
 };

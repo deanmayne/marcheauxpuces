@@ -7,11 +7,11 @@ export const fetchCartProducts = (shopper_id) => (
 )
 
 
-export const addToCart = ({ product }) => (
+export const addToCart = ({ cart }) => (
   $.ajax({
     url: `/api/carts/`,
     method: "POST",
-    data: { product }
+    data: { cart }
   })
 )
 
