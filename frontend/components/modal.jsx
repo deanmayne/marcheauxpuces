@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import LoginFormContainer from "./session_form/login_form_container";
 import SignupFormContainer from "./session_form/signup_form_container";
 import ReviewFormContainer from "./review_form/review_form_container";
-import ProductFormContainer from "./product_form/product_form_container";
+import AddProductFormContainer from "./product_form/add_product_form_container";
+import EditProductFormContainer from "./product_form/edit_product_form_container";
 
 function Modal({ modal, closeModal }) {
   if (!modal) {
@@ -22,7 +23,10 @@ function Modal({ modal, closeModal }) {
       component = <ReviewFormContainer />;
       break;
     case "add_product":
-      component = <ProductFormContainer />;
+      component = <AddProductFormContainer />;
+      break;
+    case "edit_product":
+      component = <EditProductFormContainer />;
       break;
     default:
       return null;

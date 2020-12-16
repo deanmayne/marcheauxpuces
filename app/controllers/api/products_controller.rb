@@ -27,6 +27,22 @@ class Api::ProductsController < ApplicationController
         end
     end
 
+    def update
+        @product = Product.find_by(id: params[:id])
+
+        if @product && @product.update(product_params)
+            render '/api/products/show'
+        end
+    end
+
+    def destroy
+        @product = Product.find_by(id: params[:id])
+
+        if @product.delete
+            render '/api/products/show'
+        end
+    end
+
 
     private
     def product_params

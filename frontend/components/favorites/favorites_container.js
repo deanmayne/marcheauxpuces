@@ -1,5 +1,5 @@
+import React from 'react';
 import { connect } from "react-redux";
-
 import FavoritesIndex from "./cart_index";
 
 const mapStateToProps = (state) => {

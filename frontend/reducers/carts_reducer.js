@@ -14,7 +14,7 @@ const cartsReducer = (state = {}, action) => {
     case RECEIVE_CART_PRODUCTS:
       return action.products;
     case REMOVE_FROM_CART:
-      delete newState[action.id];
+      delete newState[action.product.id];
       return newState;
     default:
       return state;

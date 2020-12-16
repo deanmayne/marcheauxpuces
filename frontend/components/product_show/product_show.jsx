@@ -20,7 +20,7 @@ class ProductShow extends React.Component {
         },
       });
     }
-    this.props.history.push("/cartRedirect");
+
   }
 
   componentDidMount() {
@@ -28,7 +28,7 @@ class ProductShow extends React.Component {
   }
 
   render() {
-    const { product, openModal, session } = this.props;
+    const { product, openModal, session, deleteProduct } = this.props;
     if (!product) {
       return null;
     } else {
@@ -57,17 +57,42 @@ class ProductShow extends React.Component {
             <div className="product-show__description">
               {product.description}
             </div>
-            <button
-              type="button"
-              onClick={this.cartAdd}
-              className="button button--primary button--lg"
-            >
-              Add to Cart
-            </button>
-            { session ?
-            <button type="button" onClick={ () => openModal("review")} className="button button--primary button--lg">
-              Leave a Review
-            </button> : <div></div>}
+
+            {session && product.owner_id === session ? (
+              <React.Fragment>
+                <button
+                  type="button"
+                  onClick={() => openModal("edit_product")}
+                  className="button button--primary button--lg"
+                >
+                  Edit
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { deleteProduct(product.id); this.props.history.push("/");}}
+                  className="button button--primary button--lg"
+                >
+                  Delete
+                </button>
+              </React.Fragment>
+            ) : session && product.owner_id !== session ? (
+              <React.Fragment>
+                <button
+                  type="button"
+                  onClick={this.cartAdd}
+                  className="button button--primary button--lg"
+                >
+                  Add to Cart
+                </button>
+                <button
+                  type="button"
+                  onClick={() => openModal("review")}
+                  className="button button--primary button--lg"
+                >
+                  Leave a Review
+                </button>
+              </React.Fragment>
+            ) : null}
           </div>
           <div className="button button--link button--icon">
             <Icon icon="heart" className="icon icon--heart" />
