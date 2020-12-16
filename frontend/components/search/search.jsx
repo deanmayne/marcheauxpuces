@@ -10,17 +10,19 @@ class Search extends React.Component {
     this.props.fetchSearchProducts(this.props.searchTerm);
   }
 
-    componentDidUpdate() {
-        this.props.fetchSearchProducts(this.props.searchTerm);
-    }
-
   render() {
     const { products } = this.props;
-    return (
-      <div className="product-index">
-        <div className="products-index__grid">
-          {products.map((product) => {
-            return (
+    if (products.length === 0) {
+      return (
+        <div className="fourohfour-container">
+          <h1>No products found !</h1>
+        </div>
+      );
+    } else {
+      return (
+        <div className="product-index">
+          <div className="products-index__grid">
+            {products.map((product) => (
               <Link
                 to={"/product/" + product.id}
                 className="product-card"
@@ -45,11 +47,11 @@ class Search extends React.Component {
                     : product.price}
                 </div>
               </Link>
-            );
-          })}
+            ))}
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 

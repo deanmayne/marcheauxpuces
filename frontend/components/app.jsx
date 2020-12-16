@@ -17,7 +17,7 @@ const App = () => (
     <HeaderContainer />
     <Switch>
       <Route path="/favorites" component={FavoritesContainer} />
-      <Route path="/search/:searchTerm" component={SearchContainer} />
+      <Route exact path="/search/:searchTerm" component={SearchContainer} />
       <Route path="/product/:productId" component={ProductShowContainer} />
       <Route
         exact
