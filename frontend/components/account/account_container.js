@@ -1,23 +1,16 @@
 import { connect } from "react-redux";
-import { fetchSearchProducts } from "../../actions/product_actions";
+import { fetchProducts } from "../../actions/product_actions";
 
-import Search from "./search";
+import Account from "./account";
 
-const mapStateToProps = (
-  state,
-  {
-    match: {
-      params: { searchTerm },
-    },
-  }
-) => ({
+const mapStateToProps = (state) => ({
   products: Object.values(state.entities.products),
-  searchTerm,
+  session: state.session.id,
+  user: Object.values(state.entities.users)[0]
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchSearchProducts: (searchTerm) =>
-    dispatch(fetchSearchProducts(searchTerm)),
+    fetchOwnedProducts: () => dispatch(fetchOwnedProducts()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(Account);

@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   end
 
   get '/search/:searchTerm', to: 'api/products#search', defaults: {format: :json}
+  get '/me', to: 'api/products#me', defaults: {format: :json}
 
 end

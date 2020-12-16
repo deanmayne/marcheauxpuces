@@ -66,3 +66,9 @@ export const fetchSearchProducts = (searchTerm) =>
     method: "GET",
     url: `/search/${searchTerm}`
   });
+
+  export const fetchOwnedProducts = () =>
+    $.ajax({
+      method: "GET",
+      url: `/me/`,
+    });

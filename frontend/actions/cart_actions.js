@@ -31,3 +31,5 @@ export const removeFromCart = (id) => (dispatch) =>
   APIUtil.removeFromCart(id).then((product) =>
     dispatch(removefromcart(product))
   );
+
+

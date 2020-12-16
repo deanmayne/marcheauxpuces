@@ -10,6 +10,12 @@ class Search extends React.Component {
     this.props.fetchSearchProducts(this.props.searchTerm);
   }
 
+  componentDidUpdate(prevProps) {
+      debugger
+    if (prevProps.match.url !== this.props.match.url) {
+      this.props.fetchSearchProducts(this.props.searchTerm);
+    }
+  }
   render() {
     const { products } = this.props;
     if (products.length === 0) {

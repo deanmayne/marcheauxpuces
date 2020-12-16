@@ -179,6 +179,7 @@ var removeFromCart = function removeFromCart(id) {
 /*! export REMOVE_FAVORITE [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export addFavoriteProduct [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export fetchFavoriteProducts [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export fetchOwnedProducts [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export receiveFavoriteProduct [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export receiveFavoriteProducts [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export removeFavorite [provided] [no usage info] [missing usage info prevents renaming] */
@@ -198,7 +199,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "removeFavorite": () => /* binding */ removeFavorite,
 /* harmony export */   "removeFavoriteProduct": () => /* binding */ removeFavoriteProduct,
 /* harmony export */   "addFavoriteProduct": () => /* binding */ addFavoriteProduct,
-/* harmony export */   "fetchFavoriteProducts": () => /* binding */ fetchFavoriteProducts
+/* harmony export */   "fetchFavoriteProducts": () => /* binding */ fetchFavoriteProducts,
+/* harmony export */   "fetchOwnedProducts": () => /* binding */ fetchOwnedProducts
 /* harmony export */ });
 /* harmony import */ var _util_favorites_api_utl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/favorites_api_utl */ "./frontend/util/favorites_api_utl.js");
 
@@ -241,6 +243,13 @@ var fetchFavoriteProducts = function fetchFavoriteProducts(liker_id) {
   return function (dispatch) {
     return _util_favorites_api_utl__WEBPACK_IMPORTED_MODULE_0__.fetchFavoriteProducts(liker_id).then(function (products) {
       return dispatch(receiveFavoriteProducts(products));
+    });
+  };
+};
+var fetchOwnedProducts = function fetchOwnedProducts() {
+  return function (dispatch) {
+    return _util_favorites_api_utl__WEBPACK_IMPORTED_MODULE_0__.fetchOwnedProducts().then(function (products) {
+      return dispatch(receiveProducts(products));
     });
   };
 };
@@ -2361,7 +2370,7 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      rating: "5",
+      rating: "1",
       body: "",
       product_id: _this.props.history.location.pathname.match(/\d+/)[0],
       author_id: _this.props.session
@@ -2753,6 +2762,15 @@ var Search = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchSearchProducts(this.props.searchTerm);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      debugger;
+
+      if (prevProps.match.url !== this.props.match.url) {
+        this.props.fetchSearchProducts(this.props.searchTerm);
+      }
     }
   }, {
     key: "render",
@@ -3790,6 +3808,7 @@ var removeFromFavorites = function removeFromFavorites(product_id) {
 /*! export createReview [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export deleteProduct [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export fetchCategoryProducts [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export fetchOwnedProducts [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export fetchProduct [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export fetchProducts [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export fetchReviews [provided] [no usage info] [missing usage info prevents renaming] */
@@ -3810,7 +3829,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "deleteProduct": () => /* binding */ deleteProduct,
 /* harmony export */   "createReview": () => /* binding */ createReview,
 /* harmony export */   "fetchReviews": () => /* binding */ fetchReviews,
-/* harmony export */   "fetchSearchProducts": () => /* binding */ fetchSearchProducts
+/* harmony export */   "fetchSearchProducts": () => /* binding */ fetchSearchProducts,
+/* harmony export */   "fetchOwnedProducts": () => /* binding */ fetchOwnedProducts
 /* harmony export */ });
 var fetchProducts = function fetchProducts() {
   return $.ajax({
@@ -3879,6 +3899,12 @@ var fetchSearchProducts = function fetchSearchProducts(searchTerm) {
   return $.ajax({
     method: "GET",
     url: "/search/".concat(searchTerm)
+  });
+};
+var fetchOwnedProducts = function fetchOwnedProducts() {
+  return $.ajax({
+    method: "GET",
+    url: "/me/"
   });
 };
 

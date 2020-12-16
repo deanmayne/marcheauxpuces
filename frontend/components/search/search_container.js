@@ -3,7 +3,7 @@ import {fetchSearchProducts} from '../../actions/product_actions'
 
 import Search from "./search";
 
-const mapStateToProps = (state,{match: {params: { searchTerm },},}) => ({
+const mapStateToProps = (state,{match: {params: { searchTerm }}}) => ({
 
   products: Object.values(state.entities.products),
   searchTerm,

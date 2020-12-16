@@ -43,6 +43,11 @@ class Api::ProductsController < ApplicationController
         end
     end
 
+    def me
+        @products = current_user.products
+        render '/api/products/index'
+    end
+
     def search
             @products = Product.where("name LIKE ?", "%#{params[:searchTerm].capitalize}%")
             render '/api/products/index'

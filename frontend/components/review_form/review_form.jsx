@@ -6,7 +6,7 @@ class ReviewForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      rating: "5",
+      rating: "1",
       body: "",
       product_id: this.props.history.location.pathname.match(/\d+/)[0],
       author_id: this.props.session,
