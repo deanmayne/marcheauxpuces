@@ -4,8 +4,8 @@ import FavoritesIndex from "./cart_index";
 
 const mapStateToProps = (state) => {
   return {
-    reviews: Object.values(state.entities.favorites),
-    shopper_id: state.session.id,
+    favorites: Object.values(state.entities.favorites),
+    liker_id: state.session.id,
   };
 };
 

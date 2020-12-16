@@ -169,6 +169,84 @@ var removeFromCart = function removeFromCart(id) {
 
 /***/ }),
 
+/***/ "./frontend/actions/favorites_actions.js":
+/*!***********************************************!*\
+  !*** ./frontend/actions/favorites_actions.js ***!
+  \***********************************************/
+/*! namespace exports */
+/*! export RECEIVE_FAVORITE [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export RECEIVE_FAVORITES [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export REMOVE_FAVORITE [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export addFavoriteProduct [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export fetchFavoriteProducts [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export receiveFavoriteProduct [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export receiveFavoriteProducts [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export removeFavorite [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export removeFavoriteProduct [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RECEIVE_FAVORITES": () => /* binding */ RECEIVE_FAVORITES,
+/* harmony export */   "RECEIVE_FAVORITE": () => /* binding */ RECEIVE_FAVORITE,
+/* harmony export */   "REMOVE_FAVORITE": () => /* binding */ REMOVE_FAVORITE,
+/* harmony export */   "receiveFavoriteProducts": () => /* binding */ receiveFavoriteProducts,
+/* harmony export */   "receiveFavoriteProduct": () => /* binding */ receiveFavoriteProduct,
+/* harmony export */   "removeFavorite": () => /* binding */ removeFavorite,
+/* harmony export */   "removeFavoriteProduct": () => /* binding */ removeFavoriteProduct,
+/* harmony export */   "addFavoriteProduct": () => /* binding */ addFavoriteProduct,
+/* harmony export */   "fetchFavoriteProducts": () => /* binding */ fetchFavoriteProducts
+/* harmony export */ });
+/* harmony import */ var _util_favorites_api_utl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/favorites_api_utl */ "./frontend/util/favorites_api_utl.js");
+
+var RECEIVE_FAVORITES = "RECEIVE_FAVORITES";
+var RECEIVE_FAVORITE = "RECEIVE_FAVORITE";
+var REMOVE_FAVORITE = "REMOVE_FAVORITE";
+var receiveFavoriteProducts = function receiveFavoriteProducts(products) {
+  return {
+    type: RECEIVE_FAVORITES,
+    products: products
+  };
+};
+var receiveFavoriteProduct = function receiveFavoriteProduct(product) {
+  return {
+    type: RECEIVE_FAVORITE,
+    product: product
+  };
+};
+var removeFavorite = function removeFavorite(product_id) {
+  return {
+    type: REMOVE_FAVORITE,
+    product_id: product_id
+  };
+};
+var removeFavoriteProduct = function removeFavoriteProduct(product) {
+  return function (dispatch) {
+    return _util_favorites_api_utl__WEBPACK_IMPORTED_MODULE_0__.removeFromFavorites(product).then(function (product) {
+      return dispatch(removeFavorite(product));
+    });
+  };
+};
+var addFavoriteProduct = function addFavoriteProduct(product) {
+  return function (dispatch) {
+    return _util_favorites_api_utl__WEBPACK_IMPORTED_MODULE_0__.addToFavorites(product).then(function (product) {
+      return dispatch(receiveFavoriteProduct(product));
+    });
+  };
+};
+var fetchFavoriteProducts = function fetchFavoriteProducts(liker_id) {
+  return function (dispatch) {
+    return _util_favorites_api_utl__WEBPACK_IMPORTED_MODULE_0__.fetchFavoriteProducts(liker_id).then(function (products) {
+      return dispatch(receiveFavoriteProducts(products));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/modal_actions.js":
 /*!*******************************************!*\
   !*** ./frontend/actions/modal_actions.js ***!
@@ -2968,20 +3046,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _products_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./products_reducer */ "./frontend/reducers/products_reducer.js");
 /* harmony import */ var _reviews_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reviews_reducer */ "./frontend/reducers/reviews_reducer.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _carts_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./carts_reducer */ "./frontend/reducers/carts_reducer.js");
+/* harmony import */ var _favorites_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./favorites_reducer */ "./frontend/reducers/favorites_reducer.js");
 
 
 
 
 
-var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
+
+var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
   products: _products_reducer__WEBPACK_IMPORTED_MODULE_0__.default,
   carts: _carts_reducer__WEBPACK_IMPORTED_MODULE_3__.default,
   reviews: _reviews_reducer__WEBPACK_IMPORTED_MODULE_1__.default,
+  favorites: _favorites_reducer__WEBPACK_IMPORTED_MODULE_4__.default,
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_2__.default
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (entitiesReducer);
@@ -3011,6 +3092,54 @@ var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
   session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__.default
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (errorsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/favorites_reducer.js":
+/*!************************************************!*\
+  !*** ./frontend/reducers/favorites_reducer.js ***!
+  \************************************************/
+/*! namespace exports */
+/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_exports__, __webpack_require__.r, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _actions_favorites_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/favorites_actions */ "./frontend/actions/favorites_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var favoritesReducer = function favoritesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_favorites_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_FAVORITES:
+      return action.products;
+
+    case _actions_favorites_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_FAVORITE:
+      var newProduct = _defineProperty({}, action.product.id, action.product);
+
+      return Object.assign({}, state, newProduct);
+
+    case _actions_favorites_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_FAVORITE:
+      var nextState = Object.assign({}, state);
+      delete nextState[action.product.id];
+      return nextState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (favoritesReducer);
 
 /***/ }),
 
@@ -3391,18 +3520,65 @@ var fetchCartProducts = function fetchCartProducts(shopper_id) {
   });
 };
 var addToCart = function addToCart(_ref) {
-  var cart = _ref.cart;
+  var product = _ref.product;
   return $.ajax({
     url: "/api/carts/",
     method: "POST",
     data: {
-      cart: cart
+      product: product
     }
   });
 };
 var removeFromCart = function removeFromCart(product_id) {
   return $.ajax({
     url: "/api/carts/".concat(product_id),
+    method: "DELETE"
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/favorites_api_utl.js":
+/*!********************************************!*\
+  !*** ./frontend/util/favorites_api_utl.js ***!
+  \********************************************/
+/*! namespace exports */
+/*! export addToFavorites [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export fetchFavoriteProducts [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export removeFromFavorites [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "fetchFavoriteProducts": () => /* binding */ fetchFavoriteProducts,
+/* harmony export */   "addToFavorites": () => /* binding */ addToFavorites,
+/* harmony export */   "removeFromFavorites": () => /* binding */ removeFromFavorites
+/* harmony export */ });
+var fetchFavoriteProducts = function fetchFavoriteProducts(shopper_id) {
+  return $.ajax({
+    url: "/api/favorites/",
+    method: "GET",
+    data: {
+      shopper_id: shopper_id
+    }
+  });
+};
+var addToFavorites = function addToFavorites(_ref) {
+  var product = _ref.product;
+  return $.ajax({
+    url: "/api/favorites/",
+    method: "POST",
+    data: {
+      product: product
+    }
+  });
+};
+var removeFromFavorites = function removeFromFavorites(product_id) {
+  return $.ajax({
+    url: "/api/favorites/".concat(product_id),
     method: "DELETE"
   });
 };

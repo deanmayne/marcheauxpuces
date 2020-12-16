@@ -6,6 +6,7 @@ export const RECEIVE_REVIEW = "RECEIVE_REVIEW";
 export const RECEIVE_REVIEWS = "RECEIVE_REVIEWS";
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
 
+
 export const receiveProducts = (products) => ({
   type: RECEIVE_PRODUCTS,
   products,
@@ -73,3 +74,5 @@ export const fetchSearchProducts = (searchTerm) => (dispatch) =>
   APIUtil.fetchSearchProducts(searchTerm).then((products) =>
     dispatch(receiveProducts(products))
   );
+
+

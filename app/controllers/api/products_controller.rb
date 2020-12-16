@@ -48,6 +48,13 @@ class Api::ProductsController < ApplicationController
             render '/api/products/index'
     end
 
+    def favorites
+
+        @products = Favorite.joins(:user).where(liker_id: params[:liker_id])
+            render '/api/products/index'
+
+    end
+
 
     private
     def product_params
