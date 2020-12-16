@@ -69,7 +69,7 @@ class ProductShow extends React.Component {
                 </button>
                 <button
                   type="button"
-                  onClick={() => { deleteProduct(product.id); this.props.history.push("/");}}
+                  onClick={() => { deleteProduct(product.id).then(this.props.history.push("/"))}}
                   className="button button--primary button--lg"
                 >
                   Delete

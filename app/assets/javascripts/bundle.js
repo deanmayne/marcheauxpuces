@@ -1847,9 +1847,7 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
         }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
           type: "button",
           onClick: function onClick() {
-            deleteProduct(product.id);
-
-            _this2.props.history.push("/");
+            deleteProduct(product.id).then(_this2.props.history.push("/"));
           },
           className: "button button--primary button--lg"
         }, "Delete")) : session && product.owner_id !== session ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
