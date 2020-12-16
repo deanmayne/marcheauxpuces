@@ -11,6 +11,7 @@ User.destroy_all
 Product.destroy_all
 Cart.destroy_all
 Review.destroy_all
+Favorite.destroy_all
 
 
 guest = User.create(
@@ -60,6 +61,11 @@ dean = User.create(
         rating: Faker::Number.within(range: 1..5),
         product_id: product.id,
         author_id: guest.id
+    )
+
+    favorite = Favorite.create(
+        product_id: product.id,
+        liker_id: [guest.id, philip.id].sample
     )
 
 end

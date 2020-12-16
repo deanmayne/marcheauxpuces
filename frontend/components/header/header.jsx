@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import {ShoppingCartIcon} from '../../../app/assets/images/icons/shopping-cart.svg';
 import Icon from "../icons/icon";
 
 class Header extends React.Component {
@@ -42,6 +41,9 @@ class Header extends React.Component {
 
     const signedin = () => (
       <div className="login-sign-up-box">
+        <Link to="/favorites" className="button button--link button--icon">
+          <Icon icon="heart" />
+        </Link>
         <button
           type="button"
           className="button button--primary"

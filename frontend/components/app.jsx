@@ -10,11 +10,13 @@ import Modal from "./modal";
 import fourohfour from "./fourohfour";
 import ProductShowContainer from "./product_show/product_show_container";
 import CartContainer from "./cart/cart_container";
+import FavoritesContainer from './favorites/favorites_container';
 
 const App = () => (
   <div>
     <HeaderContainer />
     <Switch>
+      <Route path="/favorites" component={FavoritesContainer} />
       <Route path="/search/:searchTerm" component={SearchContainer} />
       <Route path="/product/:productId" component={ProductShowContainer} />
       <Route

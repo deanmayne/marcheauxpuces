@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :users, only: [:new, :create, :show]
     resources :reviews, only: [:create, :index]
     resources :carts, only: [:create, :index, :destroy]
+    resources :favorites, only: [:create, :index, :destroy]
     resource :session, only: [:new, :create, :destroy]
   end
 

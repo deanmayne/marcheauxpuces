@@ -1,18 +1,22 @@
 import React from 'react';
 import { connect } from "react-redux";
-import FavoritesIndex from "./cart_index";
+import Favorites from "./favorites";
+import {withRouter} from 'react-router';
+import {fetchFavoriteProducts} from '../../actions/favorites_actions'
 
 const mapStateToProps = (state) => {
   return {
-    favorites: Object.values(state.entities.favorites),
+    products: Object.values(state.entities.favorites),
     liker_id: state.session.id,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
+  return ({
 
-  };
+    fetchFavoriteProducts: (liker_id) => dispatch(fetchFavoriteProducts(liker_id))
+
+  })
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FavoritesIndex);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Favorites));

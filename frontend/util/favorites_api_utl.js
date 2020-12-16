@@ -1,8 +1,8 @@
-export const fetchFavoriteProducts = (shopper_id) =>
+export const fetchFavoriteProducts = (liker_id) =>
   $.ajax({
     url: `/api/favorites/`,
     method: "GET",
-    data: { shopper_id },
+    data: { liker_id },
   });
 
 export const addToFavorites = ({ product }) =>

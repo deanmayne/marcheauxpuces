@@ -81,6 +81,7 @@
     grid-row-gap: 7px;
     grid-template-columns: 400px 200px;
     grid-template-rows: repeat(3, min-content) auto min-content 1fr min-content min-content;
+    margin-right: 12px;
 
     img {
       max-height: 400px;
