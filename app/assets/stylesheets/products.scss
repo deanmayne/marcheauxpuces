@@ -1,5 +1,14 @@
 @import "variables.scss";
 
+.product-index{
+    &__highlight{
+        h2{
+            color: $primary-color;
+            font-family: $primary-font;
+            margin-left: 15px;
+        }
+    }
+
 .products-index__grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -66,6 +75,7 @@
       outline: none;
     }
   }
+}
 }
 
 .product-show-container {

@@ -15,34 +15,36 @@ class Favorites extends React.Component {
     const { products } = this.props;
     return (
       <div className="product-index">
+        <div className="product-index__highlight">
+          <h2>Favorites</h2>
+        </div>
         <div className="products-index__grid">
-          {products.map((product) =>
-              <Link
-                to={"/product/" + product.id}
-                className="product-card"
-                key={product.id}
+          {products.map((product) => (
+            <Link
+              to={"/product/" + product.id}
+              className="product-card"
+              key={product.id}
+            >
+              <img src={product.img_url} />
+              <div className="product-card__name">{product.name}</div>
+              <div className="product-card__location">{product.location}</div>
+              <div
+                className={"product-card__shipping--" + product.free_shipping}
               >
-                <img src={product.img_url} />
-                <div className="product-card__name">{product.name}</div>
-                <div className="product-card__location">{product.location}</div>
-                <div
-                  className={"product-card__shipping--" + product.free_shipping}
-                >
-                  {product.free_shipping === "true"
-                    ? "Free Shipping"
-                    : "Paid Shipping"}
-                </div>
-                <div className="product-card__price">
-                  $
-                  {/\.\d$/.test(product.price)
-                    ? product.price + "0"
-                    : !/\./.test(product.price)
-                    ? product.price + ".00"
-                    : product.price}
-                </div>
-              </Link>
-          
-                  )}
+                {product.free_shipping === "true"
+                  ? "Free Shipping"
+                  : "Paid Shipping"}
+              </div>
+              <div className="product-card__price">
+                $
+                {/\.\d$/.test(product.price)
+                  ? product.price + "0"
+                  : !/\./.test(product.price)
+                  ? product.price + ".00"
+                  : product.price}
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     );
