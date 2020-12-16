@@ -49,7 +49,7 @@ class CartIndex extends React.Component {
       return (
         <div className="cart">
           {carts.map((product) => {
-            return <CartIndexItem history = {this.props.history} key={product.id} product={product} removeFromCart={removeFromCart} />;
+            return <CartIndexItem key={product.id} product={product} removeFromCart={removeFromCart} />;
           })}
         </div>
       );

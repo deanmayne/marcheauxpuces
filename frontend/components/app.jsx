@@ -5,7 +5,7 @@ import { Route, Redirect, Switch, Link, HashRouter } from "react-router-dom";
 import HeaderContainer from "./header/header_container";
 
 import ProductIndexContainer from "./product_index/product_index_container";
-// import SearchContainer from './search/search_container';
+import SearchContainer from './search/search_container';
 import Modal from "./modal";
 import fourohfour from "./fourohfour";
 import ProductShowContainer from "./product_show/product_show_container";
@@ -15,7 +15,7 @@ const App = () => (
   <div>
     <HeaderContainer />
     <Switch>
-      {/* <Route path="/search/:searchTerm" component={SearchContainer} /> */}
+      <Route path="/search/:searchTerm" component={SearchContainer} />
       <Route path="/product/:productId" component={ProductShowContainer} />
       <Route
         exact

@@ -1,6 +1,6 @@
 import React from "react";
 import Icon from "../icons/icon";
-import { Link } from "react-router-dom";
+
 import ReviewsContainer from "../reviews_index/reviews_container";
 
 class ProductShow extends React.Component {

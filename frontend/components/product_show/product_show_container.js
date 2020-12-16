@@ -3,6 +3,7 @@ import { deleteProduct, fetchProduct } from "../../actions/product_actions";
 import ProductShow from "./product_show";
 import {addToCart} from '../../actions/cart_actions'
 import { openModal } from "../../actions/modal_actions";
+import {withRouter} from 'react-router';
 
 
 const mapStateToProps = (state, {match: {params: { productId }}}) => ({
@@ -23,4 +24,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductShow);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProductShow));

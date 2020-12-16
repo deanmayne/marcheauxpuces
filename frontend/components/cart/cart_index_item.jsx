@@ -33,12 +33,15 @@ class CartIndexItem extends React.Component {
               $
               {/\.\d$/.test(product.price)
                 ? product.price + "0"
-                : !/\./.test(product.price) ? product.price + ".00" : product.price}
+                : !/\./.test(product.price)
+                ? product.price + ".00"
+                : product.price}
             </div>
           </div>
         </Link>
         <div className="cart-item--far-right">
           <button
+            type="button"
             className="button button--primary button--sm"
             onClick={this.handleRemove}
           >

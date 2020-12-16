@@ -27,9 +27,9 @@ export const receiveReviews = (reviews) => ({
 });
 
 export const removeProduct = (product) => ({
-    type: REMOVE_PRODUCT,
-    product,
-})
+  type: REMOVE_PRODUCT,
+  product,
+});
 
 export const fetchReviews = (product_id) => (dispatch) =>
   APIUtil.fetchReviews(product_id).then((reviews) =>
@@ -65,4 +65,11 @@ export const updateProduct = (product) => (dispatch) =>
   );
 
 export const deleteProduct = (product_id) => (dispatch) =>
-  APIUtil.deleteProduct(product_id).then((product) => dispatch(removeProduct(product)));
+  APIUtil.deleteProduct(product_id).then((product) =>
+    dispatch(removeProduct(product))
+  );
+
+export const fetchSearchProducts = (searchTerm) => (dispatch) =>
+  APIUtil.fetchSearchProducts(searchTerm).then((products) =>
+    dispatch(receiveProducts(products))
+  );

@@ -11,6 +11,6 @@ Rails.application.routes.draw do
     resource :session, only: [:new, :create, :destroy]
   end
 
-  get '/api/search/:searchTerm', to: 'products#search'
+  get '/search/:searchTerm', to: 'api/products#search', defaults: {format: :json}
 
 end

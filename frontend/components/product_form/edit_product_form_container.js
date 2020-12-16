@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-
+import { withRouter } from "react-router";
 import { updateProduct } from '../../actions/product_actions';
 import ProductForm from './product_form';
 import { openModal, closeModal } from '../../actions/modal_actions';
@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => ({
   
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(ProductForm);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(ProductForm));
 
 
 

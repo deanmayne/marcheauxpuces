@@ -60,3 +60,9 @@ export const fetchReviews = (product_id) => (
     data: { product_id },
   })
 );
+
+export const fetchSearchProducts = (searchTerm) =>
+  $.ajax({
+    method: "GET",
+    url: `/search/${searchTerm}`
+  });
