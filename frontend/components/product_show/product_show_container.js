@@ -3,7 +3,7 @@ import { deleteProduct, fetchProduct } from "../../actions/product_actions";
 import ProductShow from "./product_show";
 import {addToCart} from '../../actions/cart_actions'
 import { openModal } from "../../actions/modal_actions";
-import {withRouter} from 'react-router';
+import { withRouter } from 'react-router';
 
 
 const mapStateToProps = (state, {match: {params: { productId }}}) => ({
