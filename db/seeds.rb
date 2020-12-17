@@ -37,13 +37,15 @@ cart = 1
 50.times do
     name = Faker::Commerce.unique.product_name
 
+    size = (400..600).to_a.sample.to_s
+
     product = Product.create(
         name: name,
         description: Faker::Lorem.sentences(number: 4).join(" "),
         price: Faker::Commerce.price(range: 0..100.0),
         category: ["jewelry-accessories","clothing-shoes","home-living","wedding-party","toys-entertainment","arts-collectibles","craft-supplies","gifts-gift-cards"].sample,
         free_shipping: ["true","false"].sample,
-        img_url:  "https://source.unsplash.com/400x400/?" + name.split(" ")[-2].downcase + "," + name.split(" ").last.downcase + "&content-filter=low",
+        img_url:  "https://source.unsplash.com/random/" + size + "x" + size + "/?" + name.split(" ").last.downcase + "&content-filter=low" + "&orientation=squarish",
         location: Faker::Address.full_address.split(", ").drop(1).join(", ")[/([a-zA-Z\s])+\,\s[a-zA-Z]{2}/],
         owner_id: [guest.id, philip.id].sample
 
