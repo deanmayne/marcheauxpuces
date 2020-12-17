@@ -11,7 +11,6 @@ class Search extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-      debugger
     if (prevProps.match.url !== this.props.match.url) {
       this.props.fetchSearchProducts(this.props.searchTerm);
     }
