@@ -32,6 +32,8 @@ ul.errors-list{
     display: grid;
     grid-gap: 8px;
     list-style-type: none;
+    justify-content: center;
+    padding-inline-start: 0;
 
     li.errors-list__item{
         color: red;
