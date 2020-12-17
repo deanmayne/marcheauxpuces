@@ -2200,23 +2200,32 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       var products = this.props.products;
+
+      var highlights = function highlights() {
+        if (!_this.props.category) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            className: "product-index__highlight"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Chic has no logic."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+            className: "product-index__highlight--images"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+            className: "highlight-photo--1",
+            src: "https://source.unsplash.com/tOVmshavtoo/800x800"
+          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+            className: "highlight-photo--2",
+            src: "https://source.unsplash.com/heEPoapeiVk/800x800"
+          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+            className: "highlight-photo--3",
+            src: "https://source.unsplash.com/2dcYhvbHV-M/800x800"
+          })));
+        }
+      };
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "product-index"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "product-index__highlight"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Chic has no logic."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "product-index__highlight--images"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        className: "highlight-photo--1",
-        src: "https://source.unsplash.com/tOVmshavtoo/800x800"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        className: "highlight-photo--2",
-        src: "https://source.unsplash.com/heEPoapeiVk/800x800"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        className: "highlight-photo--3",
-        src: "https://source.unsplash.com/2dcYhvbHV-M/800x800"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, highlights(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "products-index__grid"
       }, products.map(function (product) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_product_index_item__WEBPACK_IMPORTED_MODULE_1__.default, {
