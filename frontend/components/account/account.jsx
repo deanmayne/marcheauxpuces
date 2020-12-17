@@ -4,15 +4,17 @@ import { Link } from "react-router-dom";
 class Account extends React.Component {
   constructor(props) {
     super(props);
+    this.loaded = this.props.loaded;
   }
 
   componentDidMount() {
     this.props.fetchOwnedProducts();
+    this.loaded = true
   }
 
   render() {
-    const { products, user } = this.props;
-    if (products.length === 0) {
+    const { products, user, openModal, closeModal } = this.props;
+    if (products.length === 0 && this.loaded) {
       return (
         <div className="fourohfour-container">
           <h1>No products found !</h1>
@@ -20,11 +22,30 @@ class Account extends React.Component {
       );
     } else {
       return (
-        <div>
-            <div className="user--info">
-                {user.username}
-            </div>
+        <div className="store-container">
+          <div className="user-box">
+            <h1>{user.username}</h1>
+            <button
+              type="button"
+              className="button button--primary"
+              onClick={() => openModal("add_product")}
+            >
+              Add a Product
+            </button>
+
+            {user.username === "guest_user" ? null : 
+            <button
+              type="button"
+              className="button button--primary"
+              onClick={() => openModal("delete_user")}
+            >
+              Delete User
+            </button>}
+          </div>
           <div className="product-index">
+            <div className="product-index__highlight">
+              <h2>My Products</h2>
+            </div>
             <div className="products-index__grid">
               {products.map((product) => (
                 <Link

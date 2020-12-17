@@ -50,13 +50,6 @@ class Header extends React.Component {
         <Link to="/favorites" className="button button--link button--icon">
           <Icon icon="heart" />
         </Link>
-        {/* <button
-          type="button"
-          className="button button--primary"
-          onClick={() => openModal("add_product")}
-        >
-          Add a Product
-        </button> */}
         <Link to="/me" className="button button--link button--icon">
           <Icon icon="account" />
         </Link>

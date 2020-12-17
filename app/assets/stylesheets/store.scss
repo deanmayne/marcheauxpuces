@@ -1,0 +1,17 @@
+@import 'variables.scss';
+
+.store-container{
+    display: flex;
+
+    .product-index{
+        flex-grow: 1;
+    }
+
+
+    .user-box{
+        display: grid;
+        align-self: flex-start;
+        margin-left: 15px
+
+    }
+}

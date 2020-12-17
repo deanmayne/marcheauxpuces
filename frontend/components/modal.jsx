@@ -6,6 +6,7 @@ import SignupFormContainer from "./session_form/signup_form_container";
 import ReviewFormContainer from "./review_form/review_form_container";
 import AddProductFormContainer from "./product_form/add_product_form_container";
 import EditProductFormContainer from "./product_form/edit_product_form_container";
+import DeleteUserContainer from './delete_user_container';
 
 function Modal({ modal, closeModal }) {
   if (!modal) {
@@ -27,6 +28,9 @@ function Modal({ modal, closeModal }) {
       break;
     case "edit_product":
       component = <EditProductFormContainer />;
+      break;
+    case "delete_user":
+      component = <DeleteUserContainer />;
       break;
     default:
       return null;

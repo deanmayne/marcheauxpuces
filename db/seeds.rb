@@ -33,7 +33,7 @@ dean = User.create(
 )
 
 
-
+cart = 1
 50.times do
     name = Faker::Commerce.unique.product_name
 
@@ -67,6 +67,15 @@ dean = User.create(
         product_id: product.id,
         liker_id: [guest.id, philip.id].sample
     )
+
+    if cart < 6 && product.owner_id != guest.id
+        Cart.create(
+            shopper_id: guest.id,
+            product_id: product.id
+        )
+        cart += 1
+    end
+
 
 end
 

@@ -76,3 +76,7 @@ export const fetchSearchProducts = (searchTerm) => (dispatch) =>
   );
 
 
+export const fetchOwnedProducts = () => (dispatch) =>
+  APIUtil.fetchOwnedProducts().then((products) =>
+    dispatch(receiveProducts(products))
+  );

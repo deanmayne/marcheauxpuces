@@ -36,7 +36,4 @@ export const fetchFavoriteProducts = (liker_id) => (dispatch) =>
   );
 
 
-export const fetchOwnedProducts = () => (dispatch) =>
-APIUtil.fetchOwnedProducts().then((products) =>
-dispatch(receiveProducts(products))
-);
+

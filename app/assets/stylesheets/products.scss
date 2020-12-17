@@ -2,11 +2,13 @@
 
 .product-index{
     &__highlight{
+        display: flex;
+        justify-content: center;
         h2{
             color: $primary-color;
             font-family: $primary-font;
             margin-left: 15px;
-            border-bottom: 2px $secondary-color;
+            
         }
     }
 
