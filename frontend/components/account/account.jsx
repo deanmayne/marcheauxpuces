@@ -33,14 +33,15 @@ class Account extends React.Component {
               Add a Product
             </button>
 
-            {user.username === "guest_user" ? null : 
-            <button
-              type="button"
-              className="button button--primary"
-              onClick={() => openModal("delete_user")}
-            >
-              Delete User
-            </button>}
+            {user.username === "guest_user" ? null : (
+              <button
+                type="button"
+                className="button button--primary"
+                onClick={() => openModal("delete_user")}
+              >
+                Delete My Account
+              </button>
+            )}
           </div>
           <div className="product-index">
             <div className="product-index__highlight">
