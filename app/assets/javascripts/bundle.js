@@ -608,54 +608,48 @@ var Account = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           products = _this$props.products,
           user = _this$props.user,
-          openModal = _this$props.openModal,
-          closeModal = _this$props.closeModal;
-
-      if (products.length === 0 && this.loaded) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "fourohfour-container"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "No products found !"));
-      } else {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "store-container"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "user-box"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, user.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          type: "button",
-          className: "button button--primary",
-          onClick: function onClick() {
-            return openModal("add_product");
-          }
-        }, "Add a Product"), user.username === "guest_user" ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-          type: "button",
-          className: "button button--primary",
-          onClick: function onClick() {
-            return openModal("delete_user");
-          }
-        }, "Delete User")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "product-index"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "product-index__highlight"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "My Products")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-          className: "products-index__grid"
-        }, products.map(function (product) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-            to: "/product/" + product.id,
-            className: "product-card",
-            key: product.id
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-            src: product.img_url
-          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-            className: "product-card__name"
-          }, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-            className: "product-card__location"
-          }, product.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-            className: "product-card__shipping--" + product.free_shipping
-          }, product.free_shipping === "true" ? "Free Shipping" : "Paid Shipping"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-            className: "product-card__price"
-          }, "$", /\.\d$/.test(product.price) ? product.price + "0" : !/\./.test(product.price) ? product.price + ".00" : product.price));
-        }))));
-      }
+          openModal = _this$props.openModal;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "store-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "user-box"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, user.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        type: "button",
+        className: "button button--primary",
+        onClick: function onClick() {
+          return openModal("add_product");
+        }
+      }, "Add a Product"), user.username === "guest_user" ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        type: "button",
+        className: "button button--primary",
+        onClick: function onClick() {
+          return openModal("delete_user");
+        }
+      }, "Delete My Account")), products.length === 0 && this.loaded ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "fourohfour-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "No products found !")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "product-index"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "product-index__highlight"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "My Products")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "products-index__grid"
+      }, products.map(function (product) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+          to: "/product/" + product.id,
+          className: "product-card",
+          key: product.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+          src: product.img_url
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "product-card__name"
+        }, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "product-card__location"
+        }, product.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "product-card__shipping--" + product.free_shipping
+        }, product.free_shipping === "true" ? "Free Shipping" : "Paid Shipping"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "product-card__price"
+        }, "$", /\.\d$/.test(product.price) ? product.price + "0" : !/\./.test(product.price) ? product.price + ".00" : product.price));
+      }))));
     }
   }]);
 
@@ -1143,7 +1137,7 @@ function DeleteUserContainer(_ref) {
       });
       (0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.logout)();
     }
-  }, "Delete User"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+  }, "Delete My Account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     type: "button",
     className: "button button--primary button--lg",
     onClick: function onClick() {
@@ -1238,7 +1232,9 @@ var Favorites = /*#__PURE__*/function (_React$Component) {
         className: "product-index"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "product-index__highlight"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Favorites")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Favorites")), products.length === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "fourohfour-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "No products found !")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "products-index__grid"
       }, products.map(function (product) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {

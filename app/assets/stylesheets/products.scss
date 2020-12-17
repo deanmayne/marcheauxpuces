@@ -2,6 +2,22 @@
 
 .product-index {
 
+    .fourohfour-container {
+    display: grid;
+
+    h1{
+        color: $primary-color;
+        font-size: 60px;
+        place-self: center;
+        border: 1px solid black;
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+
+    }
+
+}
+
   &__highlight {
     display: grid;
     justify-items: center;
@@ -11,6 +27,8 @@
       font-family: $primary-font;
       margin-left: 15px;
     }
+
+
 
     &--images {
       display: flex;
