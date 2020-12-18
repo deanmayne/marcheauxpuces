@@ -66,7 +66,7 @@ function Modal({ modal, closeModal }) {
 
 In the header/nav bar, users can select from a number of predefine category listings to further refine their searches. In order to be more efficient with the data, my `Product#index` controller was refactored to perform this action server to decrease data load and processing on the front-end based on the category passed in the url parameters.
 
-![Categories](./public/categories.png?raw=true)
+![Categories](./public/categories1.png?raw=true)
 
 ```javascript
     def index
