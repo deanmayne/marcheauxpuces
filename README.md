@@ -21,6 +21,8 @@ Marché aux Puces is an online e-commerce platform for users to buy and sell han
 
 Marché aux Puce makes use of a modal for all forms that users will encounter to ensure consistent styling and renders based on text for the form type that needs to be rendered.
 
+![Modal](./public/Modal.png?raw=true)
+
 ```javascript
 function Modal({ modal, closeModal }) {
   if (!modal) {
@@ -77,3 +79,8 @@ In the header/nav bar, users can select from a number of predefine category list
     end
 
 ```
+
+# Todo
+* Cart Quantities
+* Cart checkout button
+* Purchased product history for users.
