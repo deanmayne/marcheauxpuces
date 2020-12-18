@@ -2,22 +2,38 @@ import React from 'react';
 import { closeModal } from "../actions/modal_actions";
 import {logout} from '../actions/session_actions';
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom';
 
 
 
-function DeleteUserContainer({user, closeModal}) {
+class DeleteUserContainer extends React.Component{
+    constructor(props){
+        super(props)
+
+        this.handleDelete = this.handleDelete.bind(this);
+    }
+
+    handleDelete(e){
+        const { user } = this.props;
+        e.preventDefault;
+        $.ajax({
+              url: `/api/users/${user}`,
+              method: "DELETE",
+            });
+            logout();
+            this.props.history.push("/")
+          }
+
+
+    render(){
+
+        const {user, closeModal} = this.props
     return (
       <div>
         <button
           type="button"
           className="button button--primary button--lg"
-          onClick={() => {
-            $.ajax({
-              url: `/api/users/${user.id}`,
-              method: "DELETE",
-            });
-            logout();
-          }}
+          onClick={this.handleDelete}
         >
           Delete My Account
         </button>
@@ -29,11 +45,11 @@ function DeleteUserContainer({user, closeModal}) {
           Cancel
         </button>
       </div>
-    );
+    );}
 };
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     user: state.session.id
   };
@@ -45,5 +61,5 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeleteUserContainer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(DeleteUserContainer));
 
