@@ -26,13 +26,12 @@ class CartIndex extends React.Component {
   render() {
     const { carts, shopper_id, removeFromCart } = this.props;
 
-    const cartTotal = () => {
+
         let cartTotal = 0;
         carts.forEach((product) => {
             cartTotal += product.price
         })
-        return cartTotal;
-    }
+
     if (!shopper_id) {
       return (
         <div className="cart--not-signed-in">
@@ -57,11 +56,24 @@ class CartIndex extends React.Component {
       return (
         <div className="cart">
           {carts.map((product) => {
-            return <CartIndexItem key={product.id} product={product} removeFromCart={removeFromCart} />;
+            return (
+              <CartIndexItem
+                key={product.id}
+                product={product}
+                removeFromCart={removeFromCart}
+              />
+            );
           })}
           <div className="cartTotal">
-              Total Cost: ${cartTotal()}
-              <button className="button button--primary button--lg">Checkout</button>
+            Total Cost: $
+            {/\.\d$/.test(cartTotal)
+              ? cartTotal + "0"
+              : !/\./.test(cartTotal)
+              ? cartTotal + ".00"
+              : cartTotal}
+            <button className="button button--primary button--lg">
+              Checkout
+            </button>
           </div>
         </div>
       );
