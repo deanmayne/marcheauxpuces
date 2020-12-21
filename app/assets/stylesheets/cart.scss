@@ -33,69 +33,72 @@
   margin-left: 20px;
   margin-top: 20px;
 
-
   .cart-item {
     display: flex;
     justify-content: space-between;
 
-    a{
-        display: flex;
+    a {
+      display: flex;
 
-    .cart-item--left{
+      .cart-item--left {
         display: grid;
-      width: 200px;
-      height: 175px;
+        width: 200px;
+        height: 175px;
+      }
+
+      .cart-item--right {
+        display: grid;
+        grid-gap: 8px;
+        max-height: 15px;
+        margin-top: 24px;
+        margin-left: 20px;
+
+        .cart-item__name {
+          color: black;
+          font-size: 20px;
+        }
+
+        .cart-item__location {
+          font-size: 14px;
+        }
+
+        .cart-item__shipping--true {
+          font-size: 13px;
+          background: #d4e9d7;
+          border-radius: 20px;
+          padding: 2px 4px;
+          margin-right: 56px;
+          max-width: 7.4em;
+        }
+
+        .cart-item__shipping--false {
+          font-size: 13px;
+          background: #fdebd2;
+          border-radius: 20px;
+          padding: 2px 4px;
+          margin-right: 56px;
+          max-width: 7.4em;
+        }
+
+        .cart-item__price {
+          font-size: 15px;
+          font-weight: bolder;
+        }
+      }
     }
 
-    .cart-item--right {
+    .cart-item--far-right {
       display: grid;
-      grid-gap: 8px;
-      max-height: 15px;
-      margin-top: 24px;
-      margin-left: 20px;
-
-      .cart-item__name {
-        color: black;
-        font-size: 20px;
-      }
-
-      .cart-item__location {
-        font-size: 14px;
-      }
-
-      .cart-item__shipping--true {
-        font-size: 13px;
-        background: #d4e9d7;
-        border-radius: 20px;
-        padding: 2px 4px;
-        margin-right: 56px;
-        max-width: 7.4em;
-      }
-
-      .cart-item__shipping--false {
-        font-size: 13px;
-        background: #fdebd2;
-        border-radius: 20px;
-        padding: 2px 4px;
-        margin-right: 56px;
-        max-width: 7.4em;
-      }
-
-      .cart-item__price {
-        font-size: 15px;
-        font-weight: bolder;
-      }
-
+      place-content: center;
     }
+  }
+  .cartTotal{
+      display: flex;
+      justify-self: right;
+      align-items: center;
 
-    }
-
-
-    .cart-item--far-right{
-        display: grid;
-        place-content: center;
-    }
-
-
-}
+      button{
+          margin-left: 8px;
+      }
+  }
 }
