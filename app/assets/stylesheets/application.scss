@@ -43,3 +43,16 @@ ul.errors-list{
 body{
     font-family: $primary-font;
 }
+
+footer{
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid $secondary-color;
+    font-size: 34px;
+    padding: 8px 0;
+
+    a{
+        color: $primary-color;
+        margin: 10px;
+    }
+}

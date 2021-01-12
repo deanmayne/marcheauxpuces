@@ -12,6 +12,8 @@ import ProductShowContainer from "./product_show/product_show_container";
 import CartContainer from "./cart/cart_container";
 import FavoritesContainer from './favorites/favorites_container';
 import AccountContainer from './account/account_container';
+import Footer from './footer';
+
 
 const App = () => (
   <div>
@@ -48,6 +50,7 @@ const App = () => (
       <Redirect to="/404" />
     </Switch>
     <Modal />
+    <Footer/>
   </div>
 );
 
