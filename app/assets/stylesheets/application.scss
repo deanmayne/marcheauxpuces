@@ -47,9 +47,10 @@ body{
 footer{
     display: flex;
     justify-content: center;
-    border-top: 1px solid $secondary-color;
+    border-top: 1px solid grey;
     font-size: 34px;
-    padding: 8px 0;
+    padding-top: 8px;
+    margin-top: 15px;
 
     a{
         color: $primary-color;

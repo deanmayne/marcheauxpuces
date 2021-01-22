@@ -113,11 +113,12 @@
 }
 
 .product-show-container {
-  display: flex;
-  padding-top: 45px;
-  margin: auto;
-  max-width: 1200px;
-  align-items: flex-start;
+    display: flex;
+    padding-top: 30px;
+    margin: auto;
+    max-width: 1200px;
+    align-items: flex-start;
+    min-height: 63vh;
 
   .product-show--info {
     display: grid;
